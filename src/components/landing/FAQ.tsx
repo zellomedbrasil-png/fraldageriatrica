@@ -56,14 +56,14 @@ const FAQ = () => {
   const col2 = faqItems.slice(half);
 
   return (
-    <section id="faq" className="py-24 bg-card border-t border-border">
+    <section id="faq" className="py-24 lg:py-32 bg-surface-soft border-t border-border">
       <div className="max-w-5xl mx-auto px-6">
         <ScrollReveal>
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-semibold text-foreground tracking-tighter-custom mb-4">
+            <h2 className="text-3xl sm:text-4xl font-semibold text-foreground mb-4">
               Perguntas frequentes
             </h2>
-            <p className="text-muted-foreground text-sm max-w-lg mx-auto">
+            <p className="text-foreground/70 text-lg max-w-2xl mx-auto">
               Tudo o que você precisa saber sobre o processo, regulamentação e seu direito ao
               benefício.
             </p>
@@ -78,12 +78,12 @@ const FAQ = () => {
                   <AccordionItem
                     key={i}
                     value={`item-${ci}-${i}`}
-                    className="border border-border rounded-xl bg-card hover:border-primary/30 transition-colors px-5"
+                    className="border border-border rounded-2xl bg-card px-6"
                   >
-                    <AccordionTrigger className="text-left font-medium text-foreground text-sm hover:no-underline">
+                    <AccordionTrigger className="text-left font-semibold text-foreground text-base hover:no-underline py-5">
                       {item.q}
                     </AccordionTrigger>
-                    <AccordionContent className="text-sm text-muted-foreground leading-relaxed">
+                    <AccordionContent className="text-base text-foreground/75 leading-relaxed pb-5">
                       {item.a}
                     </AccordionContent>
                   </AccordionItem>
@@ -98,7 +98,7 @@ const FAQ = () => {
             <Button
               asChild
               size="lg"
-              className="rounded-full px-8 py-6 text-base shadow-xl shadow-primary/20 hover:-translate-y-0.5 transition-all gap-2"
+              className="rounded-full px-8 py-7 text-base font-semibold shadow-md gap-2"
             >
               <a href={WA_LINK} target="_blank" rel="noopener noreferrer">
                 Solicitar avaliação — R$ 59

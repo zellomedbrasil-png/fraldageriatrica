@@ -1,109 +1,117 @@
 
-# Auditoria CFM + Google — Reescrita de Copy
+# Plano: Minimalismo Acessível Clínico
 
-## 🎯 Objetivo
-Manter os **benefícios reais** do serviço (clareza, economia, prazo de 24h, reembolso) sem violar:
-- **Resolução CFM 2.314/2022** (telemedicina) e **Código de Ética Médica** (mercantilização, promessa de resultado, sensacionalismo)
-- **Manifesto CFM sobre publicidade médica** (Res. 1.974/2011)
-- **Políticas Google Ads/Search** para YMYL — Healthcare e Restricted Medical Services
-- **CDC** e **Lei 9.294/96** (publicidade enganosa)
-
-## 🚨 Riscos identificados na copy atual
-
-| Local | Trecho atual | Risco |
-|---|---|---|
-| Hero H1 | *"Pare de gastar R$ 300 por mês com fraldas"* | Mercantilização do ato médico (CFM): o serviço médico é instrumentalizado como meio para economia. Google: claim financeiro absoluto. |
-| Hero subtítulo | *"R$ 59 destrava o seu direito"* | "Destrava" implica garantia de resultado. CFM proíbe promessa de resultado. |
-| Hero CTA | *"Quero economizar — R$ 59"* | Reforça mercantilização. |
-| Hero badge | *"Mais de 120 fraldas/mês grátis pelo SUS — em 24h"* | Sugere garantia de quantidade independente de avaliação clínica. |
-| Hero gradient | *"Tenha até 120 grátis, todo mês"* | Promessa absoluta — depende do critério clínico **e** da disponibilidade da farmácia. |
-| Header | *"Quanto economizo"* + CTA *"Quero meu laudo — R$ 59"* | "Quero meu laudo" antes da avaliação clínica = vende laudo, não consulta. CFM grave. |
-| ComoFunciona | *"Mais fácil que pedir delivery"* / *"sai com as fraldas grátis no mesmo dia"* | Banaliza ato médico + promessa absoluta de retirada (depende de estoque). |
-| Precos H2 | *"Faça as contas com a gente"* + comparativo R$ 2.400 vs R$ 0,00 | Mercantilização explícita. Google considera publicidade enganosa de saúde. |
-| Precos | *"Valor real do serviço: ~~R$ 200~~"* + *"valor de mercado: R$ 150"* | Tabela de preços comparativos é vedada pelo CEM (Cap. XIII, Art. 113). |
-| Precos CTA | *"Quero meu laudo agora"* | Mesmo problema: vende laudo. |
-| FAQ #6 | *"renovar é a decisão mais óbvia do mundo"* + *"R$ 2.400"* | Indução comercial. |
-| FAQ #4 | *"O risco é todo nosso"* | Linguagem de oferta comercial agressiva — inadequada para serviço médico. |
+Aplicar diretrizes UI/UX para público 60+ e cuidadores: máxima legibilidade, autoridade clínica, zero ruído visual, fluxo único óbvio.
 
 ---
 
-## ✅ Princípios da reescrita
+## 1. Design Tokens (`src/styles.css`)
 
-1. **O serviço é avaliação médica por telemedicina** que pode resultar em laudo — não venda de laudo.
-2. **Benefícios mantidos** com linguagem sóbria: prazo (24h), modalidade (online), valor (R$ 59), política de reembolso, validade (180 dias).
-3. **Economia mencionada de forma indireta e factual**, sempre com a fonte (Portaria GM/MS 3.073/2024) e ressalvas (depende de critério clínico e disponibilidade).
-4. **CTAs reformulados** para "Solicitar avaliação" / "Iniciar atendimento", não "Quero meu laudo".
-5. **Disclaimers visíveis**: emissão condicionada à indicação clínica.
+**Tipografia (acessibilidade)**
+- `body`: aumentar `font-size` para `18px` e `line-height` para `1.65`.
+- `h1`: reduzir tracking agressivo (`-0.025em` em vez de `-0.035em`) — letras muito espremidas prejudicam idosos.
+- Definir `font-feature-settings` mais conservador (manter `cv11`, remover `ss03` que altera glyphs).
 
----
+**Cores (Clinical Trust Blue)**
+- `--brand-primary`: trocar para `oklch(0.55 0.12 240)` (azul clínico mais sóbrio, contraste AA contra branco).
+- `--brand-accent`: igualar ao primary (remover gradientes que dificultam leitura).
+- `--surface-base`: branco puro `oklch(1 0 0)` em vez de off-blue para máximo contraste.
+- Manter `--text-primary` em slate escuro (já está em ~AAA).
 
-## 📝 Alterações por arquivo
+**Remoções**
+- Remover `--gradient-hero`, `--gradient-brand`, `--gradient-accent` aplicados em texto (substituir por cor sólida).
+- Remover utilitários `.text-gradient-brand` / `.text-gradient-accent` dos componentes (manter classe definida, mas não usar).
+- Remover `--shadow-accent-glow` agressivo do botão hero (substituir por `--shadow-md`).
 
-### `src/components/landing/Hero.tsx`
-- **Badge**: → *"Avaliação médica online em até 24h • Conforme Portaria GM/MS 3.073/2024"*
-- **H1**: → *"Avaliação médica online para laudo de fralda geriátrica."*
-- **Gradient line**: → *"Em até 24 horas, sem sair de casa."*
-- **Subtítulo**: → *"Atendimento por telemedicina com médico de CRM ativo. Em caso de indicação clínica, emitimos o laudo aceito pelo Programa Farmácia Popular para retirada gratuita de fraldas geriátricas (até 120/mês), conforme Portaria GM/MS nº 3.073/2024. Se o médico não identificar indicação, devolvemos 100% do valor."*
-- **CTA principal**: → *"Solicitar avaliação — R$ 59"*
-- **CTA secundário**: → *"Como funciona"*
-- **Microcopy**: → *"✓ Pagamento único • ✓ Resposta em até 24h • ✓ Reembolso integral se não houver indicação clínica"*
-
-### `src/components/landing/Header.tsx`
-- Link *"Quanto economizo"* → *"Investimento"*
-- CTA → *"Solicitar avaliação"*
-
-### `src/components/landing/ComoFunciona.tsx`
-- Eyebrow *"Mais fácil que pedir delivery"* → *"Processo 100% online"*
-- H2 → *"Atendimento simples, em conformidade com a regulamentação."*
-- Subtítulo → *"Avaliação por teleconsulta conforme Resolução CFM 2.314/2022. Em caso de indicação clínica, o laudo é emitido em até 24 horas."*
-- Step 1 título → *"Triagem rápida no WhatsApp"* | desc reforçando dados clínicos
-- Step 2 desc: manter referência CFM, remover "você não faz nada"
-- Step 3 título → *"Laudo digital em até 24h"* | desc: *"Recebe o laudo com assinatura digital ICP-Brasil, válido por 180 dias. Apresente em uma farmácia credenciada do Programa Farmácia Popular para retirada do benefício, conforme estoque local."* (remove "no mesmo dia")
-
-### `src/components/landing/Precos.tsx`
-- H2 → *"Investimento único, sem assinatura."*
-- **Remover** parágrafo de comparativo "Faça as contas" e os 2 cards (R$ 2.400 vs R$ 0,00).
-- **Substituir** por bloco informativo neutro: *"O Programa Farmácia Popular do Brasil disponibiliza gratuitamente até 120 fraldas geriátricas/mês para beneficiários elegíveis. Para acessar, é necessário apresentar laudo médico válido (180 dias) — esse é o documento que avaliamos emitir."*
-- **Remover** `valor de mercado: R$ 150` e similares de cada item.
-- **Remover** `Valor real do serviço: ~~R$ 200~~`.
-- Lista mantida com benefícios factuais (sem comparações de preço).
-- CTA → *"Solicitar avaliação médica"*
-- Reembolso: manter, reformular como *"Política de Reembolso"*: *"Caso a avaliação clínica não identifique indicação para uso contínuo de fralda geriátrica, o laudo não é emitido e o valor pago é reembolsado integralmente, em até 5 dias úteis."*
-
-### `src/components/landing/FAQ.tsx`
-- **#4**: remover *"o risco é todo nosso"*. → *"Sim. A emissão depende de critério clínico do médico responsável. Se a avaliação não confirmar indicação, o laudo não é emitido e reembolsamos 100% do valor pago."*
-- **#6**: remover *"economiza R$ 2.400"* e *"decisão mais óbvia do mundo"*. → *"R$ 59 — o mesmo valor da primeira emissão. Não há assinatura nem cobrança automática; você solicita a renovação somente quando precisar."*
-- CTA do FAQ → *"Solicitar avaliação — R$ 59"*
-
-### `src/components/landing/Footer.tsx`
-- Adicionar bloco do **Responsável Técnico** com placeholders explícitos:
-  - *"Dr. [Nome] — CRM/[UF] [número]"*
-  - *"Diretor Técnico Médico — Resolução CFM 2.314/2022"*
-- Adicionar **CNPJ placeholder** e endereço da pessoa jurídica.
-- Reforçar disclaimer já existente (já está bom — manter).
-
-### `src/routes/index.tsx` (SEO)
-- **TITLE** → *"Laudo Médico para Fralda Geriátrica Online — Avaliação em 24h | fraldageriatrica.com"*
-- **DESCRIPTION** → *"Avaliação médica por telemedicina para emissão de laudo de fralda geriátrica, em até 24h, com médico de CRM ativo. Conforme Portaria GM/MS 3.073/2024 e Resolução CFM 2.314/2022."*
-- Remover keyword *"farmácia popular fralda"* de posição de destaque (manter apenas no `keywords`).
+**Adições**
+- Classe `.trust-seal`: card branco, border azul claro, padding generoso, ícone à esquerda — base reutilizável para selos.
 
 ---
 
-## ⚖️ O que **continua** sendo dito (benefícios mantidos)
-- ✅ R$ 59, pagamento único, sem assinatura
-- ✅ Avaliação em até 24h
-- ✅ Médico com CRM ativo
-- ✅ 100% online via WhatsApp
-- ✅ Laudo válido por 180 dias
-- ✅ Aceito no Programa Farmácia Popular (até 120 fraldas/mês conforme Portaria 3.073/2024)
-- ✅ Reembolso integral se não houver indicação clínica
-- ✅ Assinatura ICP-Brasil
+## 2. `Logo.tsx`
+- Trocar ícone `Heart` por `Stethoscope` (autoridade clínica, não emocional).
+- Aumentar container do logo de `w-8 h-8` para `w-9 h-9` (alvo de toque maior).
 
-## 🚫 O que **sai** da página
-- ❌ Comparativos R$ 200–500 vs R$ 0 e R$ 2.400 vs R$ 0
-- ❌ "Valor real R$ 200" riscado e "valor de mercado R$ 150"
-- ❌ "Pare de gastar", "destrava", "decisão mais óbvia", "o risco é todo nosso"
-- ❌ "Mais fácil que pedir delivery", "sai com fraldas no mesmo dia"
-- ❌ CTAs "Quero meu laudo" → trocados por "Solicitar avaliação"
+---
 
-Após aprovação, vou aplicar todas as edições em uma única passada e rodar `tsc --noEmit` para validar.
+## 3. `Header.tsx`
+- Remover `glass-header` (blur dificulta leitura para idosos) → fundo `bg-background` sólido com `border-b`.
+- Reduzir links do menu desktop: manter apenas **"Como funciona"** e **"Dúvidas"** (remover "Investimento" — preço já fica no CTA).
+- CTA: adicionar valor inline → `"Solicitar avaliação · R$ 59"`.
+- Aumentar altura do header de `h-16` para `h-18` no mobile (alvo de toque ≥48px).
+
+---
+
+## 4. `Hero.tsx`
+- Remover badge superior pulsante (`animate-ping`) — substituir por badge estático com ícone `ShieldCheck` e texto "Telemedicina regulamentada · CFM 2.314/2022".
+- H1: remover `bg-clip-text` gradiente da segunda linha → cor sólida `text-primary`.
+- Aumentar `text-muted-foreground` do parágrafo para `text-base` (18px) com `text-foreground/80` (mais contraste).
+- CTA principal: já tem o preço → manter, mas remover `shadow-xl shadow-primary/20` (substituir por `shadow-md`) e `hover:-translate-y-0.5`.
+- Substituir trust badges em cinza (`opacity-60 grayscale`) por **3 selos institucionais sólidos** lado a lado em cards `.trust-seal`:
+  1. ShieldCheck — "Laudo com validade jurídica (ICP-Brasil)"
+  2. Lock — "Dados protegidos (LGPD)"
+  3. BadgeCheck — "Médico responsável com CRM ativo"
+- Remover `bg-hero-glow` orb radial atrás do hero.
+
+---
+
+## 5. `ComoFunciona.tsx`
+- Aumentar padding da seção: `py-20` → `py-24 lg:py-32`.
+- Cards: padronizar todos como **claros** (remover variante dark do passo 3 — quebra consistência e cria ruído).
+- Substituir o numeral pequeno em quadrado por **número grande tipográfico** (`text-5xl font-light text-primary/60`) à esquerda do título — referência tipo timeline clínico.
+- Remover ícone gigante decorativo girado `-rotate-[15deg]` no canto (visual marketing, não clínico).
+- Manter ícone discreto pequeno acima do número.
+- Indicador "Em até 24 horas" do passo 3: mover para badge sóbrio sem `animate-pulse-dot`.
+
+---
+
+## 6. `Precos.tsx`
+- Remover orb decorativo `bg-primary/10 blur-3xl`.
+- Card de preço: aumentar padding `p-8` → `p-10`, border `border-2 border-primary/20` para destaque institucional.
+- Número "59": manter destaque, mas usar `text-foreground` sólido (sem efeitos).
+- Bloco "Política de Reembolso": promover de sub-card para **selo de garantia destacado** com border `border-primary/30` e fundo `bg-primary-soft` (já existe no token).
+- CTA: remover `shadow-xl shadow-primary/20` → `shadow-md`.
+- Aumentar tamanho de cada item da lista para `text-base` (legibilidade).
+
+---
+
+## 7. `FAQ.tsx`
+- Texto das perguntas/respostas: subir de `text-sm` para `text-base` (18px).
+- Aumentar padding interno dos itens de accordion (`px-5` → `px-6 py-2`).
+- Remover hover de borda colorida (`hover:border-primary/30`) — manter borda neutra estável.
+- CTA final: remover sombra agressiva.
+
+---
+
+## 8. `Footer.tsx`
+- Reorganizar bloco de compliance em **grid 3 colunas** com 3 selos institucionais idênticos:
+  1. **Stethoscope** — Responsável Técnico (CRM/UF)
+  2. **Lock** — LGPD & Segurança de Dados
+  3. **FileCheck** — Conformidade Regulatória (Portaria 3.073/2024 + CFM 2.314/2022)
+- Cada selo em card branco com border, padding generoso, título uppercase pequeno e descrição em slate.
+- Aumentar disclaimer legal final para `text-xs` (12px) em vez de `text-[10px]` (acessibilidade WCAG mínima).
+
+---
+
+## 9. `src/routes/index.tsx`
+- Adicionar `<meta name="theme-color" content="#1d6fb8">` (azul clínico) para barra do navegador mobile.
+- Adicionar `<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">` (manter `user-scalable=yes` por padrão — não restringir zoom de idosos).
+
+---
+
+## Arquivos editados
+- `src/styles.css`
+- `src/components/landing/Logo.tsx`
+- `src/components/landing/Header.tsx`
+- `src/components/landing/Hero.tsx`
+- `src/components/landing/ComoFunciona.tsx`
+- `src/components/landing/Precos.tsx`
+- `src/components/landing/FAQ.tsx`
+- `src/components/landing/Footer.tsx`
+- `src/routes/index.tsx`
+
+## Validação final
+- `bunx tsc --noEmit` para garantir compilação limpa.
+- Verificar contraste AA (texto principal ≥ 4.5:1) — paleta proposta atende.
+
+Aprove para eu aplicar.
