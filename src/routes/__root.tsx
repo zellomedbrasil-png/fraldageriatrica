@@ -31,6 +31,16 @@ export const Route = createRootRoute({
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { name: "author", content: "fraldageriatrica.com" },
       { name: "theme-color", content: "#0F4C5C" },
+      { title: "Lovable App" },
+      { property: "og:title", content: "Lovable App" },
+      { name: "twitter:title", content: "Lovable App" },
+      { name: "description", content: "Emite laudo médico online para fralda geriátrica gratuita pelo Farmácia Popular." },
+      { property: "og:description", content: "Emite laudo médico online para fralda geriátrica gratuita pelo Farmácia Popular." },
+      { name: "twitter:description", content: "Emite laudo médico online para fralda geriátrica gratuita pelo Farmácia Popular." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/812eee41-26a6-449c-a7a9-0e8dee0d54e2/id-preview-52a12f92--67fd5cbd-f11f-40ee-8730-25571a05f12b.lovable.app-1777087799995.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/812eee41-26a6-449c-a7a9-0e8dee0d54e2/id-preview-52a12f92--67fd5cbd-f11f-40ee-8730-25571a05f12b.lovable.app-1777087799995.png" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:type", content: "website" },
     ],
     links: [
       {
