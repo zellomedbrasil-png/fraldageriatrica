@@ -1,4 +1,4 @@
-import { Heart } from "lucide-react";
+import { Stethoscope } from "lucide-react";
 
 interface LogoProps {
   className?: string;
@@ -12,11 +12,11 @@ const Logo = ({ className = "", invert = false }: LogoProps) => {
       className={`flex items-center gap-2 group ${className}`}
       aria-label="fraldageriatrica.com — página inicial"
     >
-      <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-primary-foreground shadow-lg shadow-primary/20 group-hover:scale-95 transition-transform duration-300">
-        <Heart className="w-[18px] h-[18px]" strokeWidth={2.25} />
+      <div className="w-9 h-9 bg-primary rounded-[10px] flex items-center justify-center text-primary-foreground shadow-md group-hover:scale-95 transition-transform duration-300">
+        <Stethoscope className="w-[18px] h-[18px]" strokeWidth={2} />
       </div>
       <span
-        className={`font-semibold text-base tracking-tighter-custom transition-colors ${
+        className={`font-semibold text-[15px] tracking-tight transition-colors ${
           invert ? "text-white" : "text-foreground group-hover:text-primary"
         }`}
       >

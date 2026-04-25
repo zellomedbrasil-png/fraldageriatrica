@@ -1,4 +1,4 @@
-import { ClipboardCheck, Stethoscope, FileCheck } from "lucide-react";
+import { MessageCircle, Stethoscope, FileCheck } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
 
 const steps = [
@@ -6,7 +6,7 @@ const steps = [
     num: "1",
     title: "Triagem rápida no WhatsApp",
     desc: "Você responde um questionário clínico com os dados do paciente — condição, mobilidade e histórico. Tudo pelo celular, sem exames adicionais.",
-    Icon: ClipboardCheck,
+    Icon: MessageCircle,
     dark: false,
   },
   {
@@ -27,73 +27,77 @@ const steps = [
 
 const ComoFunciona = () => {
   return (
-    <section id="como-funciona" className="py-20 bg-card border-y border-border">
-      <div className="max-w-5xl mx-auto px-6">
+    <section id="como-funciona" className="py-16 lg:py-24 bg-surface-soft border-y border-border">
+      <div className="container-page">
         <ScrollReveal>
-          <div className="mb-16">
-            <span className="inline-block text-[11px] font-bold text-primary uppercase tracking-[0.18em] mb-3">
+          <div className="mb-12 lg:mb-16 max-w-2xl">
+            <span className="inline-block text-[12px] font-semibold text-primary uppercase tracking-[0.1em] mb-3">
               Processo 100% online
             </span>
-            <h2 className="text-3xl font-semibold text-foreground tracking-tighter-custom">
+            <h2 className="text-[28px] sm:text-[36px] font-semibold text-ink-900 leading-[1.15]">
               Atendimento simples, em conformidade com a regulamentação.
             </h2>
-            <p className="text-muted-foreground mt-2 font-light">
+            <p className="text-[16px] text-ink-700 mt-4 leading-[1.6]">
               Avaliação por teleconsulta conforme a Resolução CFM 2.314/2022. Em caso de indicação
               clínica, o laudo é emitido em até 24 horas.
             </p>
           </div>
         </ScrollReveal>
 
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-3 gap-4 md:gap-6">
           {steps.map((step, i) => (
-            <ScrollReveal key={step.num} delay={i * 0.15}>
+            <ScrollReveal key={step.num} delay={i * 0.12}>
               <div
-                className={`rounded-3xl p-8 relative overflow-hidden group transition-colors duration-300 h-full ${
+                className={`rounded-2xl p-8 relative overflow-hidden group h-full transition-all duration-300 hover:-translate-y-1 ${
                   step.dark
-                    ? "bg-ink-900 border border-ink-800"
-                    : "bg-secondary border border-border hover:border-primary/30"
+                    ? "bg-ink-900 border border-ink-800 shadow-elegant"
+                    : "bg-white border border-border shadow-sm hover:shadow-md"
                 }`}
               >
                 <div className="relative z-10">
+                  {/* Numeração: círculo branco com número em primary */}
                   <div
-                    className={`w-12 h-12 rounded-2xl border flex items-center justify-center mb-6 shadow-sm ${
+                    className={`w-11 h-11 rounded-full flex items-center justify-center mb-6 ${
                       step.dark
-                        ? "bg-white/10 border-white/10 text-white backdrop-blur-md"
-                        : "bg-card border-border text-foreground"
+                        ? "bg-white/10 backdrop-blur-md border border-white/15"
+                        : "bg-primary-soft border border-primary/15"
                     }`}
                   >
-                    <span className="font-bold font-mono">{step.num}</span>
+                    <span
+                      className={`text-[18px] font-bold ${
+                        step.dark ? "text-white" : "text-primary"
+                      }`}
+                    >
+                      {step.num}
+                    </span>
                   </div>
                   <h3
-                    className={`text-xl font-semibold mb-2 tracking-tight ${
-                      step.dark ? "text-white" : "text-foreground"
+                    className={`text-[20px] font-semibold mb-3 leading-snug ${
+                      step.dark ? "text-white" : "text-ink-900"
                     }`}
                   >
                     {step.title}
                   </h3>
                   <p
-                    className={`text-sm leading-relaxed ${
-                      step.dark ? "text-ink-400" : "text-muted-foreground"
+                    className={`text-[15px] leading-[1.6] ${
+                      step.dark ? "text-ink-200" : "text-ink-700"
                     }`}
                   >
                     {step.desc}
                   </p>
                   {step.dark && (
-                    <div className="mt-8 inline-flex items-center gap-2 text-primary text-xs font-semibold uppercase tracking-wider">
-                      <div className="w-2 h-2 rounded-full bg-primary animate-pulse-dot" />
+                    <div className="mt-6 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-success/15 border border-success/25 text-success text-[12px] font-semibold uppercase tracking-[0.08em]">
+                      <span className="w-1.5 h-1.5 rounded-full bg-success animate-pulse-dot" />
                       Em até 24 horas
                     </div>
                   )}
                 </div>
                 <step.Icon
-                  className={`absolute -bottom-4 -right-4 w-[140px] h-[140px] -rotate-[15deg] transition-colors duration-500 ${
-                    step.dark ? "text-white/5" : "text-ink-200 group-hover:text-primary/10"
+                  className={`absolute -bottom-6 -right-6 w-[140px] h-[140px] transition-colors duration-500 ${
+                    step.dark ? "text-white/[0.06]" : "text-primary/[0.08] group-hover:text-primary/[0.12]"
                   }`}
-                  strokeWidth={0.5}
+                  strokeWidth={1.25}
                 />
-                {step.dark && (
-                  <div className="absolute top-0 right-0 w-64 h-64 bg-primary/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
-                )}
               </div>
             </ScrollReveal>
           ))}

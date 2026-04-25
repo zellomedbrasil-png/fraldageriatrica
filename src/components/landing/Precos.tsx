@@ -1,4 +1,4 @@
-import { Check, ShieldCheck, Info } from "lucide-react";
+import { Check, Shield, Info, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import ScrollReveal from "./ScrollReveal";
 
@@ -16,60 +16,65 @@ const included: string[] = [
 
 const Precos = () => {
   return (
-    <section id="precos" className="py-24 bg-card border-y border-border">
-      <div className="max-w-2xl mx-auto px-6 text-center">
-        <ScrollReveal>
-          <h2 className="text-3xl sm:text-4xl font-semibold text-foreground tracking-tighter-custom mb-4">
-            Investimento único, sem assinatura.
-          </h2>
-          <p className="text-muted-foreground mb-10 font-light leading-relaxed">
-            Pagamento único pela avaliação médica. Sem mensalidade, sem fidelidade, sem renovação
-            automática.
-          </p>
-        </ScrollReveal>
-
-        {/* Bloco informativo neutro — substitui o comparativo de preços */}
-        <ScrollReveal delay={0.1}>
-          <div className="rounded-2xl border border-border bg-background p-5 sm:p-6 mb-12 flex items-start gap-3 text-left">
-            <Info className="w-5 h-5 text-primary shrink-0 mt-0.5" strokeWidth={2} />
-            <p className="text-sm text-muted-foreground leading-relaxed">
-              O <strong className="text-foreground font-medium">Programa Farmácia Popular do Brasil</strong>{" "}
-              disponibiliza gratuitamente até 120 fraldas geriátricas por mês para beneficiários
-              elegíveis (idosos com 60+ ou pessoas com deficiência), conforme{" "}
-              <strong className="text-foreground font-medium">Portaria GM/MS nº 3.073/2024</strong>.
-              Para acessar, é necessário apresentar laudo médico válido em farmácia credenciada do
-              programa — esse é o documento que avaliamos emitir. A disponibilidade nas farmácias
-              depende do estoque local.
+    <section id="precos" className="py-16 lg:py-24 bg-white border-y border-border">
+      <div className="container-page">
+        <div className="max-w-2xl mx-auto text-center">
+          <ScrollReveal>
+            <span className="inline-block text-[12px] font-semibold text-primary uppercase tracking-[0.1em] mb-3">
+              Investimento
+            </span>
+            <h2 className="text-[28px] sm:text-[36px] font-semibold text-ink-900 mb-4 leading-[1.15]">
+              Pagamento único, sem assinatura.
+            </h2>
+            <p className="text-[16px] text-ink-700 mb-10 leading-[1.6]">
+              Você paga uma única vez pela avaliação médica. Sem mensalidade, sem fidelidade,
+              sem renovação automática.
             </p>
-          </div>
-        </ScrollReveal>
+          </ScrollReveal>
 
-        <ScrollReveal delay={0.2}>
-          <div className="bg-background rounded-3xl border border-border p-8 shadow-lg relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-40 h-40 bg-primary/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
-            <div className="relative z-10">
-              <p className="text-[11px] text-primary font-bold mb-3 uppercase tracking-[0.18em]">
+          {/* Caixa de info — Programa Farmácia Popular */}
+          <ScrollReveal delay={0.1}>
+            <div className="rounded-xl bg-primary-soft border-l-4 border-primary p-6 mb-10 flex items-start gap-3 text-left">
+              <Info className="w-5 h-5 text-primary shrink-0 mt-0.5" strokeWidth={2} />
+              <p className="text-[15px] text-ink-700 leading-[1.6]">
+                O <strong className="text-ink-900 font-semibold">Programa Farmácia Popular do Brasil</strong>{" "}
+                disponibiliza gratuitamente até 120 fraldas geriátricas por mês para beneficiários
+                elegíveis (idosos com 60+ ou pessoas com deficiência), conforme{" "}
+                <strong className="text-ink-900 font-semibold">Portaria GM/MS nº 3.073/2024</strong>.
+                Para acessar, é necessário apresentar laudo médico válido em farmácia credenciada do
+                programa — esse é o documento que avaliamos emitir. A disponibilidade depende do
+                estoque local.
+              </p>
+            </div>
+          </ScrollReveal>
+
+          {/* Card de preço */}
+          <ScrollReveal delay={0.2}>
+            <div className="bg-white rounded-2xl border border-border p-8 sm:p-10 shadow-md text-left">
+              <p className="text-[12px] text-primary font-semibold mb-4 uppercase tracking-[0.1em] text-center">
                 Avaliação médica online
               </p>
 
               <div className="flex items-baseline justify-center gap-1 mb-2">
-                <span className="text-sm text-muted-foreground">R$</span>
-                <span className="text-6xl font-semibold text-foreground tracking-tighter-custom">
+                <span className="text-[24px] font-semibold text-ink-500">R$</span>
+                <span className="text-[72px] font-bold text-ink-900 leading-none tracking-[-0.025em]">
                   59
                 </span>
-                <span className="text-sm text-muted-foreground">,00</span>
+                <span className="text-[24px] font-semibold text-ink-500">,00</span>
               </div>
-              <p className="text-xs text-muted-foreground mb-8">
-                Pagamento único. Sem assinatura. Sem renovação automática.
+              <p className="text-[13px] text-ink-500 mb-8 text-center">
+                Pagamento único · Sem assinatura · Sem renovação automática
               </p>
 
-              <ul className="space-y-3 text-left mb-8">
+              <ul className="space-y-3.5 mb-8">
                 {included.map((item) => (
                   <li
                     key={item}
-                    className="flex items-start gap-3 text-sm text-muted-foreground"
+                    className="flex items-start gap-3 text-[15px] text-ink-700 leading-[1.55]"
                   >
-                    <Check className="w-4 h-4 text-primary shrink-0 mt-0.5" />
+                    <span className="w-5 h-5 rounded-full bg-success/15 flex items-center justify-center shrink-0 mt-0.5">
+                      <Check className="w-3 h-3 text-success" strokeWidth={3.5} />
+                    </span>
                     <span>{item}</span>
                   </li>
                 ))}
@@ -77,21 +82,23 @@ const Precos = () => {
 
               <Button
                 asChild
-                size="lg"
-                className="w-full rounded-full py-6 text-base shadow-xl shadow-primary/20 hover:-translate-y-0.5 transition-all"
+                className="w-full rounded-[10px] h-[52px] text-[16px] font-semibold bg-primary hover:bg-primary/90 text-primary-foreground gap-2 shadow-lg hover:-translate-y-0.5 hover:shadow-xl transition-all duration-200"
               >
                 <a href={WA_LINK} target="_blank" rel="noopener noreferrer">
                   Solicitar avaliação médica
+                  <ArrowRight className="w-[18px] h-[18px]" />
                 </a>
               </Button>
 
-              <div className="mt-6 rounded-xl bg-primary/5 border border-primary/15 p-4 flex items-start gap-3 text-left">
-                <ShieldCheck className="w-5 h-5 text-primary shrink-0 mt-0.5" />
+              <div className="mt-6 rounded-xl bg-surface-soft border border-border p-4 flex items-start gap-3">
+                <div className="w-9 h-9 rounded-lg bg-primary-soft flex items-center justify-center shrink-0">
+                  <Shield className="w-4 h-4 text-primary" strokeWidth={2} />
+                </div>
                 <div>
-                  <p className="text-sm font-semibold text-foreground">
-                    Política de Reembolso
+                  <p className="text-[14px] font-semibold text-ink-900">
+                    Política de reembolso
                   </p>
-                  <p className="text-xs text-muted-foreground mt-1 leading-relaxed">
+                  <p className="text-[13px] text-ink-500 mt-1 leading-[1.55]">
                     Caso a avaliação clínica não identifique indicação para uso contínuo de fralda
                     geriátrica, o laudo não é emitido e o valor pago é reembolsado integralmente em
                     até 5 dias úteis.
@@ -99,8 +106,8 @@ const Precos = () => {
                 </div>
               </div>
             </div>
-          </div>
-        </ScrollReveal>
+          </ScrollReveal>
+        </div>
       </div>
     </section>
   );
