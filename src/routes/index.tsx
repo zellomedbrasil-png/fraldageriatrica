@@ -46,7 +46,7 @@ const jsonLd = [
     areaServed: { "@type": "Country", name: "Brasil" },
     offers: {
       "@type": "Offer",
-      price: "79.00",
+      price: "59.00",
       priceCurrency: "BRL",
       availability: "https://schema.org/InStock",
       url: SITE_URL + "#precos",
