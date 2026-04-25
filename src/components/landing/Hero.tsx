@@ -24,52 +24,58 @@ const Hero = () => {
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-primary" />
               </span>
               <span className="text-xs font-medium text-muted-foreground tracking-tight">
-                Telemedicina ativa — laudo em até 24h
+                Mais de 120 fraldas/mês grátis pelo SUS — em 24h
               </span>
             </div>
           </ScrollReveal>
 
           <ScrollReveal delay={0.1}>
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-semibold text-foreground tracking-tighter-custom mb-6 leading-[1.1]">
-              Laudo para fralda geriátrica{" "}
+              Pare de gastar R$ 300 por mês com fraldas.{" "}
               <br className="hidden sm:block" />
               <span
                 className="text-transparent bg-clip-text"
                 style={{ backgroundImage: "var(--gradient-accent)" }}
               >
-                sem sair de casa.
+                Tenha até 120 grátis, todo mês.
               </span>
             </h1>
           </ScrollReveal>
 
           <ScrollReveal delay={0.2}>
             <p className="text-lg text-muted-foreground mb-10 leading-relaxed font-light max-w-xl mx-auto">
-              Receba o laudo médico necessário para retirar fraldas geriátricas gratuitamente pelo
-              Programa Farmácia Popular. Avaliação online com médico CRM ativo, conforme Portaria
-              GM/MS 3.073/2024.
+              Em 24 horas, com R$ 59, um único laudo médico (válido por 6 meses) destrava o seu
+              direito ao Programa Farmácia Popular. Tudo pelo WhatsApp, com médico CRM. Se o
+              médico não aprovar, <strong className="text-foreground font-medium">você recebe 100% do dinheiro de volta</strong>.
             </p>
           </ScrollReveal>
 
           <ScrollReveal delay={0.3}>
-            <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
-              <Button
-                asChild
-                size="lg"
-                className="w-full sm:w-auto rounded-full px-8 py-6 text-base shadow-xl shadow-primary/20 hover:-translate-y-0.5 transition-all gap-2"
-              >
-                <a href={WA_LINK} target="_blank" rel="noopener noreferrer">
-                  <FileText className="w-5 h-5" />
-                  Solicitar meu Laudo
-                </a>
-              </Button>
-              <Button
-                asChild
-                variant="outline"
-                size="lg"
-                className="w-full sm:w-auto rounded-full px-8 py-6 text-base bg-card hover:bg-secondary gap-2"
-              >
-                <a href="#como-funciona">Ver como funciona</a>
-              </Button>
+            <div className="flex flex-col items-center gap-4">
+              <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
+                <Button
+                  asChild
+                  size="lg"
+                  className="w-full sm:w-auto rounded-full px-8 py-6 text-base shadow-xl shadow-primary/20 hover:-translate-y-0.5 transition-all gap-2"
+                >
+                  <a href={WA_LINK} target="_blank" rel="noopener noreferrer">
+                    <FileText className="w-5 h-5" />
+                    Quero economizar — R$ 59
+                  </a>
+                </Button>
+                <Button
+                  asChild
+                  variant="outline"
+                  size="lg"
+                  className="w-full sm:w-auto rounded-full px-8 py-6 text-base bg-card hover:bg-secondary gap-2"
+                >
+                  <a href="#precos">Ver quanto vou economizar</a>
+                </Button>
+              </div>
+              <p className="text-xs text-muted-foreground text-center max-w-md">
+                ✓ Pagamento único &nbsp;•&nbsp; ✓ Resposta em 24h &nbsp;•&nbsp; ✓ 100% reembolsado
+                se não aprovado
+              </p>
             </div>
           </ScrollReveal>
 
@@ -78,19 +84,19 @@ const Hero = () => {
               <div className="flex items-center gap-2">
                 <ShieldCheck className="w-5 h-5 text-primary" />
                 <span className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">
-                  ICP-Brasil
+                  Laudo com validade jurídica
                 </span>
               </div>
               <div className="flex items-center gap-2">
                 <Lock className="w-5 h-5 text-primary" />
                 <span className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">
-                  Dados Seguros
+                  100% LGPD
                 </span>
               </div>
               <div className="flex items-center gap-2">
                 <BadgeCheck className="w-5 h-5 text-primary" />
                 <span className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">
-                  CRM Ativo
+                  Médico responsável
                 </span>
               </div>
             </div>
