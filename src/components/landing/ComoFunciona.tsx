@@ -4,22 +4,22 @@ import ScrollReveal from "./ScrollReveal";
 const steps = [
   {
     num: "1",
-    title: "3 minutos no celular",
-    desc: "Você responde um formulário rápido com os dados do paciente. Não precisa de exames, nem de documentos complicados.",
+    title: "Triagem rápida no WhatsApp",
+    desc: "Você responde um questionário clínico com os dados do paciente — condição, mobilidade e histórico. Tudo pelo celular, sem exames adicionais.",
     Icon: ClipboardCheck,
     dark: false,
   },
   {
     num: "2",
-    title: "Médico avalia seu caso",
-    desc: "Nosso médico (CRM ativo) analisa o caso por teleconsulta, conforme a Resolução CFM 2.314/2022. Você não faz nada nessa etapa.",
+    title: "Avaliação por médico com CRM",
+    desc: "O médico responsável analisa o caso por teleconsulta, conforme a Resolução CFM 2.314/2022, para verificar a indicação clínica.",
     Icon: Stethoscope,
     dark: false,
   },
   {
     num: "3",
-    title: "Laudo no seu WhatsApp em 24h",
-    desc: "Você recebe o laudo digital com assinatura ICP-Brasil. Leva na farmácia credenciada e sai com as fraldas grátis no mesmo dia.",
+    title: "Laudo digital em até 24h",
+    desc: "Havendo indicação clínica, o laudo é emitido com assinatura digital ICP-Brasil (validade de 180 dias) e enviado pelo WhatsApp para apresentação em farmácia credenciada do Programa Farmácia Popular, conforme estoque local.",
     Icon: FileCheck,
     dark: true,
   },
@@ -32,14 +32,14 @@ const ComoFunciona = () => {
         <ScrollReveal>
           <div className="mb-16">
             <span className="inline-block text-[11px] font-bold text-primary uppercase tracking-[0.18em] mb-3">
-              Mais fácil que pedir delivery
+              Processo 100% online
             </span>
             <h2 className="text-3xl font-semibold text-foreground tracking-tighter-custom">
-              3 passos. 24 horas. Zero burocracia.
+              Atendimento simples, em conformidade com a regulamentação.
             </h2>
             <p className="text-muted-foreground mt-2 font-light">
-              Você não precisa sair de casa, marcar consulta no SUS, nem enfrentar fila. Resolve
-              tudo pelo WhatsApp.
+              Avaliação por teleconsulta conforme a Resolução CFM 2.314/2022. Em caso de indicação
+              clínica, o laudo é emitido em até 24 horas.
             </p>
           </div>
         </ScrollReveal>

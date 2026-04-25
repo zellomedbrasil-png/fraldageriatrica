@@ -24,29 +24,32 @@ const Hero = () => {
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-primary" />
               </span>
               <span className="text-xs font-medium text-muted-foreground tracking-tight">
-                Mais de 120 fraldas/mês grátis pelo SUS — em 24h
+                Avaliação médica online em até 24h • Portaria GM/MS 3.073/2024
               </span>
             </div>
           </ScrollReveal>
 
           <ScrollReveal delay={0.1}>
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-semibold text-foreground tracking-tighter-custom mb-6 leading-[1.1]">
-              Pare de gastar R$ 300 por mês com fraldas.{" "}
+              Avaliação médica online para laudo de fralda geriátrica.{" "}
               <br className="hidden sm:block" />
               <span
                 className="text-transparent bg-clip-text"
                 style={{ backgroundImage: "var(--gradient-accent)" }}
               >
-                Tenha até 120 grátis, todo mês.
+                Em até 24 horas, sem sair de casa.
               </span>
             </h1>
           </ScrollReveal>
 
           <ScrollReveal delay={0.2}>
             <p className="text-lg text-muted-foreground mb-10 leading-relaxed font-light max-w-xl mx-auto">
-              Em 24 horas, com R$ 59, um único laudo médico (válido por 6 meses) destrava o seu
-              direito ao Programa Farmácia Popular. Tudo pelo WhatsApp, com médico CRM. Se o
-              médico não aprovar, <strong className="text-foreground font-medium">você recebe 100% do dinheiro de volta</strong>.
+              Atendimento por telemedicina com médico de CRM ativo. Em caso de indicação clínica,
+              emitimos o laudo aceito pelo Programa Farmácia Popular para retirada gratuita de
+              fraldas geriátricas (até 120/mês), conforme Portaria GM/MS nº 3.073/2024.{" "}
+              <strong className="text-foreground font-medium">
+                Se o médico não identificar indicação clínica, devolvemos 100% do valor pago.
+              </strong>
             </p>
           </ScrollReveal>
 
@@ -60,7 +63,7 @@ const Hero = () => {
                 >
                   <a href={WA_LINK} target="_blank" rel="noopener noreferrer">
                     <FileText className="w-5 h-5" />
-                    Quero economizar — R$ 59
+                    Solicitar avaliação — R$ 59
                   </a>
                 </Button>
                 <Button
@@ -69,12 +72,12 @@ const Hero = () => {
                   size="lg"
                   className="w-full sm:w-auto rounded-full px-8 py-6 text-base bg-card hover:bg-secondary gap-2"
                 >
-                  <a href="#precos">Ver quanto vou economizar</a>
+                  <a href="#como-funciona">Como funciona</a>
                 </Button>
               </div>
               <p className="text-xs text-muted-foreground text-center max-w-md">
-                ✓ Pagamento único &nbsp;•&nbsp; ✓ Resposta em 24h &nbsp;•&nbsp; ✓ 100% reembolsado
-                se não aprovado
+                ✓ Pagamento único &nbsp;•&nbsp; ✓ Resposta em até 24h &nbsp;•&nbsp; ✓ Reembolso
+                integral se não houver indicação clínica
               </p>
             </div>
           </ScrollReveal>
