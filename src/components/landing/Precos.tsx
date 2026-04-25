@@ -1,4 +1,4 @@
-import { Check, Star } from "lucide-react";
+import { Check, Star, Truck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import ScrollReveal from "./ScrollReveal";
 
@@ -12,46 +12,60 @@ const laudoFeatures = [
 
 const comboFeatures = [
   "Tudo do plano Laudo Médico",
-  "Pacote inicial via parceiro logístico: 1 pacote de fraldas geriátricas descartáveis (tamanho à escolha) entregue em até 5 dias úteis",
+  "Pacote inicial via parceiro logístico: 1 pacote de fraldas descartáveis (tamanho à escolha) entregue em até 5 dias úteis",
   "Frete incluso para regiões com cobertura",
   "Tempo para se organizar com calma para retirada gratuita futura no PFPB",
 ];
 
 const Precos = () => {
   return (
-    <section id="precos" className="py-20 lg:py-24 bg-card border-y border-border">
-      <div className="max-w-5xl mx-auto px-6">
+    <section id="precos" className="section-padding">
+      <div className="max-w-5xl mx-auto px-6 sm:px-8">
         <ScrollReveal>
-          <div className="text-center max-w-2xl mx-auto mb-14">
-            <h2 className="text-3xl sm:text-4xl font-semibold text-foreground tracking-tighter-custom">
+          <div className="text-center max-w-2xl mx-auto">
+            <span className="inline-block px-3 py-1 rounded-full bg-primary-soft text-primary text-[11px] font-bold uppercase tracking-wider">
+              Preços
+            </span>
+            <h2 className="mt-4 text-3xl sm:text-[36px] font-bold text-text-primary tracking-tightest">
               Escolha como prefere começar
             </h2>
-            <p className="text-muted-foreground mt-3 font-light">
+            <p className="mt-3 text-[16px] text-text-secondary leading-relaxed">
               Transparência total. O laudo é o produto médico — a fralda é uma conveniência opcional.
             </p>
           </div>
         </ScrollReveal>
 
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid md:grid-cols-2 gap-6 mt-14">
           {/* Card 1 — Laudo */}
-          <ScrollReveal delay={0.1}>
-            <article className="rounded-3xl bg-background border border-border p-8 h-full flex flex-col relative">
-              <span className="absolute -top-3 left-8 inline-flex items-center px-3 py-1 rounded-full bg-primary/10 text-primary text-[11px] font-bold uppercase tracking-wider">
+          <ScrollReveal delay={0.05}>
+            <article className="relative rounded-3xl bg-card border border-border p-8 h-full flex flex-col shadow-card">
+              <span className="inline-flex items-center w-fit px-2.5 py-1 rounded-md bg-primary-soft text-primary text-[10px] font-bold uppercase tracking-wider">
                 Serviço Médico
               </span>
-              <h3 className="text-2xl font-semibold text-foreground tracking-tight mb-1">Laudo Médico</h3>
-              <p className="text-sm text-muted-foreground mb-6">
+              <h3 className="mt-4 text-[22px] font-bold text-text-primary tracking-tight">
+                Laudo Médico
+              </h3>
+              <p className="mt-1.5 text-[14px] text-text-secondary leading-relaxed">
                 Para quem já vai retirar fraldas no Farmácia Popular.
               </p>
-              <div className="flex items-baseline gap-1 mb-6">
-                <span className="text-sm text-muted-foreground">R$</span>
-                <span className="text-5xl font-semibold text-foreground tracking-tighter-custom">79</span>
-                <span className="text-sm text-muted-foreground">,00</span>
+              <div className="mt-6 flex items-baseline gap-1">
+                <span className="text-[14px] text-text-tertiary font-medium">R$</span>
+                <span className="text-[52px] font-bold text-text-primary tracking-tightest leading-none">
+                  79
+                </span>
+                <span className="text-[14px] text-text-tertiary font-medium">,00</span>
               </div>
-              <ul className="space-y-3 mb-8 flex-1">
+              <p className="text-[12px] text-text-tertiary mt-1">Pagamento único</p>
+
+              <ul className="mt-8 space-y-3.5 flex-1">
                 {laudoFeatures.map((f) => (
-                  <li key={f} className="flex items-start gap-3 text-sm text-muted-foreground">
-                    <Check className="w-4 h-4 text-accent shrink-0 mt-0.5" strokeWidth={3} />
+                  <li
+                    key={f}
+                    className="flex items-start gap-3 text-[14px] text-text-secondary leading-relaxed"
+                  >
+                    <span className="w-5 h-5 rounded-full bg-accent-soft flex items-center justify-center shrink-0 mt-0.5">
+                      <Check className="w-3 h-3 text-accent" strokeWidth={3} />
+                    </span>
                     <span>{f}</span>
                   </li>
                 ))}
@@ -60,7 +74,7 @@ const Precos = () => {
                 asChild
                 size="lg"
                 variant="outline"
-                className="w-full rounded-full py-6 text-base border-primary text-primary hover:bg-primary hover:text-primary-foreground"
+                className="mt-8 w-full rounded-lg h-12 text-[15px] font-semibold border-border-strong text-text-primary hover:bg-primary hover:text-primary-foreground hover:border-primary"
                 data-event="cta_click"
                 data-plan="laudo"
               >
@@ -70,27 +84,42 @@ const Precos = () => {
           </ScrollReveal>
 
           {/* Card 2 — Combo */}
-          <ScrollReveal delay={0.2}>
-            <article className="rounded-3xl bg-slate-900 text-primary-foreground p-8 h-full flex flex-col relative shadow-elegant overflow-hidden">
-              <div className="absolute top-0 right-0 w-64 h-64 bg-accent/30 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
-              <span className="absolute -top-3 left-8 inline-flex items-center gap-1 px-3 py-1 rounded-full bg-accent text-accent-foreground text-[11px] font-bold uppercase tracking-wider">
-                <Star className="w-3 h-3" /> Mais Escolhido
-              </span>
-              <div className="relative z-10 flex flex-col h-full">
-                <h3 className="text-2xl font-semibold tracking-tight mb-1">Combo Praticidade</h3>
-                <p className="text-sm text-slate-400 mb-6">
+          <ScrollReveal delay={0.15}>
+            <article className="relative rounded-3xl bg-ink-900 text-primary-foreground p-8 h-full flex flex-col shadow-elegant overflow-hidden border border-ink-800">
+              <div
+                className="absolute -top-16 -right-16 w-72 h-72 rounded-full bg-accent/30 blur-3xl pointer-events-none"
+                aria-hidden="true"
+              />
+              <div className="relative flex flex-col h-full">
+                <span className="inline-flex items-center w-fit gap-1.5 px-2.5 py-1 rounded-md bg-accent text-accent-foreground text-[10px] font-bold uppercase tracking-wider">
+                  <Star className="w-3 h-3" strokeWidth={3} />
+                  Mais Escolhido
+                </span>
+                <h3 className="mt-4 text-[22px] font-bold tracking-tight flex items-center gap-2">
+                  Combo Praticidade
+                  <Truck className="w-5 h-5 text-accent" strokeWidth={1.75} />
+                </h3>
+                <p className="mt-1.5 text-[14px] text-ink-200/80 leading-relaxed">
                   Para quem precisa começar agora, sem esperar ir à farmácia.
                 </p>
-                <div className="flex items-baseline gap-1 mb-2">
-                  <span className="text-sm text-slate-400">R$</span>
-                  <span className="text-5xl font-semibold tracking-tighter-custom">138</span>
-                  <span className="text-sm text-slate-400">,00</span>
+                <div className="mt-6 flex items-baseline gap-1">
+                  <span className="text-[14px] text-ink-200/70 font-medium">R$</span>
+                  <span className="text-[52px] font-bold tracking-tightest leading-none">138</span>
+                  <span className="text-[14px] text-ink-200/70 font-medium">,00</span>
                 </div>
-                <p className="text-xs text-slate-400 mb-6">R$ 79 laudo + R$ 59 pacote inicial</p>
-                <ul className="space-y-3 mb-8 flex-1">
+                <p className="text-[12px] text-ink-200/60 mt-1">
+                  R$ 79 laudo + R$ 59 pacote inicial
+                </p>
+
+                <ul className="mt-8 space-y-3.5 flex-1">
                   {comboFeatures.map((f) => (
-                    <li key={f} className="flex items-start gap-3 text-sm text-slate-200">
-                      <Check className="w-4 h-4 text-accent shrink-0 mt-0.5" strokeWidth={3} />
+                    <li
+                      key={f}
+                      className="flex items-start gap-3 text-[14px] text-ink-200/90 leading-relaxed"
+                    >
+                      <span className="w-5 h-5 rounded-full bg-accent flex items-center justify-center shrink-0 mt-0.5">
+                        <Check className="w-3 h-3 text-accent-foreground" strokeWidth={3} />
+                      </span>
                       <span>{f}</span>
                     </li>
                   ))}
@@ -98,7 +127,7 @@ const Precos = () => {
                 <Button
                   asChild
                   size="lg"
-                  className="w-full rounded-full py-6 text-base bg-accent hover:bg-accent/90 text-accent-foreground shadow-accent-glow"
+                  className="mt-8 w-full rounded-lg h-12 text-[15px] font-semibold bg-accent hover:bg-accent/90 text-accent-foreground shadow-accent-glow"
                   data-event="cta_click"
                   data-plan="combo"
                 >
@@ -109,8 +138,8 @@ const Precos = () => {
           </ScrollReveal>
         </div>
 
-        <ScrollReveal delay={0.3}>
-          <p className="text-xs text-muted-foreground italic leading-relaxed mt-8 max-w-3xl mx-auto text-center">
+        <ScrollReveal delay={0.25}>
+          <p className="text-[12px] text-text-tertiary italic leading-relaxed mt-10 max-w-3xl mx-auto text-center">
             *O Combo Praticidade inclui o serviço médico (laudo) e um pacote logístico fornecido por
             parceiro cadastrado responsável pela comercialização e entrega da fralda.
             fraldageriatrica.com não comercializa fraldas — apenas intermedia a logística de entrega
