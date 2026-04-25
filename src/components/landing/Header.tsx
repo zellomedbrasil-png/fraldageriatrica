@@ -26,7 +26,7 @@ const Header = () => {
             href="#precos"
             className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
           >
-            Investimento
+            Quanto economizo
           </a>
           <a
             href="#faq"
@@ -39,7 +39,7 @@ const Header = () => {
             className="rounded-full shadow-lg shadow-primary/20 bg-primary hover:bg-primary/90 text-primary-foreground gap-2"
           >
             <a href={WA_LINK} target="_blank" rel="noopener noreferrer">
-              Solicitar avaliação
+              Quero meu laudo — R$ 59
               <ArrowRight className="w-4 h-4" />
             </a>
           </Button>
@@ -70,7 +70,7 @@ const Header = () => {
             className="block text-sm font-medium text-muted-foreground"
             onClick={() => setMobileOpen(false)}
           >
-            Investimento
+            Quanto economizo
           </a>
           <a
             href="#faq"
@@ -89,7 +89,7 @@ const Header = () => {
               rel="noopener noreferrer"
               onClick={() => setMobileOpen(false)}
             >
-              Solicitar avaliação <ArrowRight className="w-4 h-4" />
+              Quero meu laudo — R$ 59 <ArrowRight className="w-4 h-4" />
             </a>
           </Button>
         </div>

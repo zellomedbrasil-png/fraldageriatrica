@@ -9,7 +9,7 @@ import { ArrowRight } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
 
 const WA_LINK =
-  "https://wa.me/5585991275429?text=Quero%20solicitar%20a%20avalia%C3%A7%C3%A3o%20m%C3%A9dica%20para%20laudo%20de%20fralda%20geri%C3%A1trica.";
+  "https://wa.me/5585991275429?text=Quero%20solicitar%20o%20laudo%20para%20fralda%20geri%C3%A1trica.";
 
 export const faqItems = [
   {
@@ -26,7 +26,7 @@ export const faqItems = [
   },
   {
     q: "O laudo pode ser recusado?",
-    a: "Sim. A emissão do laudo depende da avaliação clínica individual e do critério do médico responsável. Se a avaliação não identificar indicação para uso contínuo de fralda geriátrica, o laudo não é emitido e reembolsamos 100% do valor pago em até 5 dias úteis.",
+    a: "Sim — e se isso acontecer, você recebe 100% do dinheiro de volta no mesmo dia, sem precisar justificar. O risco é todo nosso. Você só fica com a cobrança quando o laudo é entregue.",
   },
   {
     q: "Por quanto tempo o laudo é válido?",
@@ -34,7 +34,7 @@ export const faqItems = [
   },
   {
     q: "Quanto custa renovar o laudo?",
-    a: "R$ 59 — o mesmo valor da primeira emissão. Não há assinatura nem cobrança automática; a renovação só ocorre quando o paciente solicita uma nova avaliação após o término da validade.",
+    a: "R$ 59 — o mesmo valor da primeira emissão. Sem reajuste, sem assinatura, sem cobrança automática. Você só paga quando precisa. E sim: considerando que você economiza até R$ 2.400 a cada 6 meses, renovar é a decisão mais óbvia do mundo.",
   },
   {
     q: "Preciso ir presencialmente a algum lugar?",
@@ -101,7 +101,7 @@ const FAQ = () => {
               className="rounded-full px-8 py-6 text-base shadow-xl shadow-primary/20 hover:-translate-y-0.5 transition-all gap-2"
             >
               <a href={WA_LINK} target="_blank" rel="noopener noreferrer">
-                Solicitar avaliação — R$ 59
+                Quero meu laudo — R$ 59
                 <ArrowRight className="w-[18px] h-[18px]" />
               </a>
             </Button>

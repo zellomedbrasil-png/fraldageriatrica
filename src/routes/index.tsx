@@ -8,9 +8,9 @@ import Footer from "@/components/landing/Footer";
 
 const SITE_URL = "https://fraldageriatrica.com/";
 const TITLE =
-  "Laudo Médico para Fralda Geriátrica Online — Avaliação em 24h | fraldageriatrica.com";
+  "Pare de gastar R$ 300/mês com fraldas — Laudo por R$ 59 em 24h | fraldageriatrica.com";
 const DESCRIPTION =
-  "Avaliação médica por telemedicina para emissão de laudo de fralda geriátrica, em até 24h, com médico de CRM ativo. Conforme Portaria GM/MS 3.073/2024 e Resolução CFM 2.314/2022.";
+  "Receba o laudo médico (R$ 59, em 24h) que destrava até 120 fraldas geriátricas grátis por mês pelo Programa Farmácia Popular. Médico CRM, 100% online, reembolso garantido se não aprovado.";
 
 const jsonLd = [
   {
