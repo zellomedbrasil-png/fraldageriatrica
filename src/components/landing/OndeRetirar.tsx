@@ -9,6 +9,8 @@ const redes = [
   "Pacheco",
   "Drogaria Araujo",
   "Drogaria Globo",
+  "Extrafarma",
+  "Panvel",
 ];
 
 const OndeRetirar = () => {
@@ -31,7 +33,7 @@ const OndeRetirar = () => {
         </ScrollReveal>
 
         <ScrollReveal delay={0.1}>
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mt-12">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-12">
             {redes.map((r) => (
               <div
                 key={r}
