@@ -68,15 +68,15 @@
 :root {
   --radius: 0.75rem;
 
-  /* Brand — Clinical Trust Blue (sóbrio, AA contra branco) */
-  --brand-primary: oklch(0.55 0.12 240);   /* clinical blue */
-  --brand-secondary: oklch(0.55 0.12 240); /* sem gradiente */
-  --brand-accent: oklch(0.55 0.12 240);
+  /* Brand — fraldageriatrica.com (paleta azul claro / sky) */
+  --brand-primary: oklch(0.66 0.14 235);   /* sky vivid */
+  --brand-secondary: oklch(0.7 0.13 225);  /* sky glow */
+  --brand-accent: oklch(0.76 0.12 220);    /* light sky */
 
-  /* Surfaces — branco puro para contraste máximo */
-  --surface-base: oklch(1 0 0);
+  /* Surfaces (slate near-white) */
+  --surface-base: oklch(0.985 0.005 235);
   --surface-elevated: oklch(1 0 0);
-  --surface-soft: oklch(0.98 0.008 240);
+  --surface-soft: oklch(0.97 0.012 235);
 
   /* Text scale (slate) */
   --text-primary: oklch(0.22 0.04 245);
@@ -92,7 +92,7 @@
   --popover-foreground: var(--text-primary);
   --primary: var(--brand-primary);
   --primary-foreground: oklch(1 0 0);
-  --primary-soft: oklch(0.97 0.025 240);
+  --primary-soft: oklch(0.96 0.035 235);
   --secondary: oklch(0.96 0.012 235);
   --secondary-foreground: var(--text-primary);
   --secondary-soft: oklch(0.97 0.012 235);
@@ -122,16 +122,16 @@
   --ink-100: oklch(0.95 0.01 235);
   --ink-50: oklch(0.98 0.005 235);
 
-  /* Shadows (sóbrios, sem glow agressivo) */
-  --gradient-hero: none;
-  --gradient-brand: var(--brand-primary);
-  --gradient-accent: var(--brand-primary);
+  /* Gradients & shadows */
+  --gradient-hero: radial-gradient(circle, oklch(0.66 0.14 235 / 0.15) 0%, transparent 70%);
+  --gradient-brand: linear-gradient(135deg, var(--brand-primary), var(--brand-secondary));
+  --gradient-accent: linear-gradient(135deg, var(--brand-primary), oklch(0.74 0.13 225));
   --shadow-xs: 0 1px 2px 0 oklch(0.22 0.04 245 / 0.04);
   --shadow-sm: 0 1px 3px 0 oklch(0.22 0.04 245 / 0.06), 0 1px 2px -1px oklch(0.22 0.04 245 / 0.06);
   --shadow-md: 0 4px 6px -1px oklch(0.22 0.04 245 / 0.08), 0 2px 4px -2px oklch(0.22 0.04 245 / 0.06);
   --shadow-lg: 0 10px 25px -5px oklch(0.22 0.04 245 / 0.1), 0 8px 10px -6px oklch(0.22 0.04 245 / 0.06);
-  --shadow-elegant: 0 4px 6px -1px oklch(0.22 0.04 245 / 0.08), 0 2px 4px -2px oklch(0.22 0.04 245 / 0.06);
-  --shadow-accent-glow: 0 4px 6px -1px oklch(0.22 0.04 245 / 0.08);
+  --shadow-elegant: 0 20px 50px -20px oklch(0.66 0.14 235 / 0.3);
+  --shadow-accent-glow: 0 12px 32px -8px oklch(0.66 0.14 235 / 0.4);
   --shadow-card: 0 1px 0 0 oklch(0.92 0.012 235 / 0.6), 0 4px 16px -4px oklch(0.22 0.04 245 / 0.05);
 
   --sidebar: var(--surface-base);
@@ -177,27 +177,26 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
-    font-feature-settings: "cv11", "ss01";
-    font-size: 18px;
+    font-feature-settings: "cv11", "ss01", "ss03";
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    line-height: 1.65;
+    line-height: 1.7;
   }
 
   h1, h2, h3, h4 {
     font-family: var(--font-display);
-    letter-spacing: -0.015em;
+    letter-spacing: -0.025em;
     line-height: 1.15;
     color: var(--color-text-primary);
   }
 
   h1 {
-    letter-spacing: -0.025em;
-    line-height: 1.1;
+    letter-spacing: -0.035em;
+    line-height: 1.05;
   }
 
   ::selection {
-    background-color: oklch(0.55 0.12 240 / 0.2);
+    background-color: oklch(0.66 0.14 235 / 0.25);
   }
 }
 
@@ -217,11 +216,7 @@
   }
 
   .tracking-tighter-custom {
-    letter-spacing: -0.02em;
-  }
-
-  .trust-seal {
-    @apply flex items-start gap-3 rounded-2xl bg-card border border-border px-4 py-3.5;
+    letter-spacing: -0.04em;
   }
 
   .glass-card {

@@ -11,30 +11,35 @@ const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 w-full z-50 bg-background border-b border-border">
-      <div className="max-w-5xl mx-auto px-6 h-[68px] flex items-center justify-between">
+    <nav className="fixed top-0 w-full z-50 glass-header transition-all duration-300">
+      <div className="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
         <Logo />
 
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-6">
           <a
             href="#como-funciona"
-            className="text-base font-medium text-foreground/80 hover:text-foreground transition-colors"
+            className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
           >
             Como funciona
           </a>
           <a
+            href="#precos"
+            className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+          >
+            Investimento
+          </a>
+          <a
             href="#faq"
-            className="text-base font-medium text-foreground/80 hover:text-foreground transition-colors"
+            className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
           >
             Dúvidas
           </a>
           <Button
             asChild
-            size="lg"
-            className="rounded-full bg-primary hover:bg-primary/90 text-primary-foreground gap-2 px-5"
+            className="rounded-full shadow-lg shadow-primary/20 bg-primary hover:bg-primary/90 text-primary-foreground gap-2"
           >
             <a href={WA_LINK} target="_blank" rel="noopener noreferrer">
-              Solicitar avaliação · R$ 59
+              Solicitar avaliação
               <ArrowRight className="w-4 h-4" />
             </a>
           </Button>
@@ -42,7 +47,7 @@ const Header = () => {
 
         <button
           type="button"
-          className="md:hidden text-foreground p-2 -mr-2"
+          className="md:hidden text-foreground"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label={mobileOpen ? "Fechar menu" : "Abrir menu"}
           aria-expanded={mobileOpen}
@@ -52,25 +57,31 @@ const Header = () => {
       </div>
 
       {mobileOpen && (
-        <div className="md:hidden bg-card border-t border-border px-6 py-5 space-y-4">
+        <div className="md:hidden bg-card border-t border-border px-6 py-4 space-y-3">
           <a
             href="#como-funciona"
-            className="block text-base font-medium text-foreground py-2"
+            className="block text-sm font-medium text-muted-foreground"
             onClick={() => setMobileOpen(false)}
           >
             Como funciona
           </a>
           <a
+            href="#precos"
+            className="block text-sm font-medium text-muted-foreground"
+            onClick={() => setMobileOpen(false)}
+          >
+            Investimento
+          </a>
+          <a
             href="#faq"
-            className="block text-base font-medium text-foreground py-2"
+            className="block text-sm font-medium text-muted-foreground"
             onClick={() => setMobileOpen(false)}
           >
             Dúvidas
           </a>
           <Button
             asChild
-            size="lg"
-            className="w-full rounded-full bg-primary hover:bg-primary/90 text-primary-foreground gap-2 mt-2 py-6 text-base"
+            className="w-full rounded-full bg-primary hover:bg-primary/90 text-primary-foreground gap-2 mt-2"
           >
             <a
               href={WA_LINK}
@@ -78,7 +89,7 @@ const Header = () => {
               rel="noopener noreferrer"
               onClick={() => setMobileOpen(false)}
             >
-              Solicitar avaliação · R$ 59 <ArrowRight className="w-4 h-4" />
+              Solicitar avaliação <ArrowRight className="w-4 h-4" />
             </a>
           </Button>
         </div>
