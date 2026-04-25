@@ -42,18 +42,12 @@ const CTAFinal = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Solicitar Laudo — R$ 79
+                Solicitar Laudo — R$ 59
                 <ArrowRight className="w-4 h-4" strokeWidth={2.5} />
               </a>
             </Button>
             <p className="text-[14px] text-ink-200/70">
-              Ou conheça o{" "}
-              <a
-                href="#precos"
-                className="text-accent hover:underline font-semibold underline-offset-4"
-              >
-                Combo Praticidade →
-              </a>
+              Pagamento único · sem assinatura · reembolso integral
             </p>
           </div>
         </ScrollReveal>
