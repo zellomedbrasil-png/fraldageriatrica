@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import Header from "@/components/landing/Header";
 import Hero from "@/components/landing/Hero";
+import ProofBar from "@/components/landing/ProofBar";
 import VoceSabia from "@/components/landing/VoceSabia";
 import QuemTemDireito from "@/components/landing/QuemTemDireito";
 import ComoFunciona from "@/components/landing/ComoFunciona";
@@ -101,6 +102,7 @@ function Index() {
       <Header />
       <main>
         <Hero />
+        <ProofBar />
         <VoceSabia />
         <QuemTemDireito />
         <ComoFunciona />
