@@ -4,22 +4,22 @@ import ScrollReveal from "./ScrollReveal";
 const steps = [
   {
     num: "1",
-    title: "Cadastro e Triagem",
-    desc: "Você preenche um formulário rápido com os dados do paciente, condição clínica e mobilidade — pelo celular, em poucos minutos.",
+    title: "3 minutos no celular",
+    desc: "Você responde um formulário rápido com os dados do paciente. Não precisa de exames, nem de documentos complicados.",
     Icon: ClipboardCheck,
     dark: false,
   },
   {
     num: "2",
-    title: "Avaliação por médico CRM",
-    desc: "Nosso médico avalia o caso por teleconsulta ou análise do prontuário, conforme a Resolução CFM 2.314/2022.",
+    title: "Médico avalia seu caso",
+    desc: "Nosso médico (CRM ativo) analisa o caso por teleconsulta, conforme a Resolução CFM 2.314/2022. Você não faz nada nessa etapa.",
     Icon: Stethoscope,
     dark: false,
   },
   {
     num: "3",
-    title: "Laudo no WhatsApp",
-    desc: "Você recebe o laudo digital com assinatura ICP-Brasil em até 24 horas, pronto para usar em qualquer farmácia credenciada.",
+    title: "Laudo no seu WhatsApp em 24h",
+    desc: "Você recebe o laudo digital com assinatura ICP-Brasil. Leva na farmácia credenciada e sai com as fraldas grátis no mesmo dia.",
     Icon: FileCheck,
     dark: true,
   },
@@ -31,11 +31,15 @@ const ComoFunciona = () => {
       <div className="max-w-5xl mx-auto px-6">
         <ScrollReveal>
           <div className="mb-16">
+            <span className="inline-block text-[11px] font-bold text-primary uppercase tracking-[0.18em] mb-3">
+              Mais fácil que pedir delivery
+            </span>
             <h2 className="text-3xl font-semibold text-foreground tracking-tighter-custom">
-              Em 3 passos simples
+              3 passos. 24 horas. Zero burocracia.
             </h2>
             <p className="text-muted-foreground mt-2 font-light">
-              Da solicitação ao laudo no seu WhatsApp.
+              Você não precisa sair de casa, marcar consulta no SUS, nem enfrentar fila. Resolve
+              tudo pelo WhatsApp.
             </p>
           </div>
         </ScrollReveal>

@@ -26,7 +26,7 @@ export const faqItems = [
   },
   {
     q: "O laudo pode ser recusado?",
-    a: "Sim. Se a avaliação clínica não confirmar a indicação para fralda geriátrica, o laudo não é emitido e o valor pago é reembolsado integralmente.",
+    a: "Sim — e se isso acontecer, você recebe 100% do dinheiro de volta no mesmo dia, sem precisar justificar. O risco é todo nosso. Você só fica com a cobrança quando o laudo é entregue.",
   },
   {
     q: "Por quanto tempo o laudo é válido?",
@@ -34,11 +34,15 @@ export const faqItems = [
   },
   {
     q: "Quanto custa renovar o laudo?",
-    a: "R$ 59 — o mesmo valor da primeira emissão. Sem reajustes, sem assinatura, sem surpresas.",
+    a: "R$ 59 — o mesmo valor da primeira emissão. Sem reajuste, sem assinatura, sem cobrança automática. Você só paga quando precisa. E sim: considerando que você economiza até R$ 2.400 a cada 6 meses, renovar é a decisão mais óbvia do mundo.",
   },
   {
     q: "Preciso ir presencialmente a algum lugar?",
     a: "Para o laudo, não — todo o processo é online. Para retirar as fraldas, basta ir a uma farmácia credenciada do Programa Farmácia Popular com o laudo, documento de identidade e CPF do paciente.",
+  },
+  {
+    q: "E se eu nunca tiver feito uma consulta online?",
+    a: "Você não precisa instalar nada, nem aprender ferramenta nova. Tudo acontece no WhatsApp que você já usa todo dia — basta responder algumas perguntas e enviar uma foto do documento. A nossa equipe guia o processo do começo ao fim.",
   },
   {
     q: "Vocês vendem fraldas?",
@@ -47,8 +51,9 @@ export const faqItems = [
 ];
 
 const FAQ = () => {
-  const col1 = faqItems.slice(0, 4);
-  const col2 = faqItems.slice(4);
+  const half = Math.ceil(faqItems.length / 2);
+  const col1 = faqItems.slice(0, half);
+  const col2 = faqItems.slice(half);
 
   return (
     <section id="faq" className="py-24 bg-card border-t border-border">
@@ -96,7 +101,7 @@ const FAQ = () => {
               className="rounded-full px-8 py-6 text-base shadow-xl shadow-primary/20 hover:-translate-y-0.5 transition-all gap-2"
             >
               <a href={WA_LINK} target="_blank" rel="noopener noreferrer">
-                Solicitar meu Laudo
+                Quero meu laudo — R$ 59
                 <ArrowRight className="w-[18px] h-[18px]" />
               </a>
             </Button>
