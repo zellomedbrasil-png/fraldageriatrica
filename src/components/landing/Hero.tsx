@@ -48,8 +48,8 @@ const Hero = () => {
               variants={fadeUp}
               className="mt-6 text-[40px] sm:text-5xl lg:text-[56px] font-bold text-text-primary tracking-tightest leading-[1.05]"
             >
-              Laudo médico para fralda geriátrica,{" "}
-              <span className="text-gradient-brand">em até 24 horas</span>, sem sair de casa.
+              Laudo médico para fralda geriátrica{" "}
+              <span className="text-accent">em até 24 horas</span>, sem sair de casa.
             </motion.h1>
 
             <motion.p
@@ -57,10 +57,10 @@ const Hero = () => {
               initial="hidden"
               animate="show"
               variants={fadeUp}
-              className="mt-6 text-[17px] lg:text-lg text-text-secondary font-normal max-w-xl mx-auto lg:mx-0 leading-relaxed"
+              className="mt-6 text-[17px] lg:text-[18px] text-text-secondary font-normal max-w-xl mx-auto lg:mx-0 leading-[1.6]"
             >
-              Acesse fraldas geriátricas gratuitamente pelo Programa Farmácia Popular com o
-              laudo emitido pelo nosso médico via telemedicina.
+              Acesse fraldas geriátricas gratuitas pelo Programa Farmácia Popular com o laudo
+              emitido por nosso médico via telemedicina. Tudo conforme a regulamentação vigente.
             </motion.p>
 
             <motion.ul
@@ -93,21 +93,23 @@ const Hero = () => {
               <Button
                 asChild
                 size="lg"
-                className="w-full sm:w-auto rounded-lg h-14 px-7 text-[15px] font-semibold bg-accent hover:bg-accent/90 text-accent-foreground shadow-accent-glow gap-2 hover:-translate-y-0.5 transition-all"
+                className="group w-full sm:w-auto rounded-lg h-14 px-7 text-[15px] font-semibold bg-accent hover:bg-accent/90 text-accent-foreground shadow-accent-glow gap-2 hover:-translate-y-0.5 transition-all"
                 data-event="cta_click"
                 data-plan="laudo"
               >
                 <a href="#precos">
-                  Solicitar Meu Laudo — R$ 79
-                  <ArrowRight className="w-4 h-4" strokeWidth={2.5} />
+                  Solicitar Laudo — R$ 59
+                  <ArrowRight
+                    className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
+                    strokeWidth={2.5}
+                  />
                 </a>
               </Button>
               <a
                 href="#como-funciona"
-                className="inline-flex items-center gap-1.5 text-[14px] font-semibold text-text-secondary hover:text-text-primary transition-colors ring-focus rounded px-2 py-1"
+                className="inline-flex items-center gap-1.5 text-[14px] font-semibold text-text-secondary hover:text-text-primary transition-colors ring-focus rounded px-2 py-1 underline underline-offset-4 decoration-border-strong hover:decoration-text-primary"
               >
-                Ver como funciona
-                <ArrowRight className="w-4 h-4" strokeWidth={2} />
+                Ver como funciona ↓
               </a>
             </motion.div>
 
@@ -116,9 +118,9 @@ const Hero = () => {
               initial="hidden"
               animate="show"
               variants={fadeUp}
-              className="mt-6 text-[12px] text-text-tertiary tracking-tight"
+              className="mt-5 text-[12px] text-text-tertiary tracking-tight max-w-md mx-auto lg:mx-0 leading-relaxed"
             >
-              Reembolso integral por critério clínico • LGPD • Assinatura ICP-Brasil
+              Pagamento único. Sem assinatura. Reembolso integral se não pudermos emitir.
             </motion.p>
           </div>
 
