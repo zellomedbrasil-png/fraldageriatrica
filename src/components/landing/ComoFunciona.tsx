@@ -3,100 +3,111 @@ import ScrollReveal from "./ScrollReveal";
 
 const steps = [
   {
-    num: "1",
+    num: "01",
     title: "Cadastro e Triagem",
-    desc: "Você preenche um formulário rápido com dados do paciente, condição clínica e situação de mobilidade. Tudo pelo celular.",
+    desc: "Preencha um formulário rápido com dados do paciente, condição clínica e situação de mobilidade. Tudo pelo celular, em poucos minutos.",
     Icon: ClipboardList,
-    dark: false,
   },
   {
-    num: "2",
+    num: "02",
     title: "Avaliação por Médico CRM",
     desc: "Nosso médico avalia o caso por teleconsulta ou análise clínica do prontuário, conforme Resolução CFM 2.314/2022.",
     Icon: Stethoscope,
-    dark: false,
   },
   {
-    num: "3",
+    num: "03",
     title: "Laudo no WhatsApp",
     desc: "Você recebe o laudo digital com assinatura ICP-Brasil em até 24 horas. Válido em qualquer farmácia credenciada do PFPB.",
     Icon: FileCheck,
-    dark: true,
+    highlight: true,
   },
 ];
 
 const ComoFunciona = () => {
   return (
-    <section id="como-funciona" className="py-20 lg:py-24">
-      <div className="max-w-6xl mx-auto px-6">
+    <section id="como-funciona" className="section-padding bg-surface-elevated border-y border-border">
+      <div className="container-page">
         <ScrollReveal>
-          <div className="mb-14 text-center max-w-2xl mx-auto">
-            <h2 className="text-3xl sm:text-4xl font-semibold text-foreground tracking-tighter-custom">
+          <div className="text-center max-w-2xl mx-auto">
+            <span className="inline-block px-3 py-1 rounded-full bg-accent-soft text-accent text-[11px] font-bold uppercase tracking-wider">
+              Processo
+            </span>
+            <h2 className="mt-4 text-3xl sm:text-[36px] font-bold text-text-primary tracking-tightest">
               Em 3 passos simples
             </h2>
-            <p className="text-muted-foreground mt-3 font-light">
-              Tecnologia a favor da sua família, sem complicações.
+            <p className="mt-3 text-[16px] text-text-secondary leading-relaxed">
+              Tecnologia médica a favor da sua família, sem complicações.
             </p>
           </div>
         </ScrollReveal>
 
-        <div className="grid md:grid-cols-3 gap-5">
+        <div className="grid md:grid-cols-3 gap-5 mt-14">
           {steps.map((step, i) => (
-            <ScrollReveal key={step.num} delay={i * 0.12}>
+            <ScrollReveal key={step.num} delay={i * 0.1}>
               <article
-                className={`rounded-3xl p-8 relative overflow-hidden h-full transition-colors duration-300 ${
-                  step.dark
-                    ? "bg-slate-900 border border-slate-800 text-primary-foreground"
-                    : "bg-card border border-border hover:border-primary/30"
+                className={`relative rounded-2xl p-7 h-full overflow-hidden transition-all duration-300 ${
+                  step.highlight
+                    ? "bg-ink-900 text-primary-foreground border border-ink-800"
+                    : "bg-card border border-border shadow-card hover:border-border-strong"
                 }`}
               >
-                <div className="relative z-10">
+                {step.highlight && (
                   <div
-                    className={`w-12 h-12 rounded-2xl border flex items-center justify-center mb-6 ${
-                      step.dark
-                        ? "bg-white/10 border-white/10 text-primary-foreground backdrop-blur-md"
-                        : "bg-secondary border-border text-foreground"
+                    className="absolute -top-12 -right-12 w-48 h-48 rounded-full bg-accent/30 blur-3xl"
+                    aria-hidden="true"
+                  />
+                )}
+                <div className="relative">
+                  <div
+                    className={`flex items-center justify-between mb-6 ${
+                      step.highlight ? "" : ""
                     }`}
                   >
-                    <span className="font-bold font-mono text-sm">{step.num}</span>
+                    <span
+                      className={`text-[11px] font-bold tracking-[0.2em] ${
+                        step.highlight ? "text-accent" : "text-text-tertiary"
+                      }`}
+                    >
+                      PASSO {step.num}
+                    </span>
+                    <step.Icon
+                      className={`w-5 h-5 ${
+                        step.highlight ? "text-accent" : "text-text-tertiary"
+                      }`}
+                      strokeWidth={1.75}
+                    />
                   </div>
                   <h3
-                    className={`text-xl font-semibold mb-3 tracking-tight ${
-                      step.dark ? "text-primary-foreground" : "text-foreground"
+                    className={`text-[20px] font-bold tracking-tight mb-3 ${
+                      step.highlight ? "text-primary-foreground" : "text-text-primary"
                     }`}
                   >
                     {step.title}
                   </h3>
                   <p
-                    className={`text-sm leading-relaxed ${
-                      step.dark ? "text-slate-400" : "text-muted-foreground"
+                    className={`text-[14px] leading-relaxed ${
+                      step.highlight ? "text-ink-200/80" : "text-text-secondary"
                     }`}
                   >
                     {step.desc}
                   </p>
-                  {step.dark && (
-                    <div className="mt-6 inline-flex items-center gap-2 text-accent text-xs font-semibold uppercase tracking-wider">
-                      <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
+                  {step.highlight && (
+                    <div className="mt-6 inline-flex items-center gap-2 text-accent text-[11px] font-bold uppercase tracking-wider">
+                      <span className="relative flex h-2 w-2">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-60" />
+                        <span className="relative inline-flex rounded-full h-2 w-2 bg-accent" />
+                      </span>
                       Em até 24 horas
                     </div>
                   )}
                 </div>
-                <step.Icon
-                  className={`absolute -bottom-4 -right-4 w-[140px] h-[140px] -rotate-[15deg] ${
-                    step.dark ? "text-white/5" : "text-slate-200"
-                  }`}
-                  strokeWidth={0.5}
-                />
-                {step.dark && (
-                  <div className="absolute top-0 right-0 w-64 h-64 bg-accent/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
-                )}
               </article>
             </ScrollReveal>
           ))}
         </div>
 
         <ScrollReveal delay={0.4}>
-          <p className="text-center mt-10 text-sm text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-center mt-12 text-[14px] text-text-secondary max-w-2xl mx-auto leading-relaxed">
             Após receber o laudo, basta levá-lo a uma farmácia credenciada do Programa Farmácia
             Popular com documento de identidade e CPF do paciente.
           </p>
