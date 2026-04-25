@@ -1,107 +1,100 @@
 "use client";
-import { useEffect, useState } from "react";
-import { Menu, X, ArrowRight, ShieldCheck } from "lucide-react";
+import { useState } from "react";
+import { Menu, X, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Logo from "./Logo";
 
-const links = [
-  { href: "#como-funciona", label: "Como Funciona" },
-  { href: "#quem-tem-direito", label: "Quem Tem Direito" },
-  { href: "#precos", label: "Preços" },
-  { href: "#faq", label: "FAQ" },
-];
+const WA_LINK =
+  "https://wa.me/5585991275429?text=Quero%20solicitar%20o%20laudo%20para%20fralda%20geri%C3%A1trica.";
 
 const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   return (
-    <header className="fixed top-0 inset-x-0 z-50">
-      {/* Announcement bar */}
-      <div className="bg-primary text-primary-foreground">
-        <div className="container-page h-9 flex items-center justify-center gap-2 text-[12px] sm:text-[13px]">
-          <ShieldCheck className="w-3.5 h-3.5 shrink-0" strokeWidth={2} />
-          <span className="font-medium tracking-tight truncate">
-            Conforme Portaria GM/MS nº 3.073/2024 e Resolução CFM 2.314/2022
-          </span>
+    <nav className="fixed top-0 w-full z-50 glass-header transition-all duration-300">
+      <div className="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
+        <Logo />
+
+        <div className="hidden md:flex items-center gap-6">
+          <a
+            href="#como-funciona"
+            className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+          >
+            Como funciona
+          </a>
+          <a
+            href="#precos"
+            className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+          >
+            Preço
+          </a>
+          <a
+            href="#faq"
+            className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+          >
+            Dúvidas
+          </a>
+          <Button
+            asChild
+            className="rounded-full shadow-lg shadow-primary/20 bg-primary hover:bg-primary/90 text-primary-foreground gap-2"
+          >
+            <a href={WA_LINK} target="_blank" rel="noopener noreferrer">
+              Solicitar Laudo
+              <ArrowRight className="w-4 h-4" />
+            </a>
+          </Button>
         </div>
+
+        <button
+          type="button"
+          className="md:hidden text-foreground"
+          onClick={() => setMobileOpen(!mobileOpen)}
+          aria-label={mobileOpen ? "Fechar menu" : "Abrir menu"}
+          aria-expanded={mobileOpen}
+        >
+          {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+        </button>
       </div>
 
-      <nav
-        className={`glass-header transition-shadow duration-300 ${scrolled ? "header-shadow" : ""}`}
-      >
-        <div className="container-page h-20 flex items-center justify-between">
-          <Logo />
-
-          <div className="hidden lg:flex items-center gap-8">
-            {links.map((l) => (
-              <a
-                key={l.href}
-                href={l.href}
-                className="text-[14px] font-medium text-text-secondary hover:text-text-primary transition-colors ring-focus rounded"
-              >
-                {l.label}
-              </a>
-            ))}
-            <Button
-              asChild
-              className="rounded-lg h-11 px-5 bg-accent hover:bg-accent/90 text-accent-foreground font-semibold gap-2 shadow-accent-glow"
-              data-event="cta_click"
-              data-plan="laudo"
-            >
-              <a href="#precos">
-                Solicitar Laudo
-                <ArrowRight className="w-4 h-4" strokeWidth={2.5} />
-              </a>
-            </Button>
-          </div>
-
-          <button
-            type="button"
-            className="lg:hidden p-2 -mr-2 text-text-primary ring-focus rounded-lg"
-            onClick={() => setMobileOpen(!mobileOpen)}
-            aria-label={mobileOpen ? "Fechar menu" : "Abrir menu"}
-            aria-expanded={mobileOpen}
+      {mobileOpen && (
+        <div className="md:hidden bg-card border-t border-border px-6 py-4 space-y-3">
+          <a
+            href="#como-funciona"
+            className="block text-sm font-medium text-muted-foreground"
+            onClick={() => setMobileOpen(false)}
           >
-            {mobileOpen ? <X className="w-6 h-6" strokeWidth={1.75} /> : <Menu className="w-6 h-6" strokeWidth={1.75} />}
-          </button>
+            Como funciona
+          </a>
+          <a
+            href="#precos"
+            className="block text-sm font-medium text-muted-foreground"
+            onClick={() => setMobileOpen(false)}
+          >
+            Preço
+          </a>
+          <a
+            href="#faq"
+            className="block text-sm font-medium text-muted-foreground"
+            onClick={() => setMobileOpen(false)}
+          >
+            Dúvidas
+          </a>
+          <Button
+            asChild
+            className="w-full rounded-full bg-primary hover:bg-primary/90 text-primary-foreground gap-2 mt-2"
+          >
+            <a
+              href={WA_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setMobileOpen(false)}
+            >
+              Solicitar Laudo <ArrowRight className="w-4 h-4" />
+            </a>
+          </Button>
         </div>
-
-        {mobileOpen && (
-          <div className="lg:hidden bg-card border-t border-border">
-            <div className="container-page py-4 space-y-1">
-              {links.map((l) => (
-                <a
-                  key={l.href}
-                  href={l.href}
-                  onClick={() => setMobileOpen(false)}
-                  className="block text-[15px] font-medium text-text-secondary py-3 px-2 rounded-lg hover:bg-surface-soft"
-                >
-                  {l.label}
-                </a>
-              ))}
-              <Button
-                asChild
-                className="w-full rounded-lg h-12 mt-3 bg-accent hover:bg-accent/90 text-accent-foreground font-semibold gap-2"
-                data-event="cta_click"
-                data-plan="laudo"
-              >
-                <a href="#precos" onClick={() => setMobileOpen(false)}>
-                  Solicitar Laudo <ArrowRight className="w-4 h-4" strokeWidth={2.5} />
-                </a>
-              </Button>
-            </div>
-          </div>
-        )}
-      </nav>
-    </header>
+      )}
+    </nav>
   );
 };
 

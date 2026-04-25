@@ -1,18 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import Header from "@/components/landing/Header";
 import Hero from "@/components/landing/Hero";
-import ProofBar from "@/components/landing/ProofBar";
-import VoceSabia from "@/components/landing/VoceSabia";
-import QuemTemDireito from "@/components/landing/QuemTemDireito";
 import ComoFunciona from "@/components/landing/ComoFunciona";
 import Precos from "@/components/landing/Precos";
-import Economia from "@/components/landing/Economia";
-import OndeRetirar from "@/components/landing/OndeRetirar";
 import FAQ, { faqItems } from "@/components/landing/FAQ";
-import Garantia from "@/components/landing/Garantia";
-import CTAFinal from "@/components/landing/CTAFinal";
 import Footer from "@/components/landing/Footer";
-import WhatsAppFloat from "@/components/landing/WhatsAppFloat";
 
 const SITE_URL = "https://fraldageriatrica.com/";
 const TITLE =
@@ -102,19 +94,11 @@ function Index() {
       <Header />
       <main>
         <Hero />
-        <ProofBar />
-        <VoceSabia />
-        <QuemTemDireito />
         <ComoFunciona />
         <Precos />
-        <Economia />
-        <OndeRetirar />
         <FAQ />
-        <Garantia />
-        <CTAFinal />
       </main>
       <Footer />
-      <WhatsAppFloat />
     </div>
   );
 }
