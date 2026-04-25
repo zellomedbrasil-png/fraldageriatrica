@@ -30,7 +30,7 @@ export const Route = createRootRoute({
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { name: "author", content: "fraldageriatrica.com" },
-      { name: "theme-color", content: "#0B6BCB" },
+      { name: "theme-color", content: "#0F4C5C" },
       { title: "Lovable App" },
       { property: "og:title", content: "Lovable App" },
       { name: "twitter:title", content: "Lovable App" },

@@ -56,37 +56,34 @@ const FAQ = () => {
   const col2 = faqItems.slice(half);
 
   return (
-    <section id="faq" className="py-16 lg:py-24 bg-surface-soft border-t border-border">
-      <div className="container-page">
+    <section id="faq" className="py-24 bg-card border-t border-border">
+      <div className="max-w-5xl mx-auto px-6">
         <ScrollReveal>
-          <div className="text-center mb-12 lg:mb-16">
-            <span className="inline-block text-[12px] font-semibold text-primary uppercase tracking-[0.1em] mb-3">
-              Dúvidas frequentes
-            </span>
-            <h2 className="text-[28px] sm:text-[36px] font-semibold text-ink-900 mb-4 leading-[1.15]">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-semibold text-foreground tracking-tighter-custom mb-4">
               Perguntas frequentes
             </h2>
-            <p className="text-[16px] text-ink-700 max-w-xl mx-auto leading-[1.6]">
+            <p className="text-muted-foreground text-sm max-w-lg mx-auto">
               Tudo o que você precisa saber sobre o processo, regulamentação e seu direito ao
               benefício.
             </p>
           </div>
         </ScrollReveal>
 
-        <div className="grid md:grid-cols-2 gap-4 max-w-5xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-6">
           {[col1, col2].map((col, ci) => (
-            <ScrollReveal key={ci} delay={ci * 0.1}>
-              <Accordion type="single" collapsible className="space-y-3">
+            <ScrollReveal key={ci} delay={ci * 0.15}>
+              <Accordion type="single" collapsible className="space-y-4">
                 {col.map((item, i) => (
                   <AccordionItem
                     key={i}
                     value={`item-${ci}-${i}`}
-                    className="border border-border rounded-xl bg-white hover:border-primary/40 data-[state=open]:bg-surface-soft data-[state=open]:border-primary/30 transition-all px-5 group"
+                    className="border border-border rounded-xl bg-card hover:border-primary/30 transition-colors px-5"
                   >
-                    <AccordionTrigger className="text-left font-semibold text-ink-900 text-[15px] hover:no-underline py-5 [&>svg]:text-primary [&>svg]:transition-transform">
+                    <AccordionTrigger className="text-left font-medium text-foreground text-sm hover:no-underline">
                       {item.q}
                     </AccordionTrigger>
-                    <AccordionContent className="text-[15px] text-ink-700 leading-[1.7] pb-5">
+                    <AccordionContent className="text-sm text-muted-foreground leading-relaxed">
                       {item.a}
                     </AccordionContent>
                   </AccordionItem>
@@ -97,10 +94,11 @@ const FAQ = () => {
         </div>
 
         <ScrollReveal delay={0.3}>
-          <div className="mt-14 text-center">
+          <div className="mt-16 text-center">
             <Button
               asChild
-              className="rounded-[10px] h-[52px] px-7 text-[16px] font-semibold bg-primary hover:bg-primary/90 text-primary-foreground gap-2 shadow-lg hover:-translate-y-0.5 hover:shadow-xl transition-all duration-200"
+              size="lg"
+              className="rounded-full px-8 py-6 text-base shadow-xl shadow-primary/20 hover:-translate-y-0.5 transition-all gap-2"
             >
               <a href={WA_LINK} target="_blank" rel="noopener noreferrer">
                 Solicitar avaliação — R$ 59
