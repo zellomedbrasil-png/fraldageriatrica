@@ -8,36 +8,36 @@ import ScrollReveal from "./ScrollReveal";
 
 export const faqItems = [
   {
-    q: "Quem tem direito a receber fraldas geriátricas gratuitamente pelo SUS?",
+    q: "Quem tem direito a fraldas geriátricas gratuitas pelo SUS?",
     a: "Idosos com 60 anos ou mais que apresentem condição de incontinência, e pessoas com deficiência de qualquer idade com CID-10 que justifique o uso contínuo, conforme Portaria GM/MS nº 3.073/2024.",
   },
   {
     q: "Quantas fraldas posso retirar por mês?",
-    a: "Até 120 fraldas mensais, equivalente a 4 unidades por dia, com retiradas em intervalos de no mínimo 10 dias e máximo de 40 unidades por retirada.",
+    a: "Até 120 fraldas mensais (4 por dia), em retiradas com intervalo mínimo de 10 dias e máximo de 40 unidades por vez, conforme regulamentação.",
   },
   {
     q: "Quanto tempo demora para receber o laudo?",
-    a: "O laudo é emitido em até 24 horas após a triagem, mediante avaliação clínica individual pelo médico com CRM ativo.",
+    a: "Em até 24 horas após a triagem ser concluída e a avaliação clínica realizada pelo médico.",
   },
   {
     q: "O laudo pode ser recusado?",
-    a: "Sim. Casos em que a avaliação clínica não confirme a indicação para fralda geriátrica não recebem o laudo. Nesses casos, o valor pago é reembolsado integralmente.",
+    a: "Sim. Se a avaliação clínica não confirmar a indicação para fralda geriátrica, o laudo não é emitido e o valor pago é reembolsado integralmente.",
   },
   {
     q: "Por quanto tempo o laudo é válido?",
-    a: "180 dias (6 meses), conforme regulamentação. Após esse prazo, é necessária nova avaliação para renovação.",
+    a: "180 dias (6 meses), conforme a Portaria GM/MS nº 3.073/2024. Após esse período, é necessária nova avaliação para renovação.",
+  },
+  {
+    q: "Quanto custa renovar o laudo?",
+    a: "R$ 59 — o mesmo valor da primeira emissão. Sem reajustes, sem assinatura, sem surpresas.",
   },
   {
     q: "Preciso ir presencialmente a algum lugar?",
-    a: "Não para o laudo — todo o processo é online via telemedicina. Para retirar as fraldas, você precisa ir a uma farmácia credenciada do Programa Farmácia Popular com o laudo, documento de identidade e CPF do paciente.",
-  },
-  {
-    q: "O laudo é o mesmo aceito em todas as farmácias do Farmácia Popular?",
-    a: "Sim. O laudo é emitido com assinatura digital ICP-Brasil, o mesmo padrão exigido para documentos médicos pelo Conselho Federal de Medicina, e é aceito em todas as farmácias credenciadas ao Programa Farmácia Popular.",
+    a: "Para o laudo, não — todo o processo é online. Para retirar as fraldas, basta ir a uma farmácia credenciada do Programa Farmácia Popular com o laudo, documento de identidade e CPF do paciente.",
   },
   {
     q: "Vocês vendem fraldas?",
-    a: "Não. fraldageriatrica.com é um serviço médico de emissão de laudos. O Combo Praticidade oferece, opcionalmente, um pacote inicial de fraldas fornecido e entregue por parceiro logístico cadastrado, como conveniência ao paciente enquanto se organiza para retirada gratuita pelo PFPB.",
+    a: "Não. Somos exclusivamente um serviço médico de emissão de laudos. A distribuição gratuita das fraldas é feita pelo Programa Farmácia Popular do Brasil em farmácias credenciadas.",
   },
 ];
 
