@@ -68,20 +68,22 @@
 :root {
   --radius: 0.75rem;
 
-  /* Brand — fraldageriatrica.com (paleta azul claro / sky) */
-  --brand-primary: oklch(0.66 0.14 235);   /* sky vivid */
-  --brand-secondary: oklch(0.7 0.13 225);  /* sky glow */
-  --brand-accent: oklch(0.76 0.12 220);    /* light sky */
+  /* Brand — fraldageriatrica.com (Healthcare blue, sóbrio e clínico) */
+  /* #0B6BCB ≈ oklch(0.55 0.16 250) */
+  --brand-primary: oklch(0.55 0.16 250);
+  --brand-primary-hover: oklch(0.47 0.16 252);   /* #0857A6 */
+  --brand-secondary: oklch(0.7 0.13 245);
+  --brand-accent: oklch(0.72 0.12 185);          /* #00B8A9 verde-água */
 
-  /* Surfaces (slate near-white) */
-  --surface-base: oklch(0.985 0.005 235);
+  /* Surfaces */
+  --surface-base: oklch(1 0 0);                  /* #FFFFFF */
   --surface-elevated: oklch(1 0 0);
-  --surface-soft: oklch(0.97 0.012 235);
+  --surface-soft: oklch(0.98 0.005 240);         /* #F7F9FC */
 
   /* Text scale (slate) */
-  --text-primary: oklch(0.22 0.04 245);
-  --text-secondary: oklch(0.5 0.025 240);
-  --text-tertiary: oklch(0.65 0.02 240);
+  --text-primary: oklch(0.21 0.04 256);          /* #0F172A Ink-900 */
+  --text-secondary: oklch(0.4 0.03 256);         /* #334155 Ink-700 */
+  --text-tertiary: oklch(0.55 0.025 256);        /* #64748B Ink-500 */
 
   /* Semantic mapping */
   --background: var(--surface-base);
@@ -92,47 +94,47 @@
   --popover-foreground: var(--text-primary);
   --primary: var(--brand-primary);
   --primary-foreground: oklch(1 0 0);
-  --primary-soft: oklch(0.96 0.035 235);
-  --secondary: oklch(0.96 0.012 235);
+  --primary-soft: oklch(0.96 0.025 250);         /* #E8F2FC */
+  --secondary: var(--surface-soft);
   --secondary-foreground: var(--text-primary);
-  --secondary-soft: oklch(0.97 0.012 235);
-  --muted: oklch(0.96 0.012 235);
+  --secondary-soft: var(--surface-soft);
+  --muted: var(--surface-soft);
   --muted-foreground: var(--text-secondary);
-  --accent: var(--brand-primary);
+  --accent: var(--brand-accent);
   --accent-foreground: oklch(1 0 0);
-  --accent-soft: oklch(0.96 0.035 235);
+  --accent-soft: oklch(0.95 0.04 185);
   --warning-soft: oklch(0.96 0.06 90);
   --warning-foreground: oklch(0.4 0.1 80);
-  --success: oklch(0.65 0.16 150);
+  --success: oklch(0.65 0.16 160);               /* #10B981 */
   --danger: oklch(0.58 0.22 28);
   --destructive: var(--danger);
   --destructive-foreground: oklch(1 0 0);
-  --border: oklch(0.92 0.012 235);
-  --border-strong: oklch(0.86 0.014 235);
-  --input: oklch(0.92 0.012 235);
+  --border: oklch(0.92 0.01 250);                /* #E2E8F0 */
+  --border-strong: oklch(0.86 0.014 250);
+  --input: oklch(0.92 0.01 250);
   --ring: var(--brand-primary);
 
   /* Slate ink scale */
-  --ink-900: oklch(0.22 0.04 245);
-  --ink-800: oklch(0.28 0.035 245);
-  --ink-700: oklch(0.4 0.03 245);
-  --ink-500: oklch(0.55 0.025 240);
-  --ink-400: oklch(0.68 0.02 240);
-  --ink-200: oklch(0.9 0.012 235);
-  --ink-100: oklch(0.95 0.01 235);
-  --ink-50: oklch(0.98 0.005 235);
+  --ink-900: oklch(0.21 0.04 256);
+  --ink-800: oklch(0.28 0.035 256);
+  --ink-700: oklch(0.4 0.03 256);
+  --ink-500: oklch(0.55 0.025 256);
+  --ink-400: oklch(0.68 0.02 256);
+  --ink-200: oklch(0.9 0.01 250);
+  --ink-100: oklch(0.95 0.008 250);
+  --ink-50: oklch(0.98 0.005 250);
 
   /* Gradients & shadows */
-  --gradient-hero: radial-gradient(circle, oklch(0.66 0.14 235 / 0.15) 0%, transparent 70%);
-  --gradient-brand: linear-gradient(135deg, var(--brand-primary), var(--brand-secondary));
-  --gradient-accent: linear-gradient(135deg, var(--brand-primary), oklch(0.74 0.13 225));
-  --shadow-xs: 0 1px 2px 0 oklch(0.22 0.04 245 / 0.04);
-  --shadow-sm: 0 1px 3px 0 oklch(0.22 0.04 245 / 0.06), 0 1px 2px -1px oklch(0.22 0.04 245 / 0.06);
-  --shadow-md: 0 4px 6px -1px oklch(0.22 0.04 245 / 0.08), 0 2px 4px -2px oklch(0.22 0.04 245 / 0.06);
-  --shadow-lg: 0 10px 25px -5px oklch(0.22 0.04 245 / 0.1), 0 8px 10px -6px oklch(0.22 0.04 245 / 0.06);
-  --shadow-elegant: 0 20px 50px -20px oklch(0.66 0.14 235 / 0.3);
-  --shadow-accent-glow: 0 12px 32px -8px oklch(0.66 0.14 235 / 0.4);
-  --shadow-card: 0 1px 0 0 oklch(0.92 0.012 235 / 0.6), 0 4px 16px -4px oklch(0.22 0.04 245 / 0.05);
+  --gradient-hero: radial-gradient(ellipse at center, oklch(0.55 0.16 250 / 0.10) 0%, transparent 65%);
+  --gradient-brand: linear-gradient(135deg, var(--brand-primary), var(--brand-primary-hover));
+  --gradient-accent: linear-gradient(135deg, var(--brand-primary), var(--brand-accent));
+  --shadow-xs: 0 1px 2px 0 oklch(0.21 0.04 256 / 0.04);
+  --shadow-sm: 0 1px 2px 0 oklch(0.21 0.04 256 / 0.04);
+  --shadow-md: 0 4px 12px 0 oklch(0.21 0.04 256 / 0.06);
+  --shadow-lg: 0 12px 32px 0 oklch(0.55 0.16 250 / 0.10);
+  --shadow-elegant: 0 16px 40px -12px oklch(0.55 0.16 250 / 0.18);
+  --shadow-accent-glow: 0 12px 32px -8px oklch(0.55 0.16 250 / 0.25);
+  --shadow-card: 0 1px 2px 0 oklch(0.21 0.04 256 / 0.04), 0 4px 12px -2px oklch(0.21 0.04 256 / 0.05);
 
   --sidebar: var(--surface-base);
   --sidebar-foreground: var(--text-primary);
