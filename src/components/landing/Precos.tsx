@@ -1,119 +1,71 @@
-import { Check, ArrowRight, ShieldCheck } from "lucide-react";
+import { Check, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import ScrollReveal from "./ScrollReveal";
 
-const features = [
+const WA_LINK =
+  "https://wa.me/5585991275429?text=Quero%20solicitar%20o%20laudo%20para%20fralda%20geri%C3%A1trica.";
+
+const included = [
   "Avaliação clínica por médico com CRM ativo",
   "Laudo digital com assinatura ICP-Brasil",
   "Validade de 180 dias (renovável)",
   "Entrega em até 24 horas no WhatsApp",
-  "Aceito em farmácias credenciadas do PFPB",
+  "Aceito em farmácias do Programa Farmácia Popular",
   "Reembolso integral por critério clínico",
 ];
 
 const Precos = () => {
   return (
-    <section
-      id="precos"
-      className="section-padding bg-primary text-primary-foreground relative overflow-hidden"
-    >
-      {/* Radial gradient atmospheric layers */}
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background:
-            "radial-gradient(ellipse 80% 50% at 50% 0%, oklch(0.66 0.11 175 / 0.18), transparent 60%)",
-        }}
-      />
-      <div
-        aria-hidden="true"
-        className="absolute -top-32 left-1/2 -translate-x-1/2 w-[800px] h-[800px] rounded-full bg-accent/8 blur-3xl pointer-events-none"
-      />
-
-      <div className="container-page relative">
+    <section id="precos" className="py-24 bg-card border-y border-border">
+      <div className="max-w-xl mx-auto px-6 text-center">
         <ScrollReveal>
-          <div className="text-center max-w-2xl mx-auto">
-            <span className="inline-block px-3 py-1 rounded-full bg-white/10 text-accent text-[11px] font-bold uppercase tracking-wider backdrop-blur-sm">
-              Investimento
-            </span>
-            <h2 className="mt-4 text-3xl sm:text-[40px] lg:text-[44px] font-bold text-primary-foreground tracking-tightest">
-              Um preço justo, sem surpresas.
-            </h2>
-            <p className="mt-3 text-[16px] sm:text-[17px] text-primary-foreground/70 leading-relaxed">
-              Pagamento único por laudo. Sem assinatura, sem fidelidade.
-            </p>
-          </div>
+          <h2 className="text-3xl font-semibold text-foreground tracking-tighter-custom mb-4">
+            Transparência total
+          </h2>
+          <p className="text-muted-foreground mb-12 font-light">
+            Sem surpresas. Valor único que inclui tudo.
+          </p>
         </ScrollReveal>
 
-        <ScrollReveal delay={0.1}>
-          <div className="mt-14 max-w-[480px] mx-auto">
-            <article className="relative rounded-2xl bg-card text-text-primary p-10 sm:p-12 shadow-elegant border border-white/10">
-              {/* Tag */}
-              <div className="flex items-center justify-between mb-6">
-                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-accent-soft text-accent text-[10px] font-bold uppercase tracking-wider">
-                  Laudo médico
-                </span>
-                <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-text-tertiary tracking-tight">
-                  <ShieldCheck className="w-3.5 h-3.5" strokeWidth={2} />
-                  CFM 2.314/2022
-                </span>
-              </div>
-
-              {/* Price */}
-              <div className="flex items-baseline gap-1.5">
-                <span className="text-[18px] text-text-tertiary font-medium">R$</span>
-                <span className="text-[72px] sm:text-[80px] font-bold text-text-primary tracking-tightest leading-none">
+        <ScrollReveal delay={0.15}>
+          <div className="bg-background rounded-3xl border border-border p-8 shadow-lg relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-40 h-40 bg-primary/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+            <div className="relative z-10">
+              <p className="text-sm text-muted-foreground font-medium mb-2 uppercase tracking-wide">
+                Laudo médico
+              </p>
+              <div className="flex items-baseline justify-center gap-1 mb-8">
+                <span className="text-sm text-muted-foreground">R$</span>
+                <span className="text-6xl font-semibold text-foreground tracking-tighter-custom">
                   59
                 </span>
-                <span className="text-[18px] text-text-tertiary font-medium">,00</span>
+                <span className="text-sm text-muted-foreground">,00</span>
               </div>
-              <p className="mt-2 text-[13px] text-text-tertiary">
-                Pagamento único · sem assinatura
-              </p>
-
-              {/* Features */}
-              <ul className="mt-8 space-y-3.5">
-                {features.map((f) => (
+              <ul className="space-y-3 text-left mb-8">
+                {included.map((item) => (
                   <li
-                    key={f}
-                    className="flex items-start gap-3 text-[14.5px] text-text-secondary leading-relaxed"
+                    key={item}
+                    className="flex items-center gap-3 text-sm text-muted-foreground"
                   >
-                    <span className="w-5 h-5 rounded-full bg-accent flex items-center justify-center shrink-0 mt-0.5">
-                      <Check className="w-3 h-3 text-accent-foreground" strokeWidth={3} />
-                    </span>
-                    <span>{f}</span>
+                    <Check className="w-4 h-4 text-primary shrink-0" />
+                    {item}
                   </li>
                 ))}
               </ul>
-
-              {/* CTA */}
               <Button
                 asChild
                 size="lg"
-                className="group mt-9 w-full rounded-lg h-14 text-[15px] font-semibold bg-accent hover:bg-accent/90 text-accent-foreground shadow-accent-glow gap-2"
-                data-event="cta_click"
-                data-plan="laudo"
+                className="w-full rounded-full py-6 text-base shadow-xl shadow-primary/20 hover:-translate-y-0.5 transition-all"
               >
-                <a href="#cta-final">
-                  Solicitar Meu Laudo
-                  <ArrowRight
-                    className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
-                    strokeWidth={2.5}
-                  />
+                <a href={WA_LINK} target="_blank" rel="noopener noreferrer">
+                  Solicitar meu Laudo
                 </a>
               </Button>
-
-              <p className="mt-4 text-center text-[12px] text-text-tertiary leading-relaxed">
-                Reembolso integral se não pudermos emitir o laudo por critério clínico.
-              </p>
-            </article>
-
-            {/* Trust note below card */}
-            <p className="mt-8 text-center text-[13px] text-primary-foreground/60 leading-relaxed max-w-md mx-auto">
-              fraldageriatrica.com não comercializa fraldas. Nosso serviço é a emissão do laudo
-              médico exigido pelo Programa Farmácia Popular para retirada gratuita.
-            </p>
+              <div className="mt-6 flex items-center justify-center gap-2 text-xs text-muted-foreground">
+                <ShieldCheck className="w-4 h-4 text-primary" />
+                Reembolso integral se o médico não aprovar
+              </div>
+            </div>
           </div>
         </ScrollReveal>
       </div>

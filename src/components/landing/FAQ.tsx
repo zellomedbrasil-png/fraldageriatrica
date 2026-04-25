@@ -4,7 +4,12 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { Button } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
+
+const WA_LINK =
+  "https://wa.me/5585991275429?text=Quero%20solicitar%20o%20laudo%20para%20fralda%20geri%C3%A1trica.";
 
 export const faqItems = [
   {
@@ -42,40 +47,60 @@ export const faqItems = [
 ];
 
 const FAQ = () => {
+  const col1 = faqItems.slice(0, 4);
+  const col2 = faqItems.slice(4);
+
   return (
-    <section id="faq" className="section-padding">
-      <div className="max-w-3xl mx-auto px-6 sm:px-8">
+    <section id="faq" className="py-24 bg-card border-t border-border">
+      <div className="max-w-5xl mx-auto px-6">
         <ScrollReveal>
-          <div className="text-center">
-            <span className="inline-block px-3 py-1 rounded-full bg-primary-soft text-primary text-[11px] font-bold uppercase tracking-wider">
-              FAQ
-            </span>
-            <h2 className="mt-4 text-3xl sm:text-[36px] font-bold text-text-primary tracking-tightest">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-semibold text-foreground tracking-tighter-custom mb-4">
               Perguntas frequentes
             </h2>
-            <p className="mt-3 text-[16px] text-text-secondary leading-relaxed">
-              Tudo o que você precisa saber antes de solicitar.
+            <p className="text-muted-foreground text-sm max-w-lg mx-auto">
+              Tudo o que você precisa saber sobre o processo, regulamentação e seu direito ao
+              benefício.
             </p>
           </div>
         </ScrollReveal>
 
-        <ScrollReveal delay={0.1}>
-          <Accordion type="single" collapsible className="w-full mt-12 space-y-3">
-            {faqItems.map((item, i) => (
-              <AccordionItem
-                key={i}
-                value={`item-${i}`}
-                className="rounded-2xl border border-border bg-card px-5 sm:px-6 shadow-xs data-[state=open]:border-border-strong data-[state=open]:shadow-card"
-              >
-                <AccordionTrigger className="text-left text-[15px] sm:text-[16px] font-semibold text-text-primary hover:no-underline py-5">
-                  {item.q}
-                </AccordionTrigger>
-                <AccordionContent className="text-[14px] text-text-secondary leading-relaxed pb-5">
-                  {item.a}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
+        <div className="grid md:grid-cols-2 gap-6">
+          {[col1, col2].map((col, ci) => (
+            <ScrollReveal key={ci} delay={ci * 0.15}>
+              <Accordion type="single" collapsible className="space-y-4">
+                {col.map((item, i) => (
+                  <AccordionItem
+                    key={i}
+                    value={`item-${ci}-${i}`}
+                    className="border border-border rounded-xl bg-card hover:border-primary/30 transition-colors px-5"
+                  >
+                    <AccordionTrigger className="text-left font-medium text-foreground text-sm hover:no-underline">
+                      {item.q}
+                    </AccordionTrigger>
+                    <AccordionContent className="text-sm text-muted-foreground leading-relaxed">
+                      {item.a}
+                    </AccordionContent>
+                  </AccordionItem>
+                ))}
+              </Accordion>
+            </ScrollReveal>
+          ))}
+        </div>
+
+        <ScrollReveal delay={0.3}>
+          <div className="mt-16 text-center">
+            <Button
+              asChild
+              size="lg"
+              className="rounded-full px-8 py-6 text-base shadow-xl shadow-primary/20 hover:-translate-y-0.5 transition-all gap-2"
+            >
+              <a href={WA_LINK} target="_blank" rel="noopener noreferrer">
+                Solicitar meu Laudo
+                <ArrowRight className="w-[18px] h-[18px]" />
+              </a>
+            </Button>
+          </div>
         </ScrollReveal>
       </div>
     </section>
