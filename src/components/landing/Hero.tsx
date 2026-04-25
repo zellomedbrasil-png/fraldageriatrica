@@ -1,164 +1,100 @@
 "use client";
-import { motion, type Variants } from "framer-motion";
-import { Stethoscope, CalendarCheck, MapPin, ArrowRight, Sparkles } from "lucide-react";
+import { ShieldCheck, Lock, BadgeCheck, FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import heroImg from "@/assets/hero-illustration.jpg";
+import ScrollReveal from "./ScrollReveal";
 
-const bullets = [
-  { icon: Stethoscope, label: "Médico com CRM ativo" },
-  { icon: CalendarCheck, label: "Laudo válido por 180 dias" },
-  { icon: MapPin, label: "Aceito em farmácias credenciadas" },
-];
-
-const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 16 },
-  show: (i: number = 0) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] as const, delay: i * 0.08 },
-  }),
-};
+const WA_LINK =
+  "https://wa.me/5585991275429?text=Quero%20solicitar%20o%20laudo%20para%20fralda%20geri%C3%A1trica.";
 
 const Hero = () => {
   return (
-    <section className="relative pt-36 pb-20 lg:pt-44 lg:pb-28 overflow-hidden">
-      <div className="absolute inset-0 bg-grid-fade pointer-events-none" aria-hidden="true" />
-      <div className="absolute inset-0 bg-hero-glow pointer-events-none" aria-hidden="true" />
+    <section className="relative pt-32 pb-20 lg:pt-44 lg:pb-32 overflow-hidden">
+      <div
+        className="absolute w-[600px] h-[600px] top-[-100px] left-1/2 -translate-x-1/2 z-0 pointer-events-none"
+        style={{ background: "var(--gradient-hero)" }}
+        aria-hidden="true"
+      />
 
-      <div className="container-page relative">
-        <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          <div className="lg:col-span-7 text-center lg:text-left">
-            <motion.div
-              custom={0}
-              initial="hidden"
-              animate="show"
-              variants={fadeUp}
-              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-card border border-border shadow-xs"
-            >
-              <Sparkles className="w-3.5 h-3.5 text-accent" strokeWidth={2} />
-              <span className="text-[12px] font-medium text-text-secondary tracking-tight">
-                Telemedicina ativa — atendimento em até 24 horas
+      <div className="max-w-5xl mx-auto px-6 relative z-10">
+        <div className="flex flex-col items-center text-center max-w-3xl mx-auto">
+          <ScrollReveal delay={0}>
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-card border border-border shadow-sm mb-8">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-primary" />
               </span>
-            </motion.div>
+              <span className="text-xs font-medium text-muted-foreground tracking-tight">
+                Telemedicina ativa — laudo em até 24h
+              </span>
+            </div>
+          </ScrollReveal>
 
-            <motion.h1
-              custom={1}
-              initial="hidden"
-              animate="show"
-              variants={fadeUp}
-              className="mt-6 text-[40px] sm:text-5xl lg:text-[56px] font-bold text-text-primary tracking-tightest leading-[1.05]"
-            >
-              Laudo médico para fralda geriátrica{" "}
-              <span className="text-accent">em até 24 horas</span>, sem sair de casa.
-            </motion.h1>
+          <ScrollReveal delay={0.1}>
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-semibold text-foreground tracking-tighter-custom mb-6 leading-[1.1]">
+              Laudo para fralda geriátrica{" "}
+              <br className="hidden sm:block" />
+              <span
+                className="text-transparent bg-clip-text"
+                style={{ backgroundImage: "var(--gradient-accent)" }}
+              >
+                sem sair de casa.
+              </span>
+            </h1>
+          </ScrollReveal>
 
-            <motion.p
-              custom={2}
-              initial="hidden"
-              animate="show"
-              variants={fadeUp}
-              className="mt-6 text-[17px] lg:text-[18px] text-text-secondary font-normal max-w-xl mx-auto lg:mx-0 leading-[1.6]"
-            >
-              Acesse fraldas geriátricas gratuitas pelo Programa Farmácia Popular com o laudo
-              emitido por nosso médico via telemedicina. Tudo conforme a regulamentação vigente.
-            </motion.p>
+          <ScrollReveal delay={0.2}>
+            <p className="text-lg text-muted-foreground mb-10 leading-relaxed font-light max-w-xl mx-auto">
+              Receba o laudo médico necessário para retirar fraldas geriátricas gratuitamente pelo
+              Programa Farmácia Popular. Avaliação online com médico CRM ativo, conforme Portaria
+              GM/MS 3.073/2024.
+            </p>
+          </ScrollReveal>
 
-            <motion.ul
-              custom={3}
-              initial="hidden"
-              animate="show"
-              variants={fadeUp}
-              className="mt-8 flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-5 justify-center lg:justify-start"
-            >
-              {bullets.map((b) => (
-                <li
-                  key={b.label}
-                  className="flex items-center gap-2.5 text-[14px] font-medium text-text-primary"
-                >
-                  <span className="w-7 h-7 rounded-full bg-accent-soft flex items-center justify-center">
-                    <b.icon className="w-3.5 h-3.5 text-accent" strokeWidth={2.25} />
-                  </span>
-                  {b.label}
-                </li>
-              ))}
-            </motion.ul>
-
-            <motion.div
-              custom={4}
-              initial="hidden"
-              animate="show"
-              variants={fadeUp}
-              className="mt-10 flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start"
-            >
+          <ScrollReveal delay={0.3}>
+            <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
               <Button
                 asChild
                 size="lg"
-                className="group w-full sm:w-auto rounded-lg h-14 px-7 text-[15px] font-semibold bg-accent hover:bg-accent/90 text-accent-foreground shadow-accent-glow gap-2 hover:-translate-y-0.5 transition-all"
-                data-event="cta_click"
-                data-plan="laudo"
+                className="w-full sm:w-auto rounded-full px-8 py-6 text-base shadow-xl shadow-primary/20 hover:-translate-y-0.5 transition-all gap-2"
               >
-                <a href="#precos">
-                  Solicitar Laudo — R$ 59
-                  <ArrowRight
-                    className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
-                    strokeWidth={2.5}
-                  />
+                <a href={WA_LINK} target="_blank" rel="noopener noreferrer">
+                  <FileText className="w-5 h-5" />
+                  Solicitar meu Laudo
                 </a>
               </Button>
-              <a
-                href="#como-funciona"
-                className="inline-flex items-center gap-1.5 text-[14px] font-semibold text-text-secondary hover:text-text-primary transition-colors ring-focus rounded px-2 py-1 underline underline-offset-4 decoration-border-strong hover:decoration-text-primary"
+              <Button
+                asChild
+                variant="outline"
+                size="lg"
+                className="w-full sm:w-auto rounded-full px-8 py-6 text-base bg-card hover:bg-secondary gap-2"
               >
-                Ver como funciona ↓
-              </a>
-            </motion.div>
+                <a href="#como-funciona">Ver como funciona</a>
+              </Button>
+            </div>
+          </ScrollReveal>
 
-            <motion.p
-              custom={5}
-              initial="hidden"
-              animate="show"
-              variants={fadeUp}
-              className="mt-5 text-[12px] text-text-tertiary tracking-tight max-w-md mx-auto lg:mx-0 leading-relaxed"
-            >
-              Pagamento único. Sem assinatura. Reembolso integral se não pudermos emitir.
-            </motion.p>
-          </div>
-
-          <motion.div
-            initial={{ opacity: 0, scale: 0.96 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
-            className="lg:col-span-5"
-          >
-            <div className="relative">
-              <div
-                className="absolute -inset-6 rounded-[40px] bg-gradient-to-br from-accent/15 via-primary/8 to-transparent blur-2xl"
-                aria-hidden="true"
-              />
-              <div className="relative aspect-square rounded-[32px] bg-surface-elevated border border-border overflow-hidden shadow-elegant">
-                <img
-                  src={heroImg}
-                  alt="Ilustração de duas mãos entrelaçadas em gesto de cuidado intergeracional"
-                  width={1024}
-                  height={1024}
-                  className="w-full h-full object-cover"
-                />
+          <ScrollReveal delay={0.4}>
+            <div className="mt-12 flex flex-wrap justify-center items-center gap-6 sm:gap-8 opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-500">
+              <div className="flex items-center gap-2">
+                <ShieldCheck className="w-5 h-5 text-primary" />
+                <span className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">
+                  ICP-Brasil
+                </span>
               </div>
-
-              {/* Floating credibility chip */}
-              <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 lg:left-auto lg:right-6 lg:translate-x-0 bg-card border border-border rounded-2xl shadow-card px-4 py-3 flex items-center gap-3 whitespace-nowrap">
-                <div className="w-9 h-9 rounded-full bg-accent-soft flex items-center justify-center">
-                  <Stethoscope className="w-4.5 h-4.5 text-accent" strokeWidth={2} />
-                </div>
-                <div className="leading-tight">
-                  <p className="text-[11px] text-text-tertiary uppercase tracking-wider font-semibold">
-                    Telemedicina
-                  </p>
-                  <p className="text-[13px] font-semibold text-text-primary">CFM 2.314/2022</p>
-                </div>
+              <div className="flex items-center gap-2">
+                <Lock className="w-5 h-5 text-primary" />
+                <span className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">
+                  Dados Seguros
+                </span>
+              </div>
+              <div className="flex items-center gap-2">
+                <BadgeCheck className="w-5 h-5 text-primary" />
+                <span className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">
+                  CRM Ativo
+                </span>
               </div>
             </div>
-          </motion.div>
+          </ScrollReveal>
         </div>
       </div>
     </section>
