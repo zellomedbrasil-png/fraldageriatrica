@@ -27,17 +27,21 @@ const steps = [
 
 const ComoFunciona = () => {
   return (
-    <section id="como-funciona" className="py-20 bg-card border-y border-border">
-      <div className="max-w-5xl mx-auto px-6">
+    <section
+      id="como-funciona"
+      className="py-24 lg:py-28 border-y border-border"
+      style={{ background: "var(--surface-elevated)" }}
+    >
+      <div className="max-w-6xl mx-auto px-6">
         <ScrollReveal>
-          <div className="mb-16">
+          <div className="mb-14 max-w-2xl">
             <span className="inline-block text-[11px] font-bold text-primary uppercase tracking-[0.18em] mb-3">
               Processo 100% online
             </span>
-            <h2 className="text-3xl font-semibold text-foreground tracking-tighter-custom">
+            <h2 className="text-3xl sm:text-4xl font-semibold text-foreground tracking-tightest leading-[1.1] mb-4">
               Atendimento simples, em conformidade com a regulamentação.
             </h2>
-            <p className="text-muted-foreground mt-2 font-light">
+            <p className="text-muted-foreground leading-relaxed">
               Avaliação por teleconsulta conforme a Resolução CFM 2.314/2022. Em caso de indicação
               clínica, o laudo é emitido em até 24 horas.
             </p>
@@ -45,32 +49,55 @@ const ComoFunciona = () => {
         </ScrollReveal>
 
         <div className="relative grid md:grid-cols-3 gap-6">
-          {/* Linha conectora pontilhada (desktop) */}
-          <div
+          {/* Linha conectora desenhada (desktop) */}
+          <svg
             aria-hidden="true"
-            className="hidden md:block absolute top-14 left-[16.66%] right-[16.66%] border-t border-dashed border-border z-0"
-          />
+            className="hidden md:block absolute top-[60px] left-[18%] right-[18%] z-0 h-[2px] w-[64%] overflow-visible"
+            preserveAspectRatio="none"
+            viewBox="0 0 100 2"
+          >
+            <line
+              x1="0"
+              y1="1"
+              x2="100"
+              y2="1"
+              stroke="var(--brand-primary)"
+              strokeWidth="1"
+              strokeDasharray="3 4"
+              opacity="0.35"
+            />
+          </svg>
           {steps.map((step, i) => (
             <ScrollReveal key={step.num} delay={i * 0.15}>
               <div
-                className={`rounded-3xl p-8 relative overflow-hidden group transition-colors duration-300 h-full z-10 ${
+                className={`rounded-3xl p-8 relative overflow-hidden group transition-all duration-300 h-full z-10 hover:-translate-y-1 ${
                   step.dark
-                    ? "bg-ink-900 border border-ink-800"
-                    : "bg-secondary border border-border hover:border-primary/30"
+                    ? "border border-white/5 shadow-elegant"
+                    : "bg-white border border-border shadow-card shadow-card-hover hover:border-primary/30"
                 }`}
+                style={
+                  step.dark
+                    ? { background: "var(--gradient-card-premium)" }
+                    : undefined
+                }
               >
                 <div className="relative z-10">
                   <div
-                    className={`w-12 h-12 rounded-2xl border flex items-center justify-center mb-6 shadow-sm ${
+                    className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-6 shadow-sm transition-transform duration-300 group-hover:scale-105 ${
                       step.dark
-                        ? "bg-white/10 border-white/10 text-white backdrop-blur-md"
-                        : "bg-card border-border text-foreground"
+                        ? "bg-white/10 border border-white/10 text-white backdrop-blur-md"
+                        : "text-white"
                     }`}
+                    style={
+                      step.dark
+                        ? undefined
+                        : { background: "var(--gradient-brand)" }
+                    }
                   >
-                    <span className="font-bold font-mono">{step.num}</span>
+                    <span className="font-bold font-display text-lg tabular-nums">{step.num}</span>
                   </div>
                   <h3
-                    className={`text-xl font-semibold mb-2 tracking-tight ${
+                    className={`text-xl font-semibold mb-3 tracking-tight ${
                       step.dark ? "text-white" : "text-foreground"
                     }`}
                   >
@@ -84,20 +111,20 @@ const ComoFunciona = () => {
                     {step.desc}
                   </p>
                   {step.dark && (
-                    <div className="mt-8 inline-flex items-center gap-2 text-primary text-xs font-semibold uppercase tracking-wider">
-                      <div className="w-2 h-2 rounded-full bg-primary animate-pulse-dot" />
+                    <div className="mt-8 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-white text-[11px] font-bold uppercase tracking-[0.14em]">
+                      <div className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse-dot" />
                       Em até 24 horas
                     </div>
                   )}
                 </div>
                 <step.Icon
-                  className={`absolute -bottom-4 -right-4 w-[140px] h-[140px] -rotate-[15deg] transition-colors duration-500 ${
-                    step.dark ? "text-white/5" : "text-ink-200 group-hover:text-primary/10"
+                  className={`absolute -bottom-4 -right-4 w-[140px] h-[140px] -rotate-[15deg] transition-all duration-500 group-hover:rotate-[-10deg] ${
+                    step.dark ? "text-white/5" : "text-ink-200 group-hover:text-primary/15"
                   }`}
                   strokeWidth={0.5}
                 />
                 {step.dark && (
-                  <div className="absolute top-0 right-0 w-64 h-64 bg-primary/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+                  <div className="absolute top-0 right-0 w-64 h-64 bg-accent/30 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
                 )}
               </div>
             </ScrollReveal>

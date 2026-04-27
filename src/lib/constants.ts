@@ -21,7 +21,8 @@ export type AnalyticsLocation =
   | "faq"
   | "sticky_mobile"
   | "para_quem"
-  | "farmacia_popular";
+  | "farmacia_popular"
+  | "cta_final";
 
 export function trackCtaClick(location: AnalyticsLocation) {
   if (typeof window === "undefined") return;

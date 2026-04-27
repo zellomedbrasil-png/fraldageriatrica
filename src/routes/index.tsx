@@ -7,6 +7,7 @@ import FarmaciaPopular from "@/components/landing/FarmaciaPopular";
 import EquipeClinica from "@/components/landing/EquipeClinica";
 import Precos from "@/components/landing/Precos";
 import FAQ, { faqItems } from "@/components/landing/FAQ";
+import CTAFinal from "@/components/landing/CTAFinal";
 import Footer from "@/components/landing/Footer";
 import MobileCTA from "@/components/landing/MobileCTA";
 import { SITE_URL, SITE_NAME } from "@/lib/constants";
@@ -135,6 +136,7 @@ function Index() {
         <FarmaciaPopular />
         <Precos />
         <FAQ />
+        <CTAFinal />
       </main>
       <Footer />
       <MobileCTA />
