@@ -4,6 +4,7 @@ import Hero from "@/components/landing/Hero";
 import ComoFunciona from "@/components/landing/ComoFunciona";
 import ParaQuem from "@/components/landing/ParaQuem";
 import FarmaciaPopular from "@/components/landing/FarmaciaPopular";
+import EquipeClinica from "@/components/landing/EquipeClinica";
 import Precos from "@/components/landing/Precos";
 import FAQ, { faqItems } from "@/components/landing/FAQ";
 import Footer from "@/components/landing/Footer";
@@ -130,6 +131,7 @@ function Index() {
         <Hero />
         <ComoFunciona />
         <ParaQuem />
+        <EquipeClinica />
         <FarmaciaPopular />
         <Precos />
         <FAQ />
