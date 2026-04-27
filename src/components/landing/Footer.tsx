@@ -1,4 +1,3 @@
-import { Stethoscope } from "lucide-react";
 import Logo from "./Logo";
 
 const Footer = () => {
@@ -34,23 +33,6 @@ const Footer = () => {
             >
               Contato
             </a>
-          </div>
-        </div>
-
-        {/* Bloco do responsável técnico — exigência CFM 2.314/2022 */}
-        <div className="rounded-2xl bg-card border border-border p-5 mb-8 flex items-start gap-3">
-          <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
-            <Stethoscope className="w-5 h-5 text-primary" strokeWidth={1.75} />
-          </div>
-          <div className="text-left">
-            <p className="text-xs font-semibold text-foreground uppercase tracking-wider">
-              Responsável Técnico
-            </p>
-            <p className="text-sm text-foreground mt-1">Dr. [Nome] — CRM/[UF] [número]</p>
-            <p className="text-xs text-muted-foreground mt-1 leading-relaxed">
-              Diretor Técnico Médico, conforme Resolução CFM nº 2.314/2022. Razão social: [Razão
-              Social] — CNPJ [00.000.000/0000-00].
-            </p>
           </div>
         </div>
 
