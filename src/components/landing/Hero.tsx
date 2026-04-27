@@ -58,8 +58,9 @@ const Hero = () => {
               <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
                 <Button
                   asChild
-                  size="lg"
-                  className="w-full sm:w-auto rounded-full px-8 py-6 text-base shadow-xl shadow-primary/20 hover:-translate-y-0.5 transition-all gap-2"
+                  variant="premium"
+                  size="xl"
+                  className="w-full sm:w-auto"
                 >
                   <a href={WA_LINK} target="_blank" rel="noopener noreferrer">
                     <FileText className="w-5 h-5" />
@@ -69,8 +70,8 @@ const Hero = () => {
                 <Button
                   asChild
                   variant="outline"
-                  size="lg"
-                  className="w-full sm:w-auto rounded-full px-8 py-6 text-base bg-card hover:bg-secondary gap-2"
+                  size="xl"
+                  className="w-full sm:w-auto"
                 >
                   <a href="#como-funciona">Como funciona</a>
                 </Button>
