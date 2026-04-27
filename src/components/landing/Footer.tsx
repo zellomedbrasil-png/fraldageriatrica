@@ -1,4 +1,5 @@
 import Logo from "./Logo";
+import { Link } from "@tanstack/react-router";
 
 const Footer = () => {
   return (
@@ -9,12 +10,24 @@ const Footer = () => {
             <div className="mb-4 opacity-90">
               <Logo />
             </div>
-            <p className="text-sm text-muted-foreground max-w-xs">
+            <p className="text-sm text-muted-foreground max-w-xs leading-relaxed">
               Plataforma de telemedicina para avaliação médica e emissão de laudo de fralda
               geriátrica.
             </p>
           </div>
-          <div className="flex gap-6">
+          <div className="flex flex-wrap gap-x-6 gap-y-2">
+            <Link
+              to="/como-funciona"
+              className="text-sm text-muted-foreground hover:text-primary transition-colors"
+            >
+              Como funciona
+            </Link>
+            <Link
+              to="/perguntas-frequentes"
+              className="text-sm text-muted-foreground hover:text-primary transition-colors"
+            >
+              FAQ
+            </Link>
             <a
               href="#"
               className="text-sm text-muted-foreground hover:text-primary transition-colors"
@@ -47,7 +60,7 @@ const Footer = () => {
         </div>
 
         <div className="mt-8 pt-6 border-t border-border">
-          <p className="text-[10px] text-muted-foreground/60 text-center leading-relaxed max-w-2xl mx-auto">
+          <p className="text-xs text-muted-foreground/80 text-center leading-relaxed max-w-2xl mx-auto">
             fraldageriatrica.com é uma plataforma de telemedicina especializada em emissão de
             laudos médicos para uso de fralda geriátrica, atuando conforme a Portaria GM/MS nº
             3.073/2024 e a Resolução CFM 2.314/2022. Este serviço não substitui acompanhamento

@@ -4,7 +4,8 @@ Este documento descreve os pontos legais sensíveis abordados na landing page e
 como o copy foi construído para evitar irregularidades sanitárias, médicas e
 publicitárias.
 
-Última auditoria: abril/2026 — alinhamento com CFM e políticas Google Ads/Search.
+Última auditoria: abril/2026 — alinhamento com CFM, políticas Google Ads/Search e
+remoção da política de reembolso da página pública (kit de melhorias).
 
 ---
 
@@ -60,6 +61,10 @@ Manual de Publicidade Médica do CFM:
 - ❌ Antes/depois ou depoimentos fictícios
 - ❌ "100% de aprovação", "garantia de laudo", "todo paciente recebe"
 - ❌ Imagens em situação de fragilidade ou degradação do paciente
+- ❌ "Devolvemos 100% do valor pago" / "Reembolso integral se não houver indicação"
+      (removido em abril/2026 — reduz percepção de vínculo entre pagamento e
+      resultado clínico, que pode ser interpretado como mercantilização do ato
+      médico pelo CFM e como claim financeiro pelo Google YMYL)
 
 ## 4. Política Google Ads/Search (YMYL — Healthcare)
 
@@ -69,7 +74,6 @@ A copy foi adequada às políticas do Google para conteúdo de saúde:
 - ✅ Sem **claims de resultado em saúde**
 - ✅ **Identificação clara do responsável técnico** com CRM (E-E-A-T)
 - ✅ Disclaimer no rodapé sobre o escopo do serviço
-- ✅ Política de reembolso explícita
 - ✅ Citação da regulamentação aplicável (Portaria 3.073/2024 e Resolução CFM
       2.314/2022) sempre que mencionado o benefício
 
@@ -82,8 +86,10 @@ A copy foi adequada às políticas do Google para conteúdo de saúde:
 A oferta única apresentada é **R$ 59 pela avaliação médica por telemedicina**.
 O laudo é o produto resultante da avaliação **se houver indicação clínica**.
 Caso o médico, por critério clínico, conclua que não há indicação para uso
-contínuo de fralda geriátrica, o valor pago é reembolsado integralmente em
-até 5 dias úteis.
+contínuo de fralda geriátrica, o laudo simplesmente não é emitido. Eventuais
+políticas internas de reembolso são tratadas em canal privado de atendimento
+e nos Termos de Uso, sem comunicação pública na landing — para evitar leitura
+de "garantia de laudo" ou de mercantilização do ato médico.
 
 > Importante: a versão anterior incluía um "Combo Praticidade" (R$ 138 com
 > pacote de fraldas via parceiro logístico). **Esse combo foi removido**. A
@@ -106,10 +112,31 @@ até 5 dias úteis.
 - [ ] Substituir `Dr. [Nome] — CRM/[UF] [número]` no rodapé pelos dados reais
       do diretor técnico responsável.
 - [ ] Substituir `[Razão Social]` e `CNPJ [00.000.000/0000-00]` no rodapé.
-- [ ] Inserir links reais para Termos de Uso, Política de Privacidade, LGPD e
-      Política de Reembolso.
+- [ ] Inserir links reais para Termos de Uso, Política de Privacidade e LGPD.
+      (A política de reembolso, se mantida internamente, deve constar nos Termos
+      de Uso — não na landing.)
 - [ ] Verificar necessidade de certificação LegitScript para Google Ads.
 - [ ] Inserir Pixel do Meta Ads e Google Tag Manager (placeholders previstos
       no `<head>`).
 - [ ] Validar copy final com assessoria jurídica especializada em saúde
       (recomendado: revisão por advogado com OAB e atuação em direito médico).
+
+---
+
+## 8. Kit de melhorias — abril/2026 (versão atual)
+
+Aplicado em uma única iteração, com foco em reforço de E-E-A-T, SEO e clareza
+de escopo:
+
+- Remoção total das menções a reembolso na landing (Hero, Preços, FAQ).
+- Novas seções: **Para quem é o serviço** (escopo claro) e **Programa Farmácia
+  Popular** (com link para a fonte oficial gov.br) — reforço de E-E-A-T.
+- Novas rotas standalone: `/como-funciona` e `/perguntas-frequentes`, cada uma
+  com `head()` próprio e canonical, melhorando indexação.
+- `sitemap.xml` e `robots.txt` adicionados em `public/`.
+- JSON-LD ampliado com `BreadcrumbList` e `sameAs` para o WhatsApp.
+- og:image dedicada (`/og-image.png` 1216×640) para compartilhamento social.
+- Sticky CTA mobile, trust strip refinado, skip-link e suporte a
+  `prefers-reduced-motion` (acessibilidade WCAG).
+- WhatsApp/preço/site centralizados em `src/lib/constants.ts`, com helper
+  `trackCtaClick` para futura integração com GTM/GA4.

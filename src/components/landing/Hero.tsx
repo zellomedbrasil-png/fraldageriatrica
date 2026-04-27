@@ -1,10 +1,8 @@
 "use client";
-import { ShieldCheck, Lock, BadgeCheck, FileText } from "lucide-react";
+import { ShieldCheck, Lock, BadgeCheck, MessageCircle, Headset } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import ScrollReveal from "./ScrollReveal";
-
-const WA_LINK =
-  "https://wa.me/5585991275429?text=Quero%20solicitar%20o%20laudo%20para%20fralda%20geri%C3%A1trica.";
+import { WA_LINK, trackCtaClick } from "@/lib/constants";
 
 const Hero = () => {
   return (
@@ -30,26 +28,22 @@ const Hero = () => {
           </ScrollReveal>
 
           <ScrollReveal delay={0.1}>
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-semibold text-foreground tracking-tighter-custom mb-6 leading-[1.1]">
-              Avaliação médica online para laudo de fralda geriátrica.{" "}
-              <br className="hidden sm:block" />
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold text-foreground tracking-tighter-custom mb-6 leading-[1.05]">
+              Laudo médico para fralda geriátrica,{" "}
               <span
                 className="text-transparent bg-clip-text"
                 style={{ backgroundImage: "var(--gradient-accent)" }}
               >
-                Em até 24 horas, sem sair de casa.
+                em até 24 horas.
               </span>
             </h1>
           </ScrollReveal>
 
           <ScrollReveal delay={0.2}>
-            <p className="text-lg text-muted-foreground mb-10 leading-relaxed font-light max-w-xl mx-auto">
+            <p className="text-base sm:text-lg text-muted-foreground mb-10 leading-relaxed font-light max-w-xl mx-auto">
               Atendimento por telemedicina com médico de CRM ativo. Em caso de indicação clínica,
-              emitimos o laudo aceito pelo Programa Farmácia Popular para retirada gratuita de
-              fraldas geriátricas (até 120/mês), conforme Portaria GM/MS nº 3.073/2024.{" "}
-              <strong className="text-foreground font-medium">
-                Se o médico não identificar indicação clínica, devolvemos 100% do valor pago.
-              </strong>
+              emitimos o laudo aceito pelo Programa Farmácia Popular para retirada das fraldas
+              geriátricas em farmácia credenciada, conforme Portaria GM/MS nº 3.073/2024.
             </p>
           </ScrollReveal>
 
@@ -62,8 +56,14 @@ const Hero = () => {
                   size="xl"
                   className="w-full sm:w-auto"
                 >
-                  <a href={WA_LINK} target="_blank" rel="noopener noreferrer">
-                    <FileText className="w-5 h-5" />
+                  <a
+                    href={WA_LINK}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Abrir WhatsApp para solicitar avaliação médica por R$ 59"
+                    onClick={() => trackCtaClick("hero")}
+                  >
+                    <MessageCircle className="w-5 h-5" />
                     Solicitar avaliação — R$ 59
                   </a>
                 </Button>
@@ -77,32 +77,32 @@ const Hero = () => {
                 </Button>
               </div>
               <p className="text-xs text-muted-foreground text-center max-w-md">
-                ✓ Pagamento único &nbsp;•&nbsp; ✓ Resposta em até 24h &nbsp;•&nbsp; ✓ Reembolso
-                integral se não houver indicação clínica
+                ✓ Pagamento único &nbsp;•&nbsp; ✓ Resposta em até 24h &nbsp;•&nbsp; ✓ Sem
+                assinatura
               </p>
             </div>
           </ScrollReveal>
 
           <ScrollReveal delay={0.4}>
-            <div className="mt-12 flex flex-wrap justify-center items-center gap-6 sm:gap-8 opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-500">
-              <div className="flex items-center gap-2">
-                <ShieldCheck className="w-5 h-5 text-primary" />
-                <span className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">
-                  Laudo com validade jurídica
+            <div className="mt-14 inline-flex flex-wrap justify-center items-center gap-x-5 gap-y-3 sm:gap-x-7 px-5 py-3 rounded-full border border-border bg-card/60 backdrop-blur-sm">
+              {[
+                { Icon: ShieldCheck, label: "Laudo com validade jurídica" },
+                { Icon: BadgeCheck, label: "Médico com CRM ativo" },
+                { Icon: Lock, label: "100% LGPD" },
+                { Icon: Headset, label: "Atendimento humano" },
+              ].map(({ Icon, label }, i, arr) => (
+                <span key={label} className="flex items-center gap-1.5">
+                  <Icon className="w-3.5 h-3.5 text-primary" strokeWidth={2.25} />
+                  <span className="text-[11px] font-semibold text-muted-foreground uppercase tracking-wider">
+                    {label}
+                  </span>
+                  {i < arr.length - 1 && (
+                    <span className="hidden sm:inline ml-2 text-border" aria-hidden="true">
+                      •
+                    </span>
+                  )}
                 </span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Lock className="w-5 h-5 text-primary" />
-                <span className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">
-                  100% LGPD
-                </span>
-              </div>
-              <div className="flex items-center gap-2">
-                <BadgeCheck className="w-5 h-5 text-primary" />
-                <span className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">
-                  Médico responsável
-                </span>
-              </div>
+              ))}
             </div>
           </ScrollReveal>
         </div>

@@ -30,7 +30,7 @@ export const Route = createRootRoute({
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { name: "author", content: "fraldageriatrica.com" },
-      { name: "theme-color", content: "#0F4C5C" },
+      { name: "theme-color", content: "#0EA5E9" },
     ],
     links: [
       {
@@ -41,6 +41,12 @@ export const Route = createRootRoute({
         rel: "preconnect",
         href: "https://fonts.googleapis.com",
       },
+      {
+        rel: "preconnect",
+        href: "https://fonts.gstatic.com",
+        crossOrigin: "anonymous",
+      },
+      { rel: "dns-prefetch", href: "https://wa.me" },
       {
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap",
@@ -54,7 +60,7 @@ export const Route = createRootRoute({
 
 function RootShell({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="pt-BR">
       <head>
         <HeadContent />
       </head>
