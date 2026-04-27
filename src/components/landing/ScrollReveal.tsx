@@ -22,22 +22,27 @@ const ScrollReveal = ({
   direction = "up",
 }: ScrollRevealProps) => {
   const ref = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(false);
+  // Start visible to keep SSR layout intact and avoid blank-page flashes.
+  // We only hide-and-animate after mount, when we know JS is available.
+  const [mounted, setMounted] = useState(false);
+  const [visible, setVisible] = useState(true);
 
   useEffect(() => {
+    setMounted(true);
     const node = ref.current;
     if (!node) return;
     if (typeof IntersectionObserver === "undefined") {
       setVisible(true);
       return;
     }
-    // If element is already in viewport at mount, reveal immediately.
     const rect = node.getBoundingClientRect();
     const vh = window.innerHeight || document.documentElement.clientHeight;
     if (rect.top < vh && rect.bottom > 0) {
       setVisible(true);
       return;
     }
+    // Out of view at mount: hide, then reveal on enter.
+    setVisible(false);
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -60,7 +65,9 @@ const ScrollReveal = ({
       style={{
         opacity: visible ? 1 : 0,
         transform: visible ? "translate3d(0,0,0)" : directionTransform[direction],
-        transition: `opacity 0.7s cubic-bezier(0.25,0.1,0.25,1) ${delay}s, transform 0.7s cubic-bezier(0.25,0.1,0.25,1) ${delay}s`,
+        transition: mounted
+          ? `opacity 0.7s cubic-bezier(0.25,0.1,0.25,1) ${delay}s, transform 0.7s cubic-bezier(0.25,0.1,0.25,1) ${delay}s`
+          : "none",
         willChange: visible ? "auto" : "opacity, transform",
       }}
     >
