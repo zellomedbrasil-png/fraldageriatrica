@@ -34,10 +34,7 @@ const Header = () => {
           >
             Dúvidas
           </a>
-          <Button
-            asChild
-            className="rounded-full shadow-lg shadow-primary/20 bg-primary hover:bg-primary/90 text-primary-foreground gap-2"
-          >
+          <Button asChild variant="premium" size="pill">
             <a href={WA_LINK} target="_blank" rel="noopener noreferrer">
               Solicitar avaliação
               <ArrowRight className="w-4 h-4" />
@@ -79,10 +76,7 @@ const Header = () => {
           >
             Dúvidas
           </a>
-          <Button
-            asChild
-            className="w-full rounded-full bg-primary hover:bg-primary/90 text-primary-foreground gap-2 mt-2"
-          >
+          <Button asChild variant="premium" size="pill" className="w-full mt-2">
             <a
               href={WA_LINK}
               target="_blank"

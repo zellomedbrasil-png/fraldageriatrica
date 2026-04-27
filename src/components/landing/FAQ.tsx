@@ -95,11 +95,7 @@ const FAQ = () => {
 
         <ScrollReveal delay={0.3}>
           <div className="mt-16 text-center">
-            <Button
-              asChild
-              size="lg"
-              className="rounded-full px-8 py-6 text-base shadow-xl shadow-primary/20 hover:-translate-y-0.5 transition-all gap-2"
-            >
+            <Button asChild variant="premium" size="xl">
               <a href={WA_LINK} target="_blank" rel="noopener noreferrer">
                 Solicitar avaliação — R$ 59
                 <ArrowRight className="w-[18px] h-[18px]" />

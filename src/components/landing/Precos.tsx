@@ -75,11 +75,7 @@ const Precos = () => {
                 ))}
               </ul>
 
-              <Button
-                asChild
-                size="lg"
-                className="w-full rounded-full py-6 text-base shadow-xl shadow-primary/20 hover:-translate-y-0.5 transition-all"
-              >
+              <Button asChild variant="premium" size="xl" className="w-full">
                 <a href={WA_LINK} target="_blank" rel="noopener noreferrer">
                   Solicitar avaliação médica
                 </a>
