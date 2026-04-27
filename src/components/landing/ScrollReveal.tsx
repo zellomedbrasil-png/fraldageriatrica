@@ -31,6 +31,13 @@ const ScrollReveal = ({
       setVisible(true);
       return;
     }
+    // If element is already in viewport at mount, reveal immediately.
+    const rect = node.getBoundingClientRect();
+    const vh = window.innerHeight || document.documentElement.clientHeight;
+    if (rect.top < vh && rect.bottom > 0) {
+      setVisible(true);
+      return;
+    }
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
