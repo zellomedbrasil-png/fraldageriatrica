@@ -5,9 +5,11 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
-import { MessageCircle } from "lucide-react";
+import { MessageCircle, Plus } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
 import { WA_LINK, trackCtaClick } from "@/lib/constants";
+import * as AccordionPrimitive from "@radix-ui/react-accordion";
+import { cn } from "@/lib/utils";
 
 export const faqItems = [
   {
@@ -62,34 +64,50 @@ const FAQ = () => {
   const col2 = faqItems.slice(half);
 
   return (
-    <section id="faq" className="py-24 bg-card border-t border-border">
+    <section
+      id="faq"
+      className="py-24 lg:py-28 border-t border-border"
+      style={{ background: "var(--surface-elevated)" }}
+    >
       <div className="max-w-5xl mx-auto px-6">
         <ScrollReveal>
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-semibold text-foreground tracking-tighter-custom mb-4">
+          <div className="text-center mb-14 max-w-2xl mx-auto">
+            <span className="inline-block text-[11px] font-bold text-primary uppercase tracking-[0.18em] mb-3">
+              Dúvidas
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-semibold text-foreground tracking-tightest leading-[1.1] mb-4">
               Perguntas frequentes
             </h2>
-            <p className="text-muted-foreground text-sm max-w-lg mx-auto">
+            <p className="text-muted-foreground leading-relaxed">
               Tudo o que você precisa saber sobre o processo, regulamentação e seu direito ao
               benefício.
             </p>
           </div>
         </ScrollReveal>
 
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid md:grid-cols-2 gap-x-10 gap-y-2">
           {[col1, col2].map((col, ci) => (
             <ScrollReveal key={ci} delay={ci * 0.15}>
-              <Accordion type="single" collapsible className="space-y-4">
+              <Accordion type="single" collapsible className="divide-y divide-border">
                 {col.map((item, i) => (
                   <AccordionItem
                     key={i}
                     value={`item-${ci}-${i}`}
-                    className="border border-border rounded-xl bg-card hover:border-primary/30 transition-colors px-5"
+                    className="border-0 first:border-t-0"
                   >
-                    <AccordionTrigger className="text-left font-medium text-foreground text-sm hover:no-underline">
-                      {item.q}
-                    </AccordionTrigger>
-                    <AccordionContent className="text-sm text-muted-foreground leading-relaxed">
+                    <AccordionPrimitive.Header className="flex">
+                      <AccordionPrimitive.Trigger
+                        className={cn(
+                          "group flex flex-1 items-center justify-between py-5 text-left text-[15px] font-semibold text-foreground transition-colors hover:text-primary [&[data-state=open]>span>svg]:rotate-45 [&[data-state=open]>span]:bg-primary [&[data-state=open]>span>svg]:text-white",
+                        )}
+                      >
+                        <span className="pr-4">{item.q}</span>
+                        <span className="shrink-0 w-7 h-7 rounded-full border border-border flex items-center justify-center transition-all duration-200 bg-white">
+                          <Plus className="w-3.5 h-3.5 text-muted-foreground transition-all duration-200" strokeWidth={2.5} />
+                        </span>
+                      </AccordionPrimitive.Trigger>
+                    </AccordionPrimitive.Header>
+                    <AccordionContent className="text-[14px] text-muted-foreground leading-relaxed pr-10 -mt-1">
                       {item.a}
                     </AccordionContent>
                   </AccordionItem>
@@ -101,7 +119,10 @@ const FAQ = () => {
 
         <ScrollReveal delay={0.3}>
           <div className="mt-16 text-center">
-            <Button asChild variant="premium" size="xl">
+            <p className="text-sm text-muted-foreground mb-4">
+              Ainda tem dúvidas? Fale com a equipe pelo WhatsApp.
+            </p>
+            <Button asChild variant="premium" size="xl" className="animate-glow-pulse">
               <a
                 href={WA_LINK}
                 target="_blank"
