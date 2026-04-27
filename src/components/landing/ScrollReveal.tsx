@@ -39,7 +39,7 @@ const ScrollReveal = ({
     <motion.div
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true, margin: "-80px" }}
+      viewport={{ once: true, amount: 0.15 }}
       variants={variants}
       className={className}
     >
