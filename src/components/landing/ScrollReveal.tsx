@@ -1,6 +1,6 @@
 "use client";
-import { motion, useReducedMotion, type Variants } from "framer-motion";
-import type { ReactNode } from "react";
+import { motion, useReducedMotion, useInView, type Variants } from "framer-motion";
+import { useRef, type ReactNode } from "react";
 
 interface ScrollRevealProps {
   children: ReactNode;
@@ -23,6 +23,8 @@ const ScrollReveal = ({
   direction = "up",
 }: ScrollRevealProps) => {
   const reduce = useReducedMotion();
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, amount: 0.1 });
   const offset = reduce ? { x: 0, y: 0 } : directionOffset[direction];
 
   const variants: Variants = {
@@ -37,9 +39,9 @@ const ScrollReveal = ({
 
   return (
     <motion.div
+      ref={ref}
       initial="hidden"
-      whileInView="show"
-      viewport={{ once: true, amount: 0.15 }}
+      animate={inView ? "show" : "hidden"}
       variants={variants}
       className={className}
     >
