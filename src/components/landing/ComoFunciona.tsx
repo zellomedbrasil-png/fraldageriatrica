@@ -44,11 +44,16 @@ const ComoFunciona = () => {
           </div>
         </ScrollReveal>
 
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="relative grid md:grid-cols-3 gap-6">
+          {/* Linha conectora pontilhada (desktop) */}
+          <div
+            aria-hidden="true"
+            className="hidden md:block absolute top-14 left-[16.66%] right-[16.66%] border-t border-dashed border-border z-0"
+          />
           {steps.map((step, i) => (
             <ScrollReveal key={step.num} delay={i * 0.15}>
               <div
-                className={`rounded-3xl p-8 relative overflow-hidden group transition-colors duration-300 h-full ${
+                className={`rounded-3xl p-8 relative overflow-hidden group transition-colors duration-300 h-full z-10 ${
                   step.dark
                     ? "bg-ink-900 border border-ink-800"
                     : "bg-secondary border border-border hover:border-primary/30"
