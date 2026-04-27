@@ -1,5 +1,6 @@
-import { ClipboardCheck, Stethoscope, FileCheck } from "lucide-react";
+import { ClipboardCheck, Stethoscope, FileCheck, ArrowRight } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
+import { WA_LINK, trackCtaClick } from "@/lib/constants";
 
 const steps = [
   {
@@ -130,6 +131,21 @@ const ComoFunciona = () => {
             </ScrollReveal>
           ))}
         </div>
+
+        <ScrollReveal delay={0.4}>
+          <div className="mt-10 flex justify-center md:justify-end">
+            <a
+              href={WA_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => trackCtaClick("hero")}
+              className="group inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:text-[color:var(--brand-primary-dark)] transition-colors"
+            >
+              Começar pelo WhatsApp
+              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
+            </a>
+          </div>
+        </ScrollReveal>
       </div>
     </section>
   );

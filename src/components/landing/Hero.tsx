@@ -96,8 +96,7 @@ const Hero = () => {
                 </Button>
               </div>
               <p className="text-[13px] text-muted-foreground/90 max-w-lg">
-                Pagamento único &nbsp;·&nbsp; Resposta em até 24h &nbsp;·&nbsp; Sem assinatura
-                &nbsp;·&nbsp; Atendimento humano pelo WhatsApp
+                Pagamento único &nbsp;·&nbsp; Sem assinatura
               </p>
             </ScrollReveal>
           </div>

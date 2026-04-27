@@ -91,16 +91,16 @@ const Precos = () => {
                   href={WA_LINK}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label="Abrir WhatsApp para solicitar avaliação médica"
+                  aria-label="Solicitar avaliação agora pelo WhatsApp"
                   onClick={() => trackCtaClick("precos")}
                 >
                   <MessageCircle className="w-5 h-5" />
-                  Solicitar avaliação agora
+                  Quero solicitar agora
                   <Lock className="w-3.5 h-3.5 opacity-70" />
                 </a>
               </Button>
               <p className="text-[11px] text-muted-foreground mt-4">
-                Pagamento seguro via Pix, cartão ou boleto
+                Você é redirecionado para o WhatsApp · Pagamento seguro
               </p>
             </div>
           </div>

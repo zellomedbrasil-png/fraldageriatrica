@@ -49,11 +49,11 @@ const Header = () => {
               href={WA_LINK}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Abrir WhatsApp para solicitar avaliação médica"
+              aria-label="Abrir conversa no WhatsApp"
               onClick={() => trackCtaClick("header")}
             >
               <MessageCircle className="w-4 h-4" />
-              Solicitar avaliação
+              Falar no WhatsApp
             </a>
           </Button>
         </div>
@@ -101,14 +101,14 @@ const Header = () => {
               href={WA_LINK}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Abrir WhatsApp para solicitar avaliação médica"
+              aria-label="Abrir conversa no WhatsApp"
               onClick={() => {
                 trackCtaClick("header_mobile");
                 setMobileOpen(false);
               }}
             >
               <MessageCircle className="w-4 h-4" />
-              Solicitar avaliação
+              Falar no WhatsApp
             </a>
           </Button>
         </div>
