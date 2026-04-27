@@ -28,7 +28,7 @@ const MobileCTA = () => {
       <div className="rounded-2xl border border-border bg-card/95 backdrop-blur-md shadow-elegant px-3 py-2 flex items-center gap-3">
         <div className="flex-1 min-w-0">
           <p className="text-[11px] font-semibold text-primary uppercase tracking-wider leading-none">
-            Avaliação médica
+            Laudo geriátrico
           </p>
           <p className="text-sm font-semibold text-foreground leading-tight mt-0.5">
             {PRICE_LABEL} • pagamento único

@@ -38,7 +38,7 @@ const CTAFinal = () => {
               <div className="max-w-2xl">
                 <span className="inline-flex items-center gap-2 text-[11px] font-bold text-white/80 uppercase tracking-[0.18em] mb-4">
                   <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse-dot" />
-                  Pronto para começar?
+                  Vamos cuidar disso juntos
                 </span>
                 <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-semibold tracking-tightest leading-[1.05] mb-4 text-white">
                   Garanta as fraldas do seu familiar — sem fila, sem burocracia.
@@ -73,7 +73,7 @@ const CTAFinal = () => {
                     href={WA_LINK}
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label="Abrir WhatsApp para solicitar avaliação médica"
+                    aria-label="Solicitar avaliação pelo WhatsApp"
                     onClick={() => trackCtaClick("cta_final")}
                   >
                     <MessageCircle className="w-5 h-5" />
@@ -81,7 +81,7 @@ const CTAFinal = () => {
                   </a>
                 </Button>
                 <p className="text-[12px] text-white/60 lg:text-right">
-                  Pix, cartão ou boleto · Resposta em até 24h
+                  Tudo pelo WhatsApp · Resposta em até 24h
                 </p>
               </div>
             </div>
