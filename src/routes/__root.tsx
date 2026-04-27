@@ -30,7 +30,7 @@ export const Route = createRootRoute({
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { name: "author", content: "fraldageriatrica.com" },
-      { name: "theme-color", content: "#0EA5E9" },
+      { name: "theme-color", content: "#1E5AA8" },
     ],
     links: [
       {
@@ -49,7 +49,7 @@ export const Route = createRootRoute({
       { rel: "dns-prefetch", href: "https://wa.me" },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Inter+Tight:wght@500;600;700&display=swap",
       },
     ],
   }),

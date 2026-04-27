@@ -1,6 +1,5 @@
 "use client";
-import { motion, useReducedMotion, type Variants } from "framer-motion";
-import type { ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 
 interface ScrollRevealProps {
   children: ReactNode;
@@ -9,11 +8,11 @@ interface ScrollRevealProps {
   direction?: "up" | "down" | "left" | "right";
 }
 
-const directionOffset = {
-  up: { y: 40, x: 0 },
-  down: { y: -40, x: 0 },
-  left: { x: 40, y: 0 },
-  right: { x: -40, y: 0 },
+const directionTransform: Record<string, string> = {
+  up: "translate3d(0, 24px, 0)",
+  down: "translate3d(0, -24px, 0)",
+  left: "translate3d(24px, 0, 0)",
+  right: "translate3d(-24px, 0, 0)",
 };
 
 const ScrollReveal = ({
@@ -22,29 +21,58 @@ const ScrollReveal = ({
   className = "",
   direction = "up",
 }: ScrollRevealProps) => {
-  const reduce = useReducedMotion();
-  const offset = reduce ? { x: 0, y: 0 } : directionOffset[direction];
+  const ref = useRef<HTMLDivElement>(null);
+  // Start visible to keep SSR layout intact and avoid blank-page flashes.
+  // We only hide-and-animate after mount, when we know JS is available.
+  const [mounted, setMounted] = useState(false);
+  const [visible, setVisible] = useState(true);
 
-  const variants: Variants = {
-    hidden: { opacity: 0, ...offset },
-    show: {
-      opacity: 1,
-      x: 0,
-      y: 0,
-      transition: { duration: 0.6, delay, ease: [0.25, 0.1, 0.25, 1] },
-    },
-  };
+  useEffect(() => {
+    setMounted(true);
+    const node = ref.current;
+    if (!node) return;
+    if (typeof IntersectionObserver === "undefined") {
+      setVisible(true);
+      return;
+    }
+    const rect = node.getBoundingClientRect();
+    const vh = window.innerHeight || document.documentElement.clientHeight;
+    if (rect.top < vh && rect.bottom > 0) {
+      setVisible(true);
+      return;
+    }
+    // Out of view at mount: hide, then reveal on enter.
+    setVisible(false);
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setVisible(true);
+            io.disconnect();
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -40px 0px" },
+    );
+    io.observe(node);
+    return () => io.disconnect();
+  }, []);
 
   return (
-    <motion.div
-      initial="hidden"
-      whileInView="show"
-      viewport={{ once: true, margin: "-80px" }}
-      variants={variants}
+    <div
+      ref={ref}
       className={className}
+      style={{
+        opacity: visible ? 1 : 0,
+        transform: visible ? "translate3d(0,0,0)" : directionTransform[direction],
+        transition: mounted
+          ? `opacity 0.7s cubic-bezier(0.25,0.1,0.25,1) ${delay}s, transform 0.7s cubic-bezier(0.25,0.1,0.25,1) ${delay}s`
+          : "none",
+        willChange: visible ? "auto" : "opacity, transform",
+      }}
     >
       {children}
-    </motion.div>
+    </div>
   );
 };
 
