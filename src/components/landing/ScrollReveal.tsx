@@ -1,6 +1,5 @@
 "use client";
-import { motion, useReducedMotion, useInView, type Variants } from "framer-motion";
-import { useRef, type ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 
 interface ScrollRevealProps {
   children: ReactNode;
@@ -9,11 +8,11 @@ interface ScrollRevealProps {
   direction?: "up" | "down" | "left" | "right";
 }
 
-const directionOffset = {
-  up: { y: 40, x: 0 },
-  down: { y: -40, x: 0 },
-  left: { x: 40, y: 0 },
-  right: { x: -40, y: 0 },
+const directionTransform: Record<string, string> = {
+  up: "translate3d(0, 24px, 0)",
+  down: "translate3d(0, -24px, 0)",
+  left: "translate3d(24px, 0, 0)",
+  right: "translate3d(-24px, 0, 0)",
 };
 
 const ScrollReveal = ({
@@ -22,31 +21,44 @@ const ScrollReveal = ({
   className = "",
   direction = "up",
 }: ScrollRevealProps) => {
-  const reduce = useReducedMotion();
   const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, amount: 0.1 });
-  const offset = reduce ? { x: 0, y: 0 } : directionOffset[direction];
+  const [visible, setVisible] = useState(false);
 
-  const variants: Variants = {
-    hidden: { opacity: 0, ...offset },
-    show: {
-      opacity: 1,
-      x: 0,
-      y: 0,
-      transition: { duration: 0.6, delay, ease: [0.25, 0.1, 0.25, 1] },
-    },
-  };
+  useEffect(() => {
+    const node = ref.current;
+    if (!node) return;
+    if (typeof IntersectionObserver === "undefined") {
+      setVisible(true);
+      return;
+    }
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setVisible(true);
+            io.disconnect();
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -40px 0px" },
+    );
+    io.observe(node);
+    return () => io.disconnect();
+  }, []);
 
   return (
-    <motion.div
+    <div
       ref={ref}
-      initial="hidden"
-      animate={inView ? "show" : "hidden"}
-      variants={variants}
       className={className}
+      style={{
+        opacity: visible ? 1 : 0,
+        transform: visible ? "translate3d(0,0,0)" : directionTransform[direction],
+        transition: `opacity 0.7s cubic-bezier(0.25,0.1,0.25,1) ${delay}s, transform 0.7s cubic-bezier(0.25,0.1,0.25,1) ${delay}s`,
+        willChange: visible ? "auto" : "opacity, transform",
+      }}
     >
       {children}
-    </motion.div>
+    </div>
   );
 };
 
