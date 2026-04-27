@@ -1,9 +1,7 @@
-import { Check, ShieldCheck, Info } from "lucide-react";
+import { Check, Info, MessageCircle, CreditCard } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import ScrollReveal from "./ScrollReveal";
-
-const WA_LINK =
-  "https://wa.me/5585991275429?text=Quero%20solicitar%20a%20avalia%C3%A7%C3%A3o%20m%C3%A9dica%20para%20laudo%20de%20fralda%20geri%C3%A1trica.";
+import { WA_LINK, trackCtaClick } from "@/lib/constants";
 
 const included: string[] = [
   "Avaliação clínica com médico inscrito no CRM",
@@ -11,7 +9,7 @@ const included: string[] = [
   "Validade do laudo: 180 dias, conforme Portaria GM/MS nº 3.073/2024",
   "Atendimento integralmente pelo WhatsApp",
   "Resposta da equipe médica em até 24 horas úteis",
-  "Reembolso integral se não houver indicação clínica para emissão",
+  "Sem assinatura, sem fidelidade, sem cobrança recorrente",
 ];
 
 const Precos = () => {
@@ -59,41 +57,41 @@ const Precos = () => {
                 </span>
                 <span className="text-sm text-muted-foreground">,00</span>
               </div>
-              <p className="text-xs text-muted-foreground mb-8">
+              <p className="text-xs text-muted-foreground mb-4">
                 Pagamento único. Sem assinatura. Sem renovação automática.
               </p>
 
-              <ul className="space-y-3 text-left mb-8">
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/10 text-primary text-[11px] font-semibold uppercase tracking-wider mb-8">
+                <CreditCard className="w-3.5 h-3.5" />
+                Pix, cartão ou boleto
+              </div>
+
+              <ul className="space-y-3.5 text-left mb-8">
                 {included.map((item) => (
                   <li
                     key={item}
-                    className="flex items-start gap-3 text-sm text-muted-foreground"
+                    className="flex items-start gap-3 text-sm text-muted-foreground leading-relaxed"
                   >
-                    <Check className="w-4 h-4 text-primary shrink-0 mt-0.5" />
+                    <span className="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
+                      <Check className="w-3 h-3 text-primary" strokeWidth={3} />
+                    </span>
                     <span>{item}</span>
                   </li>
                 ))}
               </ul>
 
               <Button asChild variant="premium" size="xl" className="w-full">
-                <a href={WA_LINK} target="_blank" rel="noopener noreferrer">
+                <a
+                  href={WA_LINK}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Abrir WhatsApp para solicitar avaliação médica"
+                  onClick={() => trackCtaClick("precos")}
+                >
+                  <MessageCircle className="w-5 h-5" />
                   Solicitar avaliação médica
                 </a>
               </Button>
-
-              <div className="mt-6 rounded-xl bg-primary/5 border border-primary/15 p-4 flex items-start gap-3 text-left">
-                <ShieldCheck className="w-5 h-5 text-primary shrink-0 mt-0.5" />
-                <div>
-                  <p className="text-sm font-semibold text-foreground">
-                    Política de Reembolso
-                  </p>
-                  <p className="text-xs text-muted-foreground mt-1 leading-relaxed">
-                    Caso a avaliação clínica não identifique indicação para uso contínuo de fralda
-                    geriátrica, o laudo não é emitido e o valor pago é reembolsado integralmente em
-                    até 5 dias úteis.
-                  </p>
-                </div>
-              </div>
             </div>
           </div>
         </ScrollReveal>

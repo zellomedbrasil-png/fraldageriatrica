@@ -5,11 +5,9 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { MessageCircle } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
-
-const WA_LINK =
-  "https://wa.me/5585991275429?text=Quero%20solicitar%20a%20avalia%C3%A7%C3%A3o%20m%C3%A9dica%20para%20laudo%20de%20fralda%20geri%C3%A1trica.";
+import { WA_LINK, trackCtaClick } from "@/lib/constants";
 
 export const faqItems = [
   {
@@ -26,7 +24,7 @@ export const faqItems = [
   },
   {
     q: "O laudo pode ser recusado?",
-    a: "Sim. A emissão do laudo depende da avaliação clínica individual e do critério do médico responsável. Se a avaliação não identificar indicação para uso contínuo de fralda geriátrica, o laudo não é emitido e reembolsamos 100% do valor pago em até 5 dias úteis.",
+    a: "Sim. A emissão depende exclusivamente da avaliação clínica individual e do critério do médico responsável. Quando não há indicação para uso contínuo de fralda geriátrica, o laudo não é emitido.",
   },
   {
     q: "Por quanto tempo o laudo é válido?",
@@ -47,6 +45,14 @@ export const faqItems = [
   {
     q: "Vocês vendem fraldas?",
     a: "Não. Somos exclusivamente um serviço médico de emissão de laudos. A distribuição gratuita das fraldas é feita pelo Programa Farmácia Popular do Brasil em farmácias credenciadas.",
+  },
+  {
+    q: "Vocês são uma clínica médica?",
+    a: "Somos uma plataforma de telemedicina que conecta o paciente a médicos com CRM ativo, atuando conforme a Resolução CFM nº 2.314/2022. Toda avaliação clínica e emissão de laudo é de responsabilidade do médico assistente, identificado no documento.",
+  },
+  {
+    q: "Quais documentos preciso enviar?",
+    a: "Documento de identidade com foto (RG ou CNH) do paciente, CPF e — quando houver — receitas, laudos ou relatórios médicos anteriores que ajudem na avaliação. Toda a coleta é feita pelo WhatsApp e os dados são tratados conforme a LGPD.",
   },
 ];
 
@@ -96,9 +102,15 @@ const FAQ = () => {
         <ScrollReveal delay={0.3}>
           <div className="mt-16 text-center">
             <Button asChild variant="premium" size="xl">
-              <a href={WA_LINK} target="_blank" rel="noopener noreferrer">
+              <a
+                href={WA_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Abrir WhatsApp para solicitar avaliação médica"
+                onClick={() => trackCtaClick("faq")}
+              >
+                <MessageCircle className="w-[18px] h-[18px]" />
                 Solicitar avaliação — R$ 59
-                <ArrowRight className="w-[18px] h-[18px]" />
               </a>
             </Button>
           </div>
