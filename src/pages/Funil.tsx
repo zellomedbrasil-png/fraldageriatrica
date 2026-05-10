@@ -44,7 +44,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
 // ───────────── Config
-const TOTAL = 12;
+const TOTAL = 11;
 const PRECO_LAUDO = 49;
 const MP_LINK = "https://mpago.la/22jiVhZ";
 const WA_NUMBER = "5585991275429";
@@ -212,7 +212,7 @@ const FREQ_ECONOMIA: Record<Freq, number> = {
 // ───────────── Componentes UI
 
 const Logo = () => (
-  <div className="flex items-center gap-3">
+  <a href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
     <div className="relative w-10 h-10 rounded-xl bg-sky-500/15 border border-sky-400/30 flex items-center justify-center text-sky-400">
       <Shield className="w-5 h-5" strokeWidth={2} />
       <Plus
@@ -228,7 +228,7 @@ const Logo = () => (
         Direito ao SUS · Telemedicina
       </div>
     </div>
-  </div>
+  </a>
 );
 
 const ProgressBar = ({ step }: { step: number }) => {
@@ -477,40 +477,11 @@ const Funil = () => {
             </section>
           )}
 
-          {/* STEP 2 */}
+{/* STEP 2 */}
           {s.step === 2 && (
             <section>
               <StepHeader
-                eyebrow="Etapa 02 · Confirmando o direito"
-                title={
-                  <>
-                    Qual a <em className="text-sky-400 not-italic">idade</em> da pessoa?
-                  </>
-                }
-                desc="A lei federal garante fraldas gratuitas a partir dos 60 anos, ou em qualquer idade para pessoas com deficiência."
-              />
-              <InfoNote icon={<ShieldCheck className="w-4 h-4" />}>
-                <strong className="text-white">Quem tem direito:</strong> pessoas com <strong className="text-white">60+ anos</strong> ou <strong className="text-white">PcD em qualquer idade</strong> (com CID na receita).
-              </InfoNote>
-              <OptionList
-                selected={s.idade}
-                onSelect={choose("idade", 3)}
-                options={[
-                  { value: "60-70", icon: <Calendar className="w-5 h-5" />, title: "60 a 70 anos" },
-                  { value: "71-80", icon: <Calendar className="w-5 h-5" />, title: "71 a 80 anos" },
-                  { value: "80+", icon: <Calendar className="w-5 h-5" />, title: "Mais de 80 anos" },
-                  { value: "pcd", icon: <Accessibility className="w-5 h-5" />, title: "Menos de 60 anos", sub: "Pessoa com deficiência" },
-                ]}
-              />
-              <BackBtn onClick={() => goto(1)} />
-            </section>
-          )}
-
-          {/* STEP 3 */}
-          {s.step === 3 && (
-            <section>
-              <StepHeader
-                eyebrow="Etapa 03 · Condição clínica"
+                eyebrow="Etapa 02 · Condição clínica"
                 title={
                   <>
                     Apresenta alguma <em className="text-sky-400 not-italic">dessas condições?</em>
@@ -523,7 +494,7 @@ const Funil = () => {
               </InfoNote>
               <OptionList
                 selected={s.condicao}
-                onSelect={choose("condicao", 4)}
+                onSelect={choose("condicao", 3)}
                 options={[
                   { value: "urinaria", icon: <Droplet className="w-5 h-5" />, title: "Incontinência urinária", sub: "Perda involuntária de urina" },
                   { value: "fecal", icon: <Droplets className="w-5 h-5" />, title: "Incontinência fecal", sub: "Perda involuntária de fezes" },
@@ -531,15 +502,15 @@ const Funil = () => {
                   { value: "acamado", icon: <BedDouble className="w-5 h-5" />, title: "Acamado(a) ou imobilizado(a)", sub: "Mobilidade reduzida" },
                 ]}
               />
-              <BackBtn onClick={() => goto(2)} />
+              <BackBtn onClick={() => goto(1)} />
             </section>
           )}
 
-          {/* STEP 4 */}
-          {s.step === 4 && (
+          {/* STEP 2 */}
+          {s.step === 3 && (
             <section>
               <StepHeader
-                eyebrow="Etapa 04 · Situação atual"
+                eyebrow="Etapa 03 · Situação atual"
                 title={
                   <>
                     Hoje, vocês já <em className="text-sky-400 not-italic">compram</em> fralda?
@@ -549,7 +520,7 @@ const Funil = () => {
               />
               <OptionList
                 selected={s.gasto}
-                onSelect={choose("gasto", 5)}
+                onSelect={choose("gasto", 4)}
                 options={[
                   { value: "alto", icon: <TrendingDown className="w-5 h-5" />, title: "Sim, mais de R$ 300 por mês", sub: "Pesa bastante no orçamento" },
                   { value: "economiza", icon: <PiggyBank className="w-5 h-5" />, title: "Sim, tentamos economizar", sub: "Difícil, mas a gente se vira" },
@@ -557,15 +528,15 @@ const Funil = () => {
                   { value: "outro", icon: <Building2 className="w-5 h-5" />, title: "Conseguimos por outro meio", sub: "Burocrático e demorado" },
                 ]}
               />
-              <BackBtn onClick={() => goto(3)} />
+              <BackBtn onClick={() => goto(2)} />
             </section>
           )}
 
-          {/* STEP 5 — Educacional */}
-          {s.step === 5 && (
+          {/* STEP 4 — Educacional */}
+          {s.step === 4 && (
             <section>
               <StepHeader
-                eyebrow="Etapa 05 · Antes de continuar"
+                eyebrow="Etapa 04 · Antes de continuar"
                 title={
                   <>
                     Uma <em className="text-sky-400 not-italic">dúvida</em> que quase todo mundo tem
@@ -654,18 +625,18 @@ const Funil = () => {
                 </p>
               </div>
 
-              <PrimaryBtn onClick={() => goto(6)}>
+              <PrimaryBtn onClick={() => goto(5)}>
                 Entendi · quero meu laudo
               </PrimaryBtn>
-              <BackBtn onClick={() => goto(4)} />
+              <BackBtn onClick={() => goto(3)} />
             </section>
           )}
 
-          {/* STEP 6 — Tamanho */}
-          {s.step === 6 && (
+          {/* STEP 5 — Tamanho */}
+          {s.step === 5 && (
             <section>
               <StepHeader
-                eyebrow="Etapa 06 · Personalização"
+                eyebrow="Etapa 05 · Personalização"
                 title={
                   <>
                     Qual o <em className="text-sky-400 not-italic">tamanho</em> da fralda?
@@ -681,7 +652,7 @@ const Funil = () => {
                 selected={s.tamanho}
                 onSelect={(v) => {
                   setS((p) => ({ ...p, tamanho: v as Tamanho }));
-                  setTimeout(() => goto(7), 320);
+                  setTimeout(() => goto(6), 320);
                 }}
                 options={[
                   { value: "P", icon: <span className="font-semibold text-base">P</span>, title: "Pequeno", sub: "40 a 60 kg · cintura 60–80 cm" },
@@ -690,15 +661,15 @@ const Funil = () => {
                   { value: "EG", icon: <span className="font-semibold text-sm">EG</span>, title: "Extra Grande", sub: "95 a 130 kg · cintura > 135 cm" },
                 ]}
               />
-              <BackBtn onClick={() => goto(5)} />
+              <BackBtn onClick={() => goto(4)} />
             </section>
           )}
 
-          {/* STEP 7 — Frequência */}
-          {s.step === 7 && (
+          {/* STEP 6 — Frequência */}
+          {s.step === 6 && (
             <section>
               <StepHeader
-                eyebrow="Etapa 07 · Quantidade"
+                eyebrow="Etapa 06 · Quantidade"
                 title={
                   <>
                     Com que <em className="text-sky-400 not-italic">frequência</em> usa por dia?
@@ -713,7 +684,7 @@ const Funil = () => {
                 selected={s.freq}
                 onSelect={(v) => {
                   setS((p) => ({ ...p, freq: v as Freq }));
-                  setTimeout(() => goto(8), 320);
+                  setTimeout(() => goto(7), 320);
                 }}
                 options={[
                   { value: "3-5", icon: <Moon className="w-5 h-5" />, title: "Apenas à noite", sub: "3 a 5 fraldas por dia" },
@@ -722,15 +693,15 @@ const Funil = () => {
                   { value: "nao-sei", icon: <HelpCircle className="w-5 h-5" />, title: "Não sei ao certo", sub: "O médico avalia e prescreve" },
                 ]}
               />
-              <BackBtn onClick={() => goto(6)} />
+              <BackBtn onClick={() => goto(5)} />
             </section>
           )}
 
-          {/* STEP 8 — Nome + CPF */}
-          {s.step === 8 && (
+          {/* STEP 7 — Nome + CPF */}
+          {s.step === 7 && (
             <section>
               <StepHeader
-                eyebrow="Etapa 08 · Dados do paciente"
+                eyebrow="Etapa 07 · Dados do paciente"
                 title={
                   <>
                     Para emitir o <em className="text-sky-400 not-italic">laudo oficial</em>
@@ -789,17 +760,17 @@ const Funil = () => {
               </div>
 
               <PrimaryBtn
-                onClick={() => goto(9)}
+                onClick={() => goto(8)}
                 disabled={!(nomeOk && cpfOk)}
               >
                 Continuar
               </PrimaryBtn>
-              <BackBtn onClick={() => goto(7)} />
+              <BackBtn onClick={() => goto(6)} />
             </section>
           )}
 
-          {/* STEP 9 — WhatsApp + Email + Resumo */}
-          {s.step === 9 && (
+          {/* STEP 8 — WhatsApp + Email + Resumo */}
+          {s.step === 8 && (
             <section>
               {/* Resumo movido da Etapa 11 para cá */}
               <div className={`${SURFACE} rounded-2xl p-5 mb-8`}>
@@ -829,7 +800,7 @@ const Funil = () => {
               </div>
 
               <StepHeader
-                eyebrow="Etapa 09 · Contato"
+                eyebrow="Etapa 08 · Contato"
                 title={
                   <>
                     Onde <em className="text-sky-400 not-italic">enviamos</em> o laudo?
@@ -879,41 +850,24 @@ const Funil = () => {
                 </div>
               </div>
 
-              <div className={`${SURFACE} rounded-2xl p-5 mt-6`}>
-                <div className="text-[11px] uppercase tracking-[0.16em] text-sky-400/80 font-mono mb-3 flex items-center gap-2">
-                  <IdCard className="w-3.5 h-3.5" />
-                  Ao retirar na Farmácia Popular, leve
-                </div>
-                <ul className="space-y-2.5 text-sm text-white/75 leading-relaxed">
-                  <li className="flex gap-2.5">
-                    <Check className="w-4 h-4 text-sky-400 mt-0.5 shrink-0" />
-                    <span><strong className="text-white">Laudo médico original</strong> (válido por 6 meses)</span>
-                  </li>
-                  <li className="flex gap-2.5">
-                    <Check className="w-4 h-4 text-sky-400 mt-0.5 shrink-0" />
-                    <span><strong className="text-white">Documento oficial com foto + CPF</strong> do paciente</span>
-                  </li>
-                </ul>
-              </div>
-
               <PrimaryBtn
                 onClick={() => {
                   submitLead(s, orderId);
-                  goto(10);
+                  goto(9);
                 }}
                 disabled={!whatsOk}
               >
                 Ver resumo do pedido
               </PrimaryBtn>
-              <BackBtn onClick={() => goto(8)} />
+              <BackBtn onClick={() => goto(7)} />
             </section>
           )}
 
-          {/* STEP 10 — Preview do Laudo */}
-          {s.step === 10 && (
+          {/* STEP 9 — Preview do Laudo */}
+          {s.step === 9 && (
             <section>
               <StepHeader
-                eyebrow="Etapa 10 · Documento Gerado"
+                eyebrow="Etapa 09 · Documento Gerado"
                 title={
                   <>
                     Seu <em className="text-sky-400 not-italic">laudo médico</em> está quase pronto
@@ -992,7 +946,7 @@ const Funil = () => {
                   {/* Overlay Clicável */}
                   <div className="absolute inset-0 flex flex-col items-center justify-center bg-white/5 backdrop-blur-[1px]">
                     <button 
-                      onClick={() => goto(11)}
+                      onClick={() => goto(10)}
                       className="bg-slate-900/95 text-white rounded-2xl p-6 text-center w-full max-w-[280px] sm:max-w-[320px] shadow-[0_15px_50px_-10px_rgba(14,165,233,0.4)] backdrop-blur-md border border-sky-500/30 cursor-pointer hover:bg-slate-800 hover:-translate-y-1 hover:shadow-[0_20px_50px_-10px_rgba(14,165,233,0.5)] hover:border-sky-400 transition-all duration-300 group"
                     >
                       <div className="relative w-14 h-14 bg-sky-500/10 border border-sky-500/20 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-sky-500/20 transition-colors">
@@ -1013,12 +967,12 @@ const Funil = () => {
                 </div>
               </div>
 
-              <BackBtn onClick={() => goto(9)} />
+              <BackBtn onClick={() => goto(8)} />
             </section>
           )}
 
-          {/* STEP 11 — Resumo + Pagamento (NOVO) */}
-          {s.step === 11 && (
+          {/* STEP 10 — Resumo + Pagamento (NOVO) */}
+          {s.step === 10 && (
             <section>
               <div className="text-center mb-6">
                 <div className="inline-flex w-14 h-14 rounded-full bg-sky-500/15 border border-sky-400/40 items-center justify-center text-sky-400 mb-4">
@@ -1102,7 +1056,7 @@ const Funil = () => {
 
               {/* Botão de avanço para a Etapa 12 */}
               <button
-                onClick={() => goto(12)}
+                onClick={() => goto(11)}
                 className="w-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-[15px] py-4 rounded-xl mb-6 shadow-[0_0_40px_-10px_rgba(16,185,129,0.4)] transition-all flex justify-center items-center gap-2"
               >
                 <CheckCircle className="w-5 h-5" />
@@ -1123,12 +1077,12 @@ const Funil = () => {
                 </a>
               </div>
 
-              <BackBtn onClick={() => goto(10)} />
+              <BackBtn onClick={() => goto(9)} />
             </section>
           )}
 
-          {/* STEP 12 — Envio do Comprovante (WhatsApp) */}
-          {s.step === 12 && (
+          {/* STEP 11 — Envio do Comprovante (WhatsApp) */}
+          {s.step === 11 && (
             <section className="text-center pt-4">
               <div className="inline-flex w-16 h-16 rounded-full bg-green-500/15 border border-green-500/30 items-center justify-center text-green-400 mb-6 relative">
                 <CheckCircle className="w-8 h-8 relative z-10" strokeWidth={2.5} />
@@ -1170,7 +1124,7 @@ const Funil = () => {
               </p>
               
               <div className="mt-8">
-                <BackBtn onClick={() => goto(11)} />
+                <BackBtn onClick={() => goto(10)} />
               </div>
             </section>
           )}
