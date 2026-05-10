@@ -553,77 +553,25 @@ const Funil = () => {
                   <li className="flex gap-3">
                     <Check className="w-4 h-4 text-sky-400 mt-0.5 shrink-0" />
                     <span>
-                      <strong className="text-white">A fralda é 100% gratuita.</strong>{" "}
-                      Fornecida pelo SUS via Farmácia Popular. Você nunca paga pela fralda.
-                    </span>
-                  </li>
-                  <li className="flex gap-3">
-                    <HeartPulse className="w-4 h-4 text-sky-400 mt-0.5 shrink-0" />
-                    <span>
-                      <strong className="text-white">O que você paga é a consulta médica</strong>{" "}
-                      — obrigatória por lei para emitir o laudo. Mesma lógica de pagar a consulta para receber receita de remédio gratuito do SUS.
+                      <strong className="text-white">A fralda é 100% gratuita.</strong> Você paga <strong className="text-white">apenas a emissão do laudo médico particular</strong> (obrigatório por lei).
                     </span>
                   </li>
                   <li className="flex gap-3">
                     <Calendar className="w-4 h-4 text-sky-400 mt-0.5 shrink-0" />
                     <span>
-                      <strong className="text-white">Um único laudo vale 6 meses (180 dias).</strong>{" "}
-                      Você não precisa de receita nova toda vez — o mesmo papel cobre o semestre inteiro na farmácia.
-                    </span>
-                  </li>
-                  <li className="flex gap-3">
-                    <Package className="w-4 h-4 text-sky-400 mt-0.5 shrink-0" />
-                    <span>
-                      <strong className="text-white">Até 4 fraldas por dia</strong>, com retirada a cada 10 dias —{" "}
-                      <strong className="text-white">até 40 fraldas por viagem</strong> à Farmácia Popular.
+                      <strong className="text-white">Um único laudo garante 6 meses de fraldas.</strong> E você pode retirar até 4 fraldas/dia na Farmácia Popular.
                     </span>
                   </li>
                   <li className="flex gap-3">
                     <AlertTriangle className="w-4 h-4 text-amber-400 mt-0.5 shrink-0" />
                     <span>
-                      A Farmácia Popular{" "}
-                      <span className="text-amber-300">
-                        não entrega a fralda sem o laudo
-                      </span>
-                      . Sem o documento, o direito fica bloqueado mesmo sendo garantido por lei.
+                      A Farmácia Popular <span className="text-amber-300">não entrega a fralda sem o laudo válido</span>, mesmo sendo um direito garantido.
                     </span>
                   </li>
                 </ul>
               </div>
 
-              <div
-                className={`${SURFACE} rounded-2xl p-5 sm:p-6 bg-gradient-to-br from-sky-500/[0.06] to-transparent`}
-              >
-                <div className="text-[11px] uppercase tracking-[0.16em] text-sky-400/80 font-mono mb-5">
-                  O que muda para sua família
-                </div>
-                <div className="grid grid-cols-2 gap-3">
-                  <div className="rounded-xl bg-white/[0.03] border border-white/[0.06] p-4 text-center">
-                    <div className="text-[10px] uppercase tracking-wider text-white/40 font-mono mb-1">
-                      Hoje
-                    </div>
-                    <div className="text-2xl font-semibold text-white/80 line-through decoration-rose-400/60">
-                      R$ 450
-                    </div>
-                    <div className="text-[11px] text-white/40 mt-1">por mês, do bolso</div>
-                  </div>
-                  <div className="rounded-xl bg-sky-500/[0.10] border border-sky-400/30 p-4 text-center">
-                    <div className="text-[10px] uppercase tracking-wider text-sky-400 font-mono mb-1">
-                      Depois do laudo
-                    </div>
-                    <div className="text-2xl font-semibold text-sky-300">R$ 0</div>
-                    <div className="text-[11px] text-white/55 mt-1">gratuito no SUS</div>
-                  </div>
-                </div>
-                <p className="text-sm text-white/60 mt-5 text-center leading-relaxed">
-                  O laudo custa{" "}
-                  <strong className="text-white">R$ {PRECO_LAUDO},00</strong> — uma única vez.
-                  <br />
-                  <span className="text-sky-300">
-                    Você recupera o investimento em poucos dias.
-                  </span>
-                </p>
-              </div>
+              
 
               <PrimaryBtn onClick={() => goto(5)}>
                 Entendi · quero meu laudo
@@ -857,7 +805,7 @@ const Funil = () => {
                 }}
                 disabled={!whatsOk}
               >
-                Ver resumo do pedido
+                Gerar meu laudo médico
               </PrimaryBtn>
               <BackBtn onClick={() => goto(7)} />
             </section>
