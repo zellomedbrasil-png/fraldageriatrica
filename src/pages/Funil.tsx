@@ -416,6 +416,31 @@ const Funil = () => {
     () => "FG-" + (Date.now() % 1000000).toString().padStart(6, "0"),
   );
   const [payMethod, setPayMethod] = useState<"pix" | "card" | "">("");
+  const [waitingPayment, setWaitingPayment] = useState(false);
+
+  const openCheckout = (method: "pix" | "card") => {
+    setPayMethod(method);
+    const w = 520, h = 720;
+    const left = Math.round((window.screen.width - w) / 2);
+    const top = Math.round((window.screen.height - h) / 2);
+    const popup = window.open(
+      INFINITEPAY_LINK,
+      "checkout",
+      `width=${w},height=${h},left=${left},top=${top},scrollbars=yes,resizable=yes`
+    );
+    if (!popup || popup.closed) {
+      window.open(INFINITEPAY_LINK, "_blank", "noopener,noreferrer");
+      return;
+    }
+    setWaitingPayment(true);
+    const timer = setInterval(() => {
+      if (popup.closed) {
+        clearInterval(timer);
+        setWaitingPayment(false);
+        goto(11);
+      }
+    }, 600);
+  };
 
   return (
     <div className={`${BG} min-h-screen text-white relative overflow-hidden`}>
@@ -920,11 +945,11 @@ const Funil = () => {
             </section>
           )}
 
-          {/* STEP 10 — Checkout Transparente */}
+          {/* STEP 10 — Checkout */}
           {s.step === 10 && (
             <section>
               {/* Preço */}
-              <div className="text-center mb-6">
+              <div className="text-center mb-7">
                 <div className="text-[11px] uppercase tracking-[0.16em] text-sky-400/80 font-mono mb-2">
                   Laudo autorizado para emissão
                 </div>
@@ -932,91 +957,98 @@ const Funil = () => {
                   Finalize o pagamento
                 </h2>
                 <div className="flex items-baseline justify-center gap-1 mt-3">
-                  <span className="text-white/50 text-lg font-normal">R$</span>
-                  <span className="text-4xl font-bold text-white tracking-tight">49</span>
-                  <span className="text-white/50 text-lg font-normal">,00</span>
+                  <span className="text-white/50 text-lg">R$</span>
+                  <span className="text-5xl font-bold text-white tracking-tight">49</span>
+                  <span className="text-white/50 text-lg">,00</span>
                 </div>
-                <p className="text-white/40 text-xs mt-1">Consulta + laudo com validade de 6 meses</p>
+                <p className="text-white/40 text-xs mt-1.5">Consulta + laudo com validade de 6 meses</p>
               </div>
 
-              {/* Tabs PIX / Cartão */}
-              <div className="flex gap-2 p-1 rounded-xl bg-white/[0.04] border border-white/[0.07] mb-5">
-                <button
-                  type="button"
-                  onClick={() => setPayMethod("pix")}
-                  className={`flex-1 flex items-center justify-center gap-2 py-2.5 rounded-lg text-sm font-semibold transition-all ${
-                    payMethod !== "card"
-                      ? "bg-emerald-500/15 text-emerald-300 border border-emerald-500/30"
-                      : "text-white/40 hover:text-white/70"
-                  }`}
-                >
-                  <QrCode className="w-4 h-4" />
-                  Pix
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setPayMethod("card")}
-                  className={`flex-1 flex items-center justify-center gap-2 py-2.5 rounded-lg text-sm font-semibold transition-all ${
-                    payMethod === "card"
-                      ? "bg-sky-500/15 text-sky-300 border border-sky-500/30"
-                      : "text-white/40 hover:text-white/70"
-                  }`}
-                >
-                  <CreditCard className="w-4 h-4" />
-                  Cartão
-                </button>
-              </div>
+              {!waitingPayment ? (
+                /* ── Seleção de método ── */
+                <div className="grid gap-3 mb-6">
+                  <button
+                    type="button"
+                    onClick={() => openCheckout("pix")}
+                    className="group relative flex items-center gap-4 text-left rounded-2xl px-5 py-4 transition-all border bg-emerald-500/[0.05] border-emerald-500/30 hover:bg-emerald-500/10 hover:border-emerald-400/50"
+                  >
+                    <div className="w-12 h-12 rounded-xl bg-emerald-500/15 border border-emerald-500/25 flex items-center justify-center text-emerald-400 shrink-0">
+                      <QrCode className="w-5 h-5" />
+                    </div>
+                    <div className="flex-1">
+                      <div className="text-white font-semibold text-[15px]">Pix</div>
+                      <div className="text-white/45 text-xs mt-0.5">Aprovação imediata · sem taxa extra</div>
+                    </div>
+                    <ArrowRight className="w-4 h-4 text-emerald-500/50 group-hover:text-emerald-400 transition-colors" />
+                    <span className="absolute top-2.5 right-12 text-[9px] font-bold uppercase tracking-wider text-emerald-400 bg-emerald-400/10 px-1.5 py-0.5 rounded-full">
+                      Recomendado
+                    </span>
+                  </button>
 
-              {/* Checkout Integrado — iframe InfinitePay */}
-              <div className="relative rounded-2xl overflow-hidden border border-white/[0.10] bg-white mb-2">
-                {/* Skeleton loader */}
-                <div
-                  id="ip-loader"
-                  className="absolute inset-0 z-10 flex items-center justify-center bg-slate-100 transition-opacity duration-500"
-                >
-                  <div className="flex flex-col items-center gap-3">
-                    <div className="w-7 h-7 border-2 border-sky-500 border-t-transparent rounded-full animate-spin" />
-                    <span className="text-[12px] text-slate-400">Carregando ambiente seguro…</span>
+                  <button
+                    type="button"
+                    onClick={() => openCheckout("card")}
+                    className="group flex items-center gap-4 text-left rounded-2xl px-5 py-4 transition-all border bg-white/[0.025] border-white/[0.08] hover:bg-white/[0.05] hover:border-sky-400/40"
+                  >
+                    <div className="w-12 h-12 rounded-xl bg-white/[0.05] border border-white/[0.10] flex items-center justify-center text-white/50 shrink-0 group-hover:text-sky-400 group-hover:border-sky-400/30 transition-colors">
+                      <CreditCard className="w-5 h-5" />
+                    </div>
+                    <div className="flex-1">
+                      <div className="text-white font-semibold text-[15px]">Cartão de crédito</div>
+                      <div className="text-white/45 text-xs mt-0.5">Visa, Mastercard, Elo e outros</div>
+                    </div>
+                    <ArrowRight className="w-4 h-4 text-white/20 group-hover:text-sky-400 transition-colors" />
+                  </button>
+                </div>
+              ) : (
+                /* ── Aguardando pagamento ── */
+                <div className="text-center py-4 mb-4">
+                  <div className="relative inline-flex w-16 h-16 rounded-full items-center justify-center mb-5 mx-auto">
+                    <div className="absolute inset-0 rounded-full border border-sky-400/40 animate-ping opacity-25" />
+                    <div className="w-16 h-16 rounded-full bg-sky-500/15 border border-sky-400/30 flex items-center justify-center text-sky-400">
+                      {payMethod === "pix"
+                        ? <QrCode className="w-7 h-7" />
+                        : <CreditCard className="w-7 h-7" />}
+                    </div>
+                  </div>
+                  <h3 className="text-white font-semibold text-lg mb-2">
+                    Aguardando seu pagamento
+                  </h3>
+                  <p className="text-white/50 text-sm leading-relaxed max-w-xs mx-auto mb-7">
+                    {payMethod === "pix"
+                      ? "Use o app do seu banco para escanear o QR Code na janela aberta."
+                      : "Preencha os dados do cartão na janela segura que foi aberta."}
+                  </p>
+
+                  <div className="grid gap-2.5">
+                    <button
+                      type="button"
+                      onClick={() => goto(11)}
+                      className="w-full flex items-center justify-center gap-2 rounded-xl py-3.5 text-sm font-semibold text-white border border-emerald-500/30 bg-emerald-500/10 hover:bg-emerald-500/15 transition-all"
+                    >
+                      <Check className="w-4 h-4 text-emerald-400" />
+                      Já finalizei o pagamento
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setWaitingPayment(false);
+                        window.open(INFINITEPAY_LINK, "_blank", "noopener,noreferrer");
+                      }}
+                      className="w-full text-xs text-white/35 hover:text-white/60 py-2 transition-colors"
+                    >
+                      Janela não abriu? Clique aqui
+                    </button>
                   </div>
                 </div>
-                <iframe
-                  src={INFINITEPAY_LINK}
-                  className="w-full h-[620px] relative z-20 block"
-                  title="Checkout Seguro — InfinitePay"
-                  allow="payment; clipboard-write"
-                  sandbox="allow-scripts allow-forms allow-same-origin allow-top-navigation allow-modals allow-popups"
-                  onLoad={() => {
-                    const el = document.getElementById("ip-loader");
-                    if (el) el.style.opacity = "0";
-                    setTimeout(() => { if (el) el.style.display = "none"; }, 500);
-                  }}
-                />
+              )}
+
+              <div className="flex items-center justify-center gap-1.5 text-[11px] text-white/25 mt-2 mb-1">
+                <Lock className="w-3 h-3" />
+                <span>Pagamento processado pela InfinitePay · ambiente criptografado</span>
               </div>
 
-              {/* Fallback link */}
-              <p className="text-[11px] text-white/30 text-center mb-5">
-                Checkout não carregou?{" "}
-                <a
-                  href={INFINITEPAY_LINK}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sky-400 hover:underline"
-                >
-                  Abrir em nova aba
-                </a>
-              </p>
-
-              {/* Botão "Já paguei" */}
-              <button
-                type="button"
-                onClick={() => goto(11)}
-                className="w-full flex items-center justify-center gap-2 rounded-xl py-3.5 text-sm font-semibold text-white/70 hover:text-white border border-white/[0.08] hover:border-white/[0.18] bg-white/[0.03] hover:bg-white/[0.06] transition-all"
-              >
-                <Check className="w-4 h-4 text-emerald-400" />
-                Já finalizei o pagamento
-              </button>
-
-              <BackBtn onClick={() => goto(9)} />
+              <BackBtn onClick={() => { setWaitingPayment(false); goto(9); }} />
             </section>
           )}
 
