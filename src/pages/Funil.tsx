@@ -46,7 +46,7 @@ import { Input } from "@/components/ui/input";
 // ───────────── Config
 const TOTAL = 11;
 const PRECO_LAUDO = 49;
-const MP_LINK = "https://mpago.la/22jiVhZ";
+const INFINITEPAY_LINK = "https://checkout.infinitepay.io/zellomed/fUAoB8O8VE";
 const WA_NUMBER = "5585991275429";
 const WA_LINK = (msg: string) =>
   `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`;
@@ -415,6 +415,7 @@ const Funil = () => {
   const [orderId] = useState(
     () => "FG-" + (Date.now() % 1000000).toString().padStart(6, "0"),
   );
+  const [payMethod, setPayMethod] = useState<"pix" | "card" | "">("");
 
   return (
     <div className={`${BG} min-h-screen text-white relative overflow-hidden`}>
@@ -919,158 +920,159 @@ const Funil = () => {
             </section>
           )}
 
-          {/* STEP 10 — Resumo + Pagamento (NOVO) */}
+          {/* STEP 10 — Checkout Transparente */}
           {s.step === 10 && (
             <section>
+              {/* Preço */}
               <div className="text-center mb-6">
-                <div className="inline-flex w-14 h-14 rounded-full bg-sky-500/15 border border-sky-400/40 items-center justify-center text-sky-400 mb-4">
-                  <Check className="w-7 h-7" strokeWidth={3} />
-                </div>
                 <div className="text-[11px] uppercase tracking-[0.16em] text-sky-400/80 font-mono mb-2">
                   Laudo autorizado para emissão
                 </div>
                 <h2 className="text-2xl sm:text-3xl text-white font-semibold tracking-tighter-custom leading-tight">
-                  Sua família tem direito às
-                  <br />
-                  <span className="text-sky-400">fraldas gratuitas</span>
+                  Finalize o pagamento
                 </h2>
-                <p className="text-white/60 text-[14px] leading-relaxed mt-4">
-                  Taxa única da <strong className="text-white">consulta médica + emissão do laudo</strong> (Válido por 6 meses)
-                </p>
-                <div className="text-4xl font-bold text-white mt-2 tracking-tight">
-                  <span className="text-xl text-white/50 font-normal align-top mr-1">R$</span>
-                  49<span className="text-xl text-white/50 font-normal">,00</span>
+                <div className="flex items-baseline justify-center gap-1 mt-3">
+                  <span className="text-white/50 text-lg font-normal">R$</span>
+                  <span className="text-4xl font-bold text-white tracking-tight">49</span>
+                  <span className="text-white/50 text-lg font-normal">,00</span>
                 </div>
+                <p className="text-white/40 text-xs mt-1">Consulta + laudo com validade de 6 meses</p>
               </div>
 
-              {/* Caixa PIX */}
-              <div className="rounded-2xl border-2 border-emerald-500/30 bg-white/[0.02] p-5 sm:p-6 relative overflow-hidden mb-5">
-                <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-emerald-400 to-emerald-600" />
-                
-                <div className="text-center mb-6">
-                  <h3 className="text-white font-bold text-lg mb-1">Pague agora via Pix</h3>
-                  <p className="text-emerald-400 text-sm font-medium">Liberação imediata do laudo.</p>
-                </div>
-
-                <div className="flex flex-col items-center justify-center mb-6">
-                  {/* Área do QR Code com crop automático das bordas brancas */}
-                  <div className="w-44 h-44 rounded-xl overflow-hidden bg-white flex items-center justify-center shadow-[0_0_30px_-5px_rgba(16,185,129,0.3)]">
-                    <img 
-                      src="/images/qrcode-pix.png" 
-                      alt="QR Code Pix" 
-                      className="w-full h-full object-cover scale-[1.12]"
-                      onError={(e) => {
-                        e.currentTarget.style.display = 'none';
-                        e.currentTarget.parentElement!.innerHTML = '<div class="text-xs text-slate-400 text-center p-4">Salve a imagem como<br/>/images/qrcode-pix.png</div>';
-                      }}
-                    />
-                  </div>
-                  <p className="text-xs text-white/40 mt-3 text-center">
-                    Abra o app do seu banco e escolha <strong className="text-white/60">Ler QR Code</strong>
-                  </p>
-                </div>
-
-                <div className="flex items-center gap-4 my-6">
-                  <div className="flex-1 h-px bg-white/[0.08]"></div>
-                  <span className="text-[10px] uppercase tracking-widest text-white/30 font-mono">Ou copie a chave</span>
-                  <div className="flex-1 h-px bg-white/[0.08]"></div>
-                </div>
-
-                <div className="space-y-4 mb-2">
-                  <div className="w-full">
-                    <button 
-                      onClick={() => {
-                        navigator.clipboard.writeText("contato@fraldageriatrica.com");
-                        alert("Chave Pix copiada com sucesso!");
-                      }}
-                      className="w-full flex items-center justify-between bg-emerald-500/[0.05] border border-emerald-500/20 rounded-xl p-3 hover:bg-emerald-500/[0.1] transition-colors group"
-                    >
-                      <div className="flex flex-col text-left">
-                        <span className="text-[10px] uppercase text-emerald-400 font-bold tracking-wider mb-0.5">Chave E-mail</span>
-                        <span className="text-[14px] sm:text-[15px] font-mono text-white tracking-tight break-all">
-                          contato@fraldageriatrica.com
-                        </span>
-                      </div>
-                      <div className="w-11 h-11 rounded-lg bg-emerald-500/10 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
-                        <Copy className="w-5 h-5 text-emerald-400" />
-                      </div>
-                    </button>
-                    <p className="text-xs text-white/50 text-center mt-3">
-                      Cole essa chave na área Pix do seu banco.
-                    </p>
-                  </div>
-                </div>
+              {/* Tabs PIX / Cartão */}
+              <div className="flex gap-2 p-1 rounded-xl bg-white/[0.04] border border-white/[0.07] mb-5">
+                <button
+                  type="button"
+                  onClick={() => setPayMethod("pix")}
+                  className={`flex-1 flex items-center justify-center gap-2 py-2.5 rounded-lg text-sm font-semibold transition-all ${
+                    payMethod !== "card"
+                      ? "bg-emerald-500/15 text-emerald-300 border border-emerald-500/30"
+                      : "text-white/40 hover:text-white/70"
+                  }`}
+                >
+                  <QrCode className="w-4 h-4" />
+                  Pix
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setPayMethod("card")}
+                  className={`flex-1 flex items-center justify-center gap-2 py-2.5 rounded-lg text-sm font-semibold transition-all ${
+                    payMethod === "card"
+                      ? "bg-sky-500/15 text-sky-300 border border-sky-500/30"
+                      : "text-white/40 hover:text-white/70"
+                  }`}
+                >
+                  <CreditCard className="w-4 h-4" />
+                  Cartão
+                </button>
               </div>
 
-              {/* Botão de avanço para a Etapa 12 */}
-              <button
-                onClick={() => goto(11)}
-                className="w-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-[15px] py-4 rounded-xl mb-6 shadow-[0_0_40px_-10px_rgba(16,185,129,0.4)] transition-all flex justify-center items-center gap-2"
-              >
-                <CheckCircle className="w-5 h-5" />
-                Já realizei o pagamento
-              </button>
+              {/* Checkout Integrado — iframe InfinitePay */}
+              <div className="relative rounded-2xl overflow-hidden border border-white/[0.10] bg-white mb-2">
+                {/* Skeleton loader */}
+                <div
+                  id="ip-loader"
+                  className="absolute inset-0 z-10 flex items-center justify-center bg-slate-100 transition-opacity duration-500"
+                >
+                  <div className="flex flex-col items-center gap-3">
+                    <div className="w-7 h-7 border-2 border-sky-500 border-t-transparent rounded-full animate-spin" />
+                    <span className="text-[12px] text-slate-400">Carregando ambiente seguro…</span>
+                  </div>
+                </div>
+                <iframe
+                  src={INFINITEPAY_LINK}
+                  className="w-full h-[620px] relative z-20 block"
+                  title="Checkout Seguro — InfinitePay"
+                  allow="payment; clipboard-write"
+                  sandbox="allow-scripts allow-forms allow-same-origin allow-top-navigation allow-modals allow-popups"
+                  onLoad={() => {
+                    const el = document.getElementById("ip-loader");
+                    if (el) el.style.opacity = "0";
+                    setTimeout(() => { if (el) el.style.display = "none"; }, 500);
+                  }}
+                />
+              </div>
 
-              {/* Mercado Pago Secundário */}
-              <div className="mt-8 pt-6 border-t border-white/[0.05]">
-                <p className="text-center text-[12px] text-white/40 mb-3">Prefere pagar com Cartão de Crédito ou Boleto?</p>
+              {/* Fallback link */}
+              <p className="text-[11px] text-white/30 text-center mb-5">
+                Checkout não carregou?{" "}
                 <a
-                  href={MP_LINK}
+                  href={INFINITEPAY_LINK}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 w-full rounded-xl py-3.5 font-semibold text-white/80 bg-white/[0.03] border border-white/[0.08] hover:bg-white/[0.06] transition-colors"
+                  className="text-sky-400 hover:underline"
                 >
-                  <CreditCard className="w-4 h-4 text-sky-400" />
-                  Pagar via Mercado Pago
+                  Abrir em nova aba
                 </a>
-              </div>
+              </p>
+
+              {/* Botão "Já paguei" */}
+              <button
+                type="button"
+                onClick={() => goto(11)}
+                className="w-full flex items-center justify-center gap-2 rounded-xl py-3.5 text-sm font-semibold text-white/70 hover:text-white border border-white/[0.08] hover:border-white/[0.18] bg-white/[0.03] hover:bg-white/[0.06] transition-all"
+              >
+                <Check className="w-4 h-4 text-emerald-400" />
+                Já finalizei o pagamento
+              </button>
 
               <BackBtn onClick={() => goto(9)} />
             </section>
           )}
 
-          {/* STEP 11 — Envio do Comprovante (WhatsApp) */}
+          {/* STEP 11 — Confirmação */}
           {s.step === 11 && (
             <section className="text-center pt-4">
-              <div className="inline-flex w-16 h-16 rounded-full bg-green-500/15 border border-green-500/30 items-center justify-center text-green-400 mb-6 relative">
+              <div className="relative inline-flex w-16 h-16 rounded-full bg-green-500/15 border border-green-500/30 items-center justify-center text-green-400 mb-6">
                 <CheckCircle className="w-8 h-8 relative z-10" strokeWidth={2.5} />
-                <div className="absolute inset-0 bg-green-500/20 rounded-full blur-xl"></div>
+                <div className="absolute inset-0 bg-green-500/20 rounded-full blur-xl" />
               </div>
-              
+
               <h2 className="text-2xl sm:text-3xl text-white font-bold tracking-tighter-custom leading-tight mb-4">
-                Tudo pronto!<br/>
-                O seu laudo está <span className="text-green-400">processando.</span>
+                Pagamento recebido.<br />
+                Seu laudo está <span className="text-green-400">sendo emitido.</span>
               </h2>
-              
-              <div className="bg-white/[0.03] border border-white/[0.05] rounded-2xl p-6 mb-8 text-left">
-                <p className="text-white/70 text-[15px] leading-relaxed mb-5">
-                  Para liberarmos o seu <strong className="text-white">Laudo Médico em PDF</strong> e a assinatura digital imediatamente, só precisamos validar o seu pagamento.
+
+              <div className="bg-white/[0.03] border border-white/[0.05] rounded-2xl p-6 mb-8 text-left space-y-4">
+                <p className="text-white/70 text-[15px] leading-relaxed">
+                  O <strong className="text-white">Laudo Médico em PDF</strong> com assinatura digital ICP-Brasil será enviado pelo WhatsApp em até <strong className="text-white">24 horas úteis</strong>.
                 </p>
-                
                 <div className="flex items-start gap-3 bg-white/[0.03] rounded-xl p-4">
                   <Smartphone className="w-5 h-5 text-sky-400 shrink-0 mt-0.5" />
                   <p className="text-sm text-white/60 leading-relaxed">
-                    Envie o <strong className="text-white">comprovante do Pix</strong> no nosso WhatsApp oficial para finalizarmos.
+                    Envie o <strong className="text-white">comprovante de pagamento</strong> no WhatsApp abaixo para priorizarmos a emissão.
                   </p>
                 </div>
+                <dl className="text-sm divide-y divide-white/[0.05]">
+                  {[
+                    ["Pedido", `#${orderId}`],
+                    ["Paciente", s.nome || "—"],
+                    ["WhatsApp para entrega", s.whatsapp || "—"],
+                  ].map(([k, v]) => (
+                    <div key={k} className="flex justify-between py-2.5 gap-4">
+                      <dt className="text-white/40">{k}</dt>
+                      <dd className="text-white text-right truncate max-w-[60%]">{v}</dd>
+                    </div>
+                  ))}
+                </dl>
               </div>
 
               <a
                 href={WA_LINK(
-                  `Olá! Acabei de pagar o laudo. Meu Pedido é #${orderId}. O nome do paciente é ${s.nome}. Segue o comprovante:`
+                  `Olá! Acabei de pagar o laudo. Pedido #${orderId}. Paciente: ${s.nome}. Segue o comprovante.`
                 )}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 w-full rounded-xl py-4 font-bold text-white bg-[#25D366] hover:bg-[#1ea954] shadow-[0_10px_30px_-10px_rgba(37,211,102,0.4)] transition-all transform hover:scale-[1.02]"
+                className="flex items-center justify-center gap-2 w-full rounded-xl py-4 font-bold text-white bg-[#25D366] hover:bg-[#1ea954] shadow-[0_10px_30px_-10px_rgba(37,211,102,0.4)] transition-all hover:scale-[1.02]"
               >
                 <MessageCircle className="w-5 h-5" />
                 Enviar Comprovante no WhatsApp
               </a>
 
-              <p className="text-[11px] text-white/30 mt-6 max-w-[250px] mx-auto leading-relaxed">
-                Nossa equipe médica está online e aguardando o seu comprovante.
+              <p className="text-[11px] text-white/30 mt-6 max-w-[260px] mx-auto leading-relaxed">
+                Nossa equipe médica está online e emite o laudo em até 24h úteis após a validação.
               </p>
-              
+
               <div className="mt-8">
                 <BackBtn onClick={() => goto(10)} />
               </div>

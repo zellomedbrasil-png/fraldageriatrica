@@ -43,6 +43,144 @@ export interface BlogPostData {
 
 export const blogPosts: BlogPostData[] = [
   // ─────────────────────────────────────────────────────────────
+  // POST 7 — fralda-geriatrica-por-telemedicina
+  // ─────────────────────────────────────────────────────────────
+  {
+    slug: "fralda-geriatrica-por-telemedicina",
+    category: "Telemedicina",
+    title: "Fralda geriátrica por telemedicina: como obter o laudo online em 2025",
+    description:
+      "Seu familiar não pode sair de casa? O laudo médico para fralda geriátrica gratuita pode ser obtido 100% por teleconsulta. Sem deslocamento, válido em todo o Brasil.",
+    keywords:
+      "fralda geriátrica por telemedicina, laudo fralda online, teleconsulta laudo fralda, fralda idoso sem sair de casa",
+    date: "10 mai. 2025",
+    dateIso: "2025-05-10",
+    readTime: "5 min",
+    authorName: "Dr. Roberto Arcanjo",
+    authorCrm: "26.155-CE",
+    authorSpecialty: "Geriatria",
+    lastReviewedDate: "2025-05-10",
+    image: {
+      id: 8376222,
+      src: "https://images.pexels.com/photos/8376222/pexels-photo-8376222.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      srcMedium: "https://images.pexels.com/photos/8376222/pexels-photo-8376222.jpeg?auto=compress&cs=tinysrgb&h=350",
+      width: 5710,
+      height: 3807,
+      alt: "Médico idoso em jaleco branco realizando teleconsulta online para emissão de laudo médico",
+      photographer: "Tima Miroshnichenko",
+      photographerUrl: "https://www.pexels.com/@tima-miroshnichenko",
+    },
+    faqs: [
+      {
+        question: "O laudo emitido por telemedicina é aceito na Farmácia Popular?",
+        answer: "Sim. A Portaria GM/MS nº 3.073/2024 e a Resolução CFM 2.314/2022 garantem a validade dos laudos emitidos por telemedicina. Se uma unidade recusar, o gerente pode verificar e confirmar a validade — ou você pode acionar o Disque Saúde (136).",
+      },
+      {
+        question: "Preciso estar presente na teleconsulta ou o familiar pode participar?",
+        answer: "Idealmente, o paciente participa da videochamada. Se o idoso não tiver condições (por exemplo, está acamado ou tem déficit cognitivo severo), um familiar ou cuidador pode participar em seu nome, descrevendo o quadro clínico. O médico avalia caso a caso.",
+      },
+      {
+        question: "Qual a validade do laudo emitido por telemedicina?",
+        answer: "O laudo por telemedicina tem a mesma validade que o presencial — geralmente de 6 a 12 meses para uso contínuo. Ao vencer, basta uma nova teleconsulta para renovar, sem repetir exames.",
+      },
+      {
+        question: "Um procurador pode retirar a fralda na farmácia com o laudo de telemedicina?",
+        answer: "Sim. Se o idoso não puder comparecer, um familiar ou cuidador autorizado pode retirar apresentando os documentos do idoso (RG e CPF), seu próprio documento de identidade e o laudo médico.",
+      },
+      {
+        question: "O laudo de telemedicina funciona em todo o Brasil?",
+        answer: "Sim. O laudo tem validade nacional e é aceito em qualquer unidade do programa Farmácia Popular credenciada no Brasil, independentemente do estado onde foi emitido ou onde o idoso reside.",
+      },
+    ],
+    content: [
+      {
+        type: "p",
+        text: "Sua família paga em torno de R$ 350 por mês em fraldas geriátricas. A retirada gratuita exige um laudo médico. Esse laudo pode sair por teleconsulta — sem deslocamento, sem sala de espera, sem consulta que dura três horas para ouvir 'está tudo bem'. A <a href=\"https://portal.cfm.org.br/noticias/cfm-publica-resolucao-que-regulamenta-a-telemedicina-no-brasil/\" target=\"_blank\" rel=\"noopener\" class=\"text-sky-400 hover:underline\">Resolução CFM 2.314/2022</a> regulamenta a telemedicina no Brasil e o laudo emitido com assinatura digital ICP-Brasil tem o mesmo valor legal que o presencial.",
+      },
+      {
+        type: "callout",
+        title: "Manda pro grupo da família",
+        body: "Laudo médico para fralda geriátrica pode ser obtido 100% online, por telemedicina. Ninguém precisa sair de casa. Aceito em qualquer Farmácia Popular do Brasil.",
+        variant: "tip",
+      },
+      { type: "h2", text: "O que a Resolução CFM 2.314/2022 mudou" },
+      {
+        type: "p",
+        text: "Antes de 2022, a telemedicina no Brasil vivia em zona cinzenta — tolerada durante a pandemia, sem base legal permanente. A resolução acabou com a ambiguidade. Hoje, qualquer médico com CRM ativo pode realizar teleconsulta, emitir prescrições e assinar laudos remotamente, desde que o documento tenha assinatura digital com certificado ICP-Brasil.",
+      },
+      {
+        type: "p",
+        text: "Para o laudo de <a href=\"/blog/fralda-geriatrica-gratis-sus\" class=\"text-sky-400 hover:underline\">fralda geriátrica gratuita pelo SUS</a>, os requisitos legais são: médico com CRM ativo, diagnóstico que justifique o uso contínuo e assinatura digital válida. Onde o médico está fisicamente na hora da assinatura, a legislação não exige que seja no mesmo endereço que o paciente.",
+      },
+      {
+        type: "ul",
+        items: [
+          "O laudo por telemedicina tem validade jurídica idêntica ao presencial",
+          "A assinatura digital ICP-Brasil garante autenticidade e não pode ser repudiada",
+          "O documento pode ser enviado por e-mail em PDF — não precisa imprimir",
+          "Qualquer Farmácia Popular credenciada é obrigada a aceitar (Portaria GM/MS nº 3.073/2024)",
+        ],
+      },
+      { type: "h2", text: "Como obter o laudo por telemedicina — passo a passo" },
+      {
+        type: "ol",
+        items: [
+          "Acesse a plataforma de teleconsulta e agende com médico geriatra ou clínico geral.",
+          "Na hora marcada, o paciente ou familiar participa da videochamada — dura de 10 a 20 minutos.",
+          "O médico avalia o histórico, confirma a necessidade de uso contínuo e emite o laudo.",
+          "O laudo chega por e-mail em PDF com assinatura digital ICP-Brasil, em até 24 horas úteis.",
+          "Leve o laudo (impresso ou no celular), RG e CPF do idoso à <a href=\"/blog/farmacia-popular-perto-de-mim\" class=\"text-sky-400 hover:underline\">Farmácia Popular mais próxima</a>.",
+          "Retire as fraldas. A partir do segundo mês, só o laudo vigente é necessário.",
+        ],
+      },
+      {
+        type: "callout",
+        title: "48 horas para o primeiro mês gratuito",
+        body: "Do agendamento até a retirada na farmácia, o processo completo leva em média 48 horas úteis. Se sua família está pagando R$ 350 este mês, pode ser o último.",
+        variant: "warning",
+      },
+      { type: "h2", text: "3.000 km de distância, resolvido pelo celular" },
+      {
+        type: "p",
+        text: "Um neto de 28 anos, morando em São Paulo, precisava resolver a fralda da avó de 82 anos no interior do Ceará. A avó não podia sair de casa. Ele não tinha como ir até lá. Quando descobriu que o <a href=\"/blog/laudo-medico-fralda-o-que-e\" class=\"text-sky-400 hover:underline\">laudo médico</a> podia ser emitido por telemedicina e que um procurador podia fazer a retirada, o problema passou a ter solução. Teleconsulta na quarta-feira, laudo no e-mail na quinta, retirada na sexta.",
+      },
+      {
+        type: "p",
+        text: "Não era preguiça nem descaso — era lógica. Quando o deslocamento é inviável por distância, por condição clínica ou por impossibilidade de deixar o paciente sozinho, a telemedicina não é atalho. É o único caminho. <strong>Resolveu pelo celular, do outro lado do Brasil.</strong>",
+      },
+      { type: "h2", text: "Quanto custa e quanto tempo leva" },
+      {
+        type: "p",
+        text: "A teleconsulta para emissão de laudo de fralda custa entre R$ 49 e R$ 150, dependendo da plataforma. É pagamento único — o laudo vale 6 a 12 meses. No primeiro mês, você paga a consulta e já começa a economizar em fraldas. A partir do segundo mês, a economia é integral.",
+      },
+      {
+        type: "table",
+        headers: ["Item", "Custo", "Frequência"],
+        rows: [
+          ["Teleconsulta + laudo", "R$ 49 a R$ 150", "A cada 6–12 meses"],
+          ["Fralda pelo SUS com laudo", "R$ 0", "Todo mês"],
+          ["Fralda paga sem laudo", "R$ 300 a R$ 500", "Todo mês"],
+        ],
+      },
+      { type: "h2", text: "Quando a telemedicina não é a melhor opção" },
+      {
+        type: "p",
+        text: "Se o idoso já tem médico de família, geriatra particular ou acompanhamento regular na UBS, a opção mais simples é pedir o <a href=\"/blog/laudo-medico-fralda-o-que-e\" class=\"text-sky-400 hover:underline\">laudo</a> a esse mesmo médico na próxima consulta — é gratuito e evita qualquer custo adicional. A telemedicina faz sentido quando não há médico de referência, quando o deslocamento é inviável ou quando a consulta presencial levaria semanas.",
+      },
+      {
+        type: "p",
+        text: "Alguns municípios oferecem o laudo gratuitamente via CRAS ou UBS especializada em atenção ao idoso. Vale ligar antes para o serviço de <a href=\"https://www.gov.br/saude/pt-br\" target=\"_blank\" rel=\"noopener\" class=\"text-sky-400 hover:underline\">saúde municipal</a> e perguntar. Se a resposta for 'pode vir pegar amanhã', não há motivo para pagar teleconsulta.",
+      },
+      {
+        type: "callout",
+        title: "A farmácia pode recusar o laudo de telemedicina?",
+        body: "Tecnicamente, não. A Portaria GM/MS nº 3.073/2024 e a Resolução CFM 2.314/2022 garantem a validade do documento. Se o atendente recusar, peça para falar com o gerente e mostre as portarias. Na prática, o gerente confirma e o laudo é aceito. Se a recusa persistir, acione o Disque Saúde: 136.",
+        variant: "info",
+      },
+    ],
+  },
+
+  // ─────────────────────────────────────────────────────────────
   // POST 1
   // ─────────────────────────────────────────────────────────────
   {
