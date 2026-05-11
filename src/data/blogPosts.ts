@@ -43,6 +43,171 @@ export interface BlogPostData {
 
 export const blogPosts: BlogPostData[] = [
   // ─────────────────────────────────────────────────────────────
+  // POST — fralda-geriatrica-farmacia-popular-documentos
+  // ─────────────────────────────────────────────────────────────
+  {
+    slug: "fralda-geriatrica-farmacia-popular-documentos",
+    category: "Farmácia",
+    title: "Fralda Geriátrica na Farmácia Popular: Documentos Necessários em 2025",
+    description:
+      "Lista exata de documentos para retirar fralda geriátrica gratuita na Farmácia Popular em 2025. O que a portaria exige — e o que é invenção do atendente.",
+    keywords:
+      "fralda geriátrica Farmácia Popular documentos, documentos para retirar fralda SUS, lista documentos fralda idoso, laudo médico Farmácia Popular",
+    date: "10 mai. 2025",
+    dateIso: "2025-05-10",
+    readTime: "6 min",
+    authorName: "Dr. Roberto Arcanjo",
+    authorCrm: "26.155-CE",
+    authorSpecialty: "Geriatria",
+    lastReviewedDate: "2025-05-10",
+    image: {
+      id: 8657374,
+      src: "https://images.pexels.com/photos/8657374/pexels-photo-8657374.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      srcMedium: "https://images.pexels.com/photos/8657374/pexels-photo-8657374.jpeg?auto=compress&cs=tinysrgb&h=350",
+      width: 6720,
+      height: 4480,
+      alt: "Idosa conversando com farmacêutica sobre medicamentos em farmácia",
+      photographer: "cottonbro studio",
+      photographerUrl: "https://www.pexels.com/@cottonbro",
+    },
+    faqs: [
+      {
+        question: "Quais documentos são obrigatórios para retirar fralda na Farmácia Popular?",
+        answer:
+          "Pela Portaria GM/MS nº 3.073/2024, são obrigatórios apenas três: laudo médico com CRM ativo, documento de identidade do paciente e CPF. Comprovante de residência e comprovante de renda não são exigidos pela portaria — mas algumas farmácias pedem na prática.",
+      },
+      {
+        question: "O laudo emitido por telemedicina é aceito na Farmácia Popular?",
+        answer:
+          "Sim. A Resolução CFM 2.314/2022 regulamenta a telemedicina no Brasil e garante validade jurídica plena aos documentos emitidos por teleconsulta. O programa Farmácia Popular não exige que a consulta tenha sido presencial — exige apenas laudo de médico com CRM ativo.",
+      },
+      {
+        question: "O familiar pode retirar a fralda sem que o idoso esteja presente?",
+        answer:
+          "Pode. Familiar, cuidador ou representante legal pode retirar mediante apresentação do laudo e do documento de identidade do paciente. Não é necessário o idoso estar presente.",
+      },
+      {
+        question: "Comprovante de renda é necessário para retirar fralda na Farmácia Popular?",
+        answer:
+          "Não. O programa Farmácia Popular para fralda geriátrica não tem critério de renda. O único requisito clínico é a necessidade médica documentada em laudo.",
+      },
+      {
+        question: "O que fazer se a farmácia recusar o laudo?",
+        answer:
+          "Primeiro, verifique se o laudo está dentro das normas da portaria (médico com CRM, diagnóstico e indicação de uso contínuo). Se estiver correto, o cidadão pode acionar a Ouvidoria do Ministério da Saúde pelo 136 ou registrar reclamação no PROCON. Farmácias credenciadas não podem recusar laudo tecnicamente correto.",
+      },
+    ],
+    content: [
+      {
+        type: "p",
+        text: "Três documentos. A maioria das farmácias pede mais de dez. Saber a diferença entre o que a <strong>Portaria GM/MS nº 3.073/2024</strong> efetivamente exige e o que o atendente decidiu acrescentar por conta própria pode ser o que separa sua família da fralda gratuita — ou de mais um mês pagando R$ 350 no varejo.",
+      },
+      {
+        type: "callout",
+        variant: "tip",
+        title: "Manda esse link pro grupo da família",
+        body: "R$ 350/mês em fraldas — ou zero. O que separa os dois é uma lista de três documentos e um laudo médico. A portaria diz isso. O atendente às vezes não sabe.",
+      },
+      {
+        type: "h2",
+        text: "O que a Portaria 3.073/2024 realmente exige",
+      },
+      {
+        type: "p",
+        text: "A <a href='https://www.gov.br/saude/pt-br/assuntos/farmacia-popular' target='_blank' rel='noopener' class='text-sky-400 hover:underline'>Portaria GM/MS nº 3.073/2024</a>, que regulamenta o programa Farmácia Popular, define os requisitos mínimos para a entrega de fralda geriátrica. São três:",
+      },
+      {
+        type: "ul",
+        items: [
+          "Laudo médico com CRM ativo, contendo diagnóstico de incontinência (urinária e/ou fecal) ou condição clínica que justifique uso contínuo — assinado pelo médico com data vigente.",
+          "Documento de identidade do paciente — RG, CNH ou equivalente com foto.",
+          "CPF do paciente — ou do responsável legal no caso de menores ou incapazes.",
+        ],
+      },
+      {
+        type: "p",
+        text: "Comprovante de renda: <strong>não exigido</strong>. O programa não tem critério de renda — é direito de qualquer idoso com 60 anos ou mais ou PCD com indicação clínica. Comprovante de internação hospitalar prévia: <strong>não exigido</strong>. Receita de médico especialista: <strong>não exigido</strong> — qualquer médico com CRM ativo pode emitir o laudo.",
+      },
+      {
+        type: "h2",
+        text: "Por que algumas farmácias pedem mais do que deveriam",
+      },
+      {
+        type: "p",
+        text: "Farmácias credenciadas têm certa autonomia operacional e, na prática, algumas adotam protocolos internos mais restritivos que a portaria. O comprovante de residência é o exemplo mais comum: não é obrigatório por lei, mas muitas unidades exigem na prática para vincular o paciente ao território de atendimento. A orientação é levar por precaução — mesmo que a portaria não obrigue.",
+      },
+      {
+        type: "callout",
+        variant: "warning",
+        title: "R$ 4.200 por ano — ou zero",
+        body: "Uma fralda geriátrica de absorção alta custa entre R$ 2,80 e R$ 4,50 no varejo. Para um uso médio de 4 fraldas por dia, o gasto mensal fica entre R$ 336 e R$ 540. Em 12 meses, a família que não usa o programa paga entre R$ 4.000 e R$ 6.480 por algo que é gratuito por lei.",
+      },
+      {
+        type: "h2",
+        text: "Passo a passo para ir à farmácia sem ser mandado embora",
+      },
+      {
+        type: "ol",
+        items: [
+          "Obtenha o laudo médico — o único documento que a família geralmente não tem. O laudo precisa ter CRM ativo, diagnóstico de incontinência ou condição clínica equivalente e indicação de uso contínuo. Pode ser obtido por teleconsulta.",
+          "Separe o RG (ou CNH) e o CPF do paciente. Se o idoso não puder ir pessoalmente, o familiar leva também o próprio documento de identidade.",
+          "Localize a farmácia credenciada mais próxima pelo localizador oficial do <a href='https://www.gov.br/saude/pt-br/assuntos/farmacia-popular/localizacao-de-farmacias' target='_blank' rel='noopener' class='text-sky-400 hover:underline'>Ministério da Saúde</a>.",
+          "Leve também comprovante de residência — não é obrigatório, mas evita a segunda viagem.",
+          "Na farmácia, solicite o cadastro no programa e apresente os documentos. O primeiro cadastro pode levar mais tempo — as retiradas seguintes são mais rápidas.",
+        ],
+      },
+      {
+        type: "h2",
+        text: "A família que voltou com a portaria no celular",
+      },
+      {
+        type: "p",
+        text: "Uma família levou o laudo à Farmácia Popular e o atendente disse que 'não aceitava receita de telemedicina'. Estava errado — a <a href='https://portal.cfm.org.br' target='_blank' rel='noopener' class='text-sky-400 hover:underline'>Resolução CFM 2.314/2022</a> garante validade jurídica plena aos laudos emitidos por teleconsulta, e a portaria do programa não restringe a modalidade de consulta. A família voltou no dia seguinte com a informação correta impressa no celular. O gerente conferiu a legislação, reconheceu o erro do atendente e liberou o cadastro. Desde então, retiram todo mês sem problema. Voltou com a portaria no celular. Saiu com as fraldas na sacola.",
+      },
+      {
+        type: "h2",
+        text: "O laudo: o único documento que você precisa conseguir",
+      },
+      {
+        type: "p",
+        text: "RG e CPF a família tem. O laudo médico é o obstáculo real — e o único que exige ação. Ele precisa ser emitido por <a href='/dr-roberto-arcanjo' class='text-sky-400 hover:underline'>médico com CRM ativo</a>, conter o diagnóstico correto e a indicação de uso contínuo. Quem tem acompanhamento regular em UBS pode solicitar o documento na próxima consulta. Para quem não tem médico de referência ou não consegue esperar, o laudo pode ser obtido por teleconsulta — veja como funciona em <a href='/laudo-medico-online' class='text-sky-400 hover:underline'>laudo médico online para fralda</a>.",
+      },
+      {
+        type: "h2",
+        text: "Quanto tempo leva e quanto custa obter cada documento",
+      },
+      {
+        type: "table",
+        headers: ["Documento", "Custo", "Prazo médio", "Onde obter"],
+        rows: [
+          ["Laudo médico (UBS)", "Gratuito", "Depende da fila", "UBS com médico de família"],
+          ["Laudo médico (teleconsulta)", "R$ 49", "Até 24h úteis", "fraldageriatrica.com"],
+          ["RG / CNH", "Gratuito (2ª via: até R$ 40)", "Imediato se já tem", "Posto de identificação"],
+          ["CPF", "Gratuito", "Imediato se já tem", "Receita Federal / CAIXA / Correios"],
+          ["Comprovante de residência", "Gratuito", "Imediato", "Conta de água, luz ou telefone recente"],
+        ],
+      },
+      {
+        type: "h2",
+        text: "Quando você não precisa do nosso serviço",
+      },
+      {
+        type: "p",
+        text: "Se o idoso tem consulta marcada com médico de família na UBS nos próximos dias, peça o laudo diretamente — é gratuito e o médico já conhece o histórico do paciente. Muitas UBSs emitem sem nenhum custo adicional para quem já está em acompanhamento.",
+      },
+      {
+        type: "p",
+        text: "O <a href='/laudo-medico-online' class='text-sky-400 hover:underline'>serviço de laudo online por R$ 49</a> resolve o caso de quem não tem médico de referência ativo, precisa do documento com urgência ou mora em área sem UBS próxima. Não é a única solução — é a mais rápida quando as outras não estão disponíveis. Para o guia completo sobre o benefício, veja <a href='/fralda-geriatrica-gratis-sus' class='text-sky-400 hover:underline'>como retirar fralda geriátrica grátis pelo SUS</a>.",
+      },
+      {
+        type: "callout",
+        variant: "info",
+        title: "E se a farmácia continuar recusando?",
+        body: "O cidadão pode registrar reclamação na Ouvidoria do Ministério da Saúde pelo telefone 136 (gratuito) ou pelo portal ouvidoria.saude.gov.br. Farmácias credenciadas pelo programa têm obrigação contratual de cumprir as portarias. Reclamações formais costumam resolver o problema em poucos dias.",
+      },
+    ],
+  },
+  // ─────────────────────────────────────────────────────────────
   // POST 7 — fralda-geriatrica-por-telemedicina
   // ─────────────────────────────────────────────────────────────
   {
