@@ -11,6 +11,11 @@ const Funil = lazy(() => import("./pages/Funil"));
 const Blog = lazy(() => import("./pages/Blog"));
 const BlogPost = lazy(() => import("./pages/BlogPost"));
 const Adv = lazy(() => import("./pages/Adv"));
+const PillarSus = lazy(() => import("./pages/PillarSus"));
+const PillarLaudo = lazy(() => import("./pages/PillarLaudo"));
+const PillarIncontinencia = lazy(() => import("./pages/PillarIncontinencia"));
+const PillarCuidados = lazy(() => import("./pages/PillarCuidados"));
+const Medico = lazy(() => import("./pages/Medico"));
 
 const queryClient = new QueryClient();
 
@@ -35,6 +40,11 @@ const App = () => (
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:slug" element={<BlogPost />} />
             <Route path="/adv" element={<Adv />} />
+            <Route path="/fralda-geriatrica-gratis-sus" element={<PillarSus />} />
+            <Route path="/laudo-medico-online" element={<PillarLaudo />} />
+            <Route path="/incontinencia-urinaria-idosos" element={<PillarIncontinencia />} />
+            <Route path="/cuidar-de-idoso-em-casa" element={<PillarCuidados />} />
+            <Route path="/dr-roberto-arcanjo" element={<Medico />} />
             {/* CATCH-ALL ROUTE REDIRECTS TO FRALDA */}
             <Route path="*" element={<Navigate to="/fralda" replace />} />
           </Routes>
