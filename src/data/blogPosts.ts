@@ -43,6 +43,184 @@ export interface BlogPostData {
 
 export const blogPosts: BlogPostData[] = [
   // ─────────────────────────────────────────────────────────────
+  // POST — direitos-do-idoso-sus
+  // ─────────────────────────────────────────────────────────────
+  {
+    slug: "direitos-do-idoso-sus",
+    category: "Direitos",
+    title: "Direitos do Idoso no SUS: o que a lei garante (e o que ninguém te conta) — 2025",
+    description:
+      "O Estatuto do Idoso garante atendimento prioritário, fraldas, medicamentos e consultas gratuitas pelo SUS. Veja o que você tem direito e como acessar em 2025.",
+    keywords:
+      "direitos do idoso SUS, estatuto do idoso SUS, o que o SUS oferece para idosos, atendimento prioritário idoso",
+    date: "10 mai. 2025",
+    dateIso: "2025-05-10",
+    readTime: "7 min",
+    authorName: "Dr. Roberto Arcanjo",
+    authorCrm: "26.155-CE",
+    authorSpecialty: "Geriatria",
+    lastReviewedDate: "2025-05-10",
+    image: {
+      id: 5790815,
+      src: "https://images.pexels.com/photos/5790815/pexels-photo-5790815.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      srcMedium:
+        "https://images.pexels.com/photos/5790815/pexels-photo-5790815.jpeg?auto=compress&cs=tinysrgb&h=350",
+      width: 4591,
+      height: 3061,
+      alt: "Casal de idosos medindo pressão arterial em casa — cuidados de saúde na terceira idade",
+      photographer: "Vlada Karpovich",
+      photographerUrl: "https://www.pexels.com/@vlada-karpovich",
+    },
+    faqs: [
+      {
+        question: "Qual a idade mínima para ter direito ao atendimento prioritário no SUS?",
+        answer:
+          "60 anos, conforme o artigo 1º do Estatuto do Idoso (Lei 10.741/2003). Não há renda mínima, estado de saúde nem condição social como critério — qualquer pessoa com 60 anos ou mais tem direito.",
+      },
+      {
+        question: "O SUS fornece fralda geriátrica diretamente na UBS?",
+        answer:
+          "Não. A fralda é fornecida pelo Programa Farmácia Popular, não pela UBS. É necessário laudo médico que ateste incontinência urinária ou fecal. Com o laudo em mãos, o custo é zero na Farmácia Popular credenciada.",
+      },
+      {
+        question: "Preciso de encaminhamento para consultar com geriatra no SUS?",
+        answer:
+          "Sim, na maioria dos municípios. O fluxo padrão é: UBS → médico de família avalia → emite encaminhamento → agendamento pelo SISREG. Em algumas cidades, a própria UBS tem geriatra e o encaminhamento é dispensado.",
+      },
+      {
+        question: "Medicamentos para hipertensão e diabetes são gratuitos para idosos no SUS?",
+        answer:
+          "Sim. A maioria dos medicamentos para hipertensão (captopril, losartana, anlodipino) e diabetes (metformina, insulina) consta na RENAME e é dispensada gratuitamente nas UBSs. Insulinas e metformina também estão na modalidade gratuita do Farmácia Popular.",
+      },
+      {
+        question: "Quem tem plano de saúde perde os direitos no SUS?",
+        answer:
+          "Não. Ter plano de saúde privado não cancela nenhum direito no SUS. O idoso pode usar o plano para consultas rápidas e o SUS para medicamentos do RENAME, fraldas pelo Farmácia Popular e procedimentos de alta complexidade.",
+      },
+    ],
+    content: [
+      {
+        type: "p",
+        text: "R$ 0 para fraldas geriátricas. R$ 0 para dezenas de medicamentos para doenças crônicas. R$ 0 para consulta com geriatra na rede pública. O Estatuto do Idoso garante tudo isso desde 2003 — e boa parte das famílias ainda descobre por acaso, anos depois de ter pago por fora.",
+      },
+      {
+        type: "callout",
+        title: "Manda esse link pro grupo da família",
+        body: "Segundo a Lei 10.741/2003, todo brasileiro com 60 anos ou mais tem direito a atendimento prioritário, medicamentos gratuitos e fraldas pelo SUS. Sem fila extra. Sem critério de renda.",
+        variant: "tip",
+      },
+      {
+        type: "h2",
+        text: "O que o Estatuto do Idoso garante pelo SUS",
+      },
+      {
+        type: "p",
+        text: "A <a href='https://www.planalto.gov.br/ccivil_03/leis/2003/l10.741.htm' target='_blank' rel='noopener' class='text-sky-400 hover:underline'>Lei 10.741/2003 — o Estatuto do Idoso</a> define, no artigo 15, que a atenção integral à saúde do idoso é obrigação do SUS. Isso inclui tratamentos preventivos, curativos, reabilitação e fornecimento de próteses, órteses e outros recursos assistivos.",
+      },
+      {
+        type: "h3",
+        text: "Atendimento preferencial",
+      },
+      {
+        type: "p",
+        text: "Toda unidade de saúde pública deve oferecer atendimento prioritário a pessoas com 60 anos ou mais. Na prática: fila preferencial nas UBSs, hospitais e prontos-atendimentos SUS. Não é cortesia — é obrigação legal prevista no artigo 3º do Estatuto. O funcionário que ignorar pode responder por descumprimento da lei.",
+      },
+      {
+        type: "h3",
+        text: "Medicamentos gratuitos",
+      },
+      {
+        type: "p",
+        text: "O Componente Básico da Assistência Farmacêutica cobre mais de 500 medicamentos dispensados nas UBSs. Para idosos com hipertensão, diabetes ou dislipidemia, os medicamentos mais prescritos estão cobertos. A <a href='https://www.gov.br/saude/pt-br/composicao/sctie/daf/rename' target='_blank' rel='noopener' class='text-sky-400 hover:underline'>RENAME (Relação Nacional de Medicamentos Essenciais)</a> é a lista oficial — vale consultar antes de pagar em farmácia privada.",
+      },
+      {
+        type: "h3",
+        text: "Fraldas geriátricas",
+      },
+      {
+        type: "p",
+        text: "A fralda geriátrica não é distribuída diretamente pela UBS — esse é um dos equívocos mais comuns. Ela é fornecida pelo Programa Farmácia Popular mediante laudo médico que ateste incontinência urinária ou fecal. Com o laudo, o custo é zero. Saiba exatamente como funciona em <a href='/fralda-geriatrica-gratis-sus' class='text-sky-400 hover:underline'>fralda geriátrica gratuita pelo SUS</a>.",
+      },
+      {
+        type: "h3",
+        text: "Consultas e especialidades",
+      },
+      {
+        type: "p",
+        text: "Geriatria, cardiologia, neurologia e outras especialidades estão disponíveis pelo SUS mediante encaminhamento da UBS. O tempo de espera varia por município — mas o direito é garantido. Não precisar de plano de saúde para acessar.",
+      },
+      {
+        type: "h2",
+        text: "Como acessar cada serviço — passo a passo",
+      },
+      {
+        type: "ol",
+        items: [
+          "Procure a UBS mais próxima com o cartão SUS do idoso (RG, CPF e comprovante de residência também)",
+          "Solicite consulta com médico de família — explique o que precisa: medicamento, encaminhamento, laudo para fralda",
+          "Para medicamentos do RENAME: peça a receita e retire na farmácia da própria UBS",
+          "Para fraldas: peça laudo médico específico para incontinência — pode ser feito por qualquer médico, inclusive por telemedicina",
+          "Para especialidades (geriatra, neurologista): peça encaminhamento e aguarde agendamento pelo SISREG",
+        ],
+      },
+      {
+        type: "callout",
+        title: "Fralda não é dispensada na UBS",
+        body: "A fralda geriátrica é obtida no Farmácia Popular com laudo médico, não diretamente na UBS. Sem laudo, não sai fralda — mesmo que o médico já conheça o paciente há anos. Veja os documentos exatos em nosso guia de documentos para Farmácia Popular.",
+        variant: "warning",
+      },
+      {
+        type: "h2",
+        text: "O imposto que voltou para a família",
+      },
+      {
+        type: "p",
+        text: "Uma família de classe média, com renda razoável, jamais havia precisado do SUS para nada. Quando a mãe começou a precisar de fralda geriátrica, o gasto de R$ 350 por mês não apertava — mas incomodava. Quando descobriram que era um direito legal, não um programa assistencial, a percepção mudou completamente. 'Não é favor do governo. É o imposto que minha mãe pagou a vida inteira voltando pra ela.' Desde então retiram todo mês no Farmácia Popular com laudo obtido por <a href='/laudo-medico-online' class='text-sky-400 hover:underline'>telemedicina</a>, sem ninguém sair de casa.",
+      },
+      {
+        type: "h2",
+        text: "Prazo e custo de cada serviço",
+      },
+      {
+        type: "table",
+        headers: ["Serviço", "Custo", "Prazo médio", "O que precisa"],
+        rows: [
+          ["Atendimento na UBS", "R$ 0", "No mesmo dia (ficha)", "Cartão SUS + RG"],
+          ["Medicamento básico (RENAME)", "R$ 0", "Na hora (com receita)", "Receita médica"],
+          ["Fralda (Farmácia Popular)", "R$ 0", "No dia (com laudo)", "Laudo + RG + comprovante"],
+          ["Consulta com especialista", "R$ 0", "30–90 dias (SISREG)", "Encaminhamento da UBS"],
+          ["Internação/cirurgia eletiva", "R$ 0", "Variável por fila", "Encaminhamento hospitalar"],
+        ],
+      },
+      {
+        type: "h2",
+        text: "Quando o SUS não é a melhor opção",
+      },
+      {
+        type: "p",
+        text: "Se o idoso já tem plano de saúde privado ativo, o caminho pelo plano costuma ser mais rápido para especialidades e cirurgias eletivas — especialmente fora de capitais. O SUS tem fila; o plano tem prazos máximos regulamentados pela ANS.",
+      },
+      {
+        type: "p",
+        text: "Para fraldas especificamente: se a UBS local está com agenda lotada e a família precisa do laudo rápido, vale considerar uma consulta por <a href='/blog/fralda-geriatrica-por-telemedicina' class='text-sky-400 hover:underline'>telemedicina para obter o laudo</a> — o custo é de R$ 30 a R$ 80 e o documento sai no mesmo dia. A economia nos meses seguintes cobre o investimento na primeira retirada.",
+      },
+      {
+        type: "p",
+        text: "Se a UBS local não tem geriatra e o tempo de espera pelo SISREG for superior a 60 dias, algumas secretarias municipais de saúde mantêm policlínicas de atenção ao idoso com agendamento mais ágil. Vale ligar para a central de saúde do município antes de aguardar na fila geral.",
+      },
+      {
+        type: "callout",
+        title: "E se o atendente da UBS disser que não tem esse direito?",
+        body: "Acontece com frequência — o funcionário não conhece o Estatuto na íntegra. Peça para falar com o coordenador da unidade. Se necessário, ligue para o Disque Saúde (136) e registre uma ouvidoria. O número 136 é gratuito e funciona 24 horas.",
+        variant: "info",
+      },
+      {
+        type: "h2",
+        text: "Perguntas frequentes sobre direitos do idoso no SUS",
+      },
+    ],
+  },
+  // ─────────────────────────────────────────────────────────────
   // POST — fralda-geriatrica-farmacia-popular-documentos
   // ─────────────────────────────────────────────────────────────
   {
