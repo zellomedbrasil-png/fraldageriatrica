@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { QRCodeSVG } from "qrcode.react";
+
 import {
   Shield,
   Plus,
@@ -36,10 +36,9 @@ import {
   Lightbulb,
   Package,
   IdCard,
-  Copy,
-  QrCode,
   Smartphone,
   CheckCircle,
+  ExternalLink,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -47,32 +46,7 @@ import { Input } from "@/components/ui/input";
 // ───────────── Config
 const TOTAL = 11;
 const PRECO_LAUDO = 49;
-const INFINITEPAY_LINK = "https://checkout.infinitepay.io/zellomed/fUAoB8O8VE";
-
-// ───────────── PIX nativo
-const PIX_KEY = "contato@fraldageriatrica.com";
-const PIX_NAME = "FraldaGeriatrica";
-const PIX_CITY = "Fortaleza";
-
-const _emv = (id: string, v: string) => `${id}${v.length.toString().padStart(2,"0")}${v}`;
-const genPixPayload = (key: string, amount: number, txid: string): string => {
-  if (!key) return "";
-  const mai = _emv("00","BR.GOV.BCB.PIX") + _emv("01", key);
-  const body =
-    _emv("00","01") +
-    _emv("26", mai) +
-    _emv("52","0000") +
-    _emv("53","986") +
-    _emv("54", amount.toFixed(2)) +
-    _emv("58","BR") +
-    _emv("59", PIX_NAME.slice(0,25)) +
-    _emv("60", PIX_CITY.slice(0,15)) +
-    _emv("62", _emv("05", txid.replace(/\W/g,"").slice(0,25))) +
-    "6304";
-  let c = 0xffff;
-  for (const ch of body) { c ^= ch.charCodeAt(0) << 8; for (let i=0;i<8;i++) c=(c&0x8000)?(c<<1)^0x1021:c<<1; }
-  return body + (c & 0xffff).toString(16).toUpperCase().padStart(4,"0");
-};
+const KIWIFY_LINK = "https://pay.kiwify.com.br/ETL97G1";
 const WA_NUMBER = "5585991275429";
 const WA_LINK = (msg: string) =>
   `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`;
@@ -441,20 +415,7 @@ const Funil = () => {
   const [orderId] = useState(
     () => "FG-" + (Date.now() % 1000000).toString().padStart(6, "0"),
   );
-  const [payMethod, setPayMethod] = useState<"pix" | "card" | "">("");
-  const [copied, setCopied] = useState(false);
 
-  const pixPayload = useMemo(
-    () => genPixPayload(PIX_KEY, PRECO_LAUDO, orderId),
-    [orderId]
-  );
-
-  const copyPix = () => {
-    navigator.clipboard.writeText(pixPayload).then(() => {
-      setCopied(true);
-      setTimeout(() => setCopied(false), 3000);
-    });
-  };
 
   return (
     <div className={`${BG} min-h-screen text-white relative overflow-hidden`}>
@@ -959,11 +920,11 @@ const Funil = () => {
             </section>
           )}
 
-          {/* STEP 10 — Checkout nativo */}
+          {/* STEP 10 — Checkout Kiwify */}
           {s.step === 10 && (
             <section>
               {/* Cabeçalho preço */}
-              <div className="text-center mb-6">
+              <div className="text-center mb-8">
                 <div className="text-[11px] uppercase tracking-[0.16em] text-sky-400/80 font-mono mb-2">
                   Laudo autorizado para emissão
                 </div>
@@ -978,125 +939,62 @@ const Funil = () => {
                 <p className="text-white/40 text-xs mt-1.5">Consulta + laudo com validade de 6 meses</p>
               </div>
 
-              {/* Tabs */}
-              <div className="flex gap-2 p-1 rounded-xl bg-white/[0.04] border border-white/[0.07] mb-5">
-                <button
-                  type="button"
-                  onClick={() => setPayMethod("pix")}
-                  className={`flex-1 flex items-center justify-center gap-2 py-2.5 rounded-lg text-sm font-semibold transition-all ${
-                    payMethod !== "card"
-                      ? "bg-emerald-500/15 text-emerald-300 border border-emerald-500/30"
-                      : "text-white/40 hover:text-white/70"
-                  }`}
-                >
-                  <QrCode className="w-4 h-4" />
-                  Pix
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setPayMethod("card")}
-                  className={`flex-1 flex items-center justify-center gap-2 py-2.5 rounded-lg text-sm font-semibold transition-all ${
-                    payMethod === "card"
-                      ? "bg-sky-500/15 text-sky-300 border border-sky-500/30"
-                      : "text-white/40 hover:text-white/70"
-                  }`}
-                >
-                  <CreditCard className="w-4 h-4" />
-                  Cartão
-                </button>
+              {/* Métodos aceitos */}
+              <div className={`${SURFACE} rounded-2xl p-5 mb-5`}>
+                <p className="text-[11px] uppercase tracking-[0.14em] text-white/40 font-mono mb-4 text-center">
+                  Formas de pagamento aceitas
+                </p>
+                <div className="flex justify-center gap-4">
+                  <div className="flex flex-col items-center gap-1.5">
+                    <div className="w-10 h-10 rounded-xl bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center">
+                      <svg viewBox="0 0 24 24" className="w-5 h-5 text-emerald-400" fill="currentColor">
+                        <path d="M20.6 8.55l-3.15-3.14a2 2 0 00-2.83 0l-1.41 1.41 4.24 4.24 1.41-1.41a2 2 0 00-.26-1.1zm-5.8-1.42L6.05 15.88a2 2 0 000 2.83l3.14 3.15a2 2 0 002.83 0l8.76-8.75-5.98-5.98zM3.71 11.5l1.41 1.41-1.41 1.41L2.3 12.91l1.41-1.41zm1.42-2.83l2.12 2.12-1.42 1.41L3.71 10.1 5.13 8.67zm8.49 12.02l-1.42 1.41-1.41-1.41 1.41-1.42 1.42 1.42z"/>
+                      </svg>
+                    </div>
+                    <span className="text-xs text-white/60">Pix</span>
+                  </div>
+                  <div className="flex flex-col items-center gap-1.5">
+                    <div className="w-10 h-10 rounded-xl bg-sky-500/15 border border-sky-500/30 flex items-center justify-center">
+                      <CreditCard className="w-5 h-5 text-sky-400" />
+                    </div>
+                    <span className="text-xs text-white/60">Crédito</span>
+                  </div>
+                  <div className="flex flex-col items-center gap-1.5">
+                    <div className="w-10 h-10 rounded-xl bg-sky-500/15 border border-sky-500/30 flex items-center justify-center">
+                      <CreditCard className="w-5 h-5 text-sky-300" />
+                    </div>
+                    <span className="text-xs text-white/60">Débito</span>
+                  </div>
+                </div>
               </div>
 
-              {payMethod !== "card" ? (
-                /* ── PIX NATIVO ── */
-                <div className="grid gap-4">
-                  {/* QR Code */}
-                  <div className="flex flex-col items-center gap-4 bg-white rounded-2xl p-6">
-                    <p className="text-slate-500 text-xs uppercase tracking-widest font-semibold">
-                      Escaneie com o app do seu banco
-                    </p>
-                    <div className="p-3 bg-white rounded-xl border border-slate-200 shadow-sm">
-                      <QRCodeSVG
-                        value={pixPayload}
-                        size={200}
-                        bgColor="#ffffff"
-                        fgColor="#0f172a"
-                        level="M"
-                      />
-                    </div>
-                    <div className="text-center">
-                      <p className="text-slate-700 font-semibold text-sm">R$ 49,00</p>
-                      <p className="text-slate-400 text-xs mt-0.5">Laudo Médico · {orderId}</p>
-                    </div>
-                  </div>
+              {/* CTA principal */}
+              <a
+                href={KIWIFY_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setTimeout(() => goto(11), 4000)}
+                className="w-full flex items-center justify-center gap-3 rounded-2xl py-5 text-base font-bold text-white bg-gradient-to-r from-sky-500 to-sky-400 hover:from-sky-400 hover:to-sky-300 shadow-[0_10px_40px_-10px_rgba(14,165,233,0.5)] hover:shadow-[0_15px_40px_-10px_rgba(14,165,233,0.7)] transition-all hover:scale-[1.02] active:scale-[0.99]"
+              >
+                <Lock className="w-5 h-5" />
+                Pagar com segurança
+                <ExternalLink className="w-4 h-4 opacity-70" />
+              </a>
 
-                  {/* Copia e Cola */}
-                  <div className={`${SURFACE} rounded-2xl p-4`}>
-                    <p className="text-[11px] uppercase tracking-[0.14em] text-white/40 font-mono mb-3">
-                      Ou copie o código Pix
-                    </p>
-                    <div className="flex gap-2">
-                      <div className="flex-1 bg-white/[0.04] border border-white/[0.08] rounded-xl px-3 py-2.5 text-[11px] text-white/50 font-mono truncate">
-                        {pixPayload.slice(0, 48)}…
-                      </div>
-                      <button
-                        type="button"
-                        onClick={copyPix}
-                        className={`shrink-0 flex items-center gap-1.5 px-4 py-2.5 rounded-xl text-xs font-semibold transition-all ${
-                          copied
-                            ? "bg-emerald-500/20 text-emerald-300 border border-emerald-500/30"
-                            : "bg-sky-500/15 text-sky-300 border border-sky-500/30 hover:bg-sky-500/25"
-                        }`}
-                      >
-                        {copied ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
-                        {copied ? "Copiado!" : "Copiar"}
-                      </button>
-                    </div>
-                  </div>
-
-                  {/* Já paguei */}
-                  <button
-                    type="button"
-                    onClick={() => goto(11)}
-                    className="w-full flex items-center justify-center gap-2 rounded-xl py-3.5 text-sm font-semibold text-white border border-emerald-500/30 bg-emerald-500/10 hover:bg-emerald-500/20 transition-all"
-                  >
-                    <Check className="w-4 h-4 text-emerald-400" />
-                    Já fiz o pagamento
-                  </button>
-                </div>
-              ) : (
-                /* ── CARTÃO → InfinitePay ── */
-                <div className="grid gap-4">
-                  <div className={`${SURFACE} rounded-2xl p-5 text-center`}>
-                    <CreditCard className="w-10 h-10 text-sky-400 mx-auto mb-3" />
-                    <p className="text-white font-semibold mb-1">Pagamento com cartão</p>
-                    <p className="text-white/45 text-sm leading-relaxed mb-5">
-                      Clique abaixo para pagar com cartão de crédito no ambiente seguro da InfinitePay.
-                    </p>
-                    <a
-                      href={INFINITEPAY_LINK}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={() => setTimeout(() => goto(11), 3000)}
-                      className="w-full flex items-center justify-center gap-2 rounded-xl py-3.5 text-sm font-semibold text-slate-950 bg-sky-400 hover:bg-sky-300 transition-all"
-                    >
-                      <Lock className="w-4 h-4" />
-                      Pagar com Cartão
-                    </a>
-                  </div>
-                  <button
-                    type="button"
-                    onClick={() => goto(11)}
-                    className="w-full text-xs text-white/35 hover:text-white/60 py-2 transition-colors"
-                  >
-                    Já finalizei o pagamento
-                  </button>
-                </div>
-              )}
-
-              <div className="flex items-center justify-center gap-1.5 text-[11px] text-white/20 mt-5 mb-1">
+              <div className="flex items-center justify-center gap-1.5 text-[11px] text-white/20 mt-4 mb-1">
                 <Lock className="w-3 h-3" />
-                <span>Pix via chave registrada · Cartão via InfinitePay</span>
+                <span>Checkout seguro via Kiwify · Pix, crédito e débito</span>
               </div>
+
+              {/* Já paguei */}
+              <button
+                type="button"
+                onClick={() => goto(11)}
+                className="mt-3 w-full flex items-center justify-center gap-2 rounded-xl py-3 text-sm font-semibold text-white border border-emerald-500/30 bg-emerald-500/10 hover:bg-emerald-500/20 transition-all"
+              >
+                <Check className="w-4 h-4 text-emerald-400" />
+                Já finalizei o pagamento
+              </button>
 
               <BackBtn onClick={() => goto(9)} />
             </section>
