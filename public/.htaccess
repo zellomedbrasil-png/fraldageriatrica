@@ -1,5 +1,14 @@
 <IfModule mod_rewrite.c>
   RewriteEngine On
+
+  # 1. www → não-www (301 permanente — evita duplicate content)
+  RewriteCond %{HTTP_HOST} ^www\.fraldageriatrica\.com [NC]
+  RewriteRule ^(.*)$ https://fraldageriatrica.com/$1 [R=301,L]
+
+  # 2. /fralda → / (canonical consolidation)
+  RewriteRule ^fralda/?$ / [R=301,L]
+
+  # 3. SPA fallback (client-side routing)
   RewriteBase /
   RewriteRule ^index\.html$ - [L]
   RewriteCond %{REQUEST_FILENAME} !-f
