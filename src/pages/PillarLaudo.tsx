@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { SEO } from "@/components/SEO";
 import {
   Shield,
   Plus,
@@ -36,86 +36,6 @@ const SURFACE = "bg-white/[0.03] border border-white/[0.07]";
 const SURFACE_HOVER = "hover:border-sky-400/30 hover:bg-white/[0.05]";
 const SOFT_GRADIENT =
   "bg-[radial-gradient(ellipse_at_top,hsl(210_92%_55%/0.18)_0%,transparent_55%)]";
-
-const useSeo = () => {
-  useEffect(() => {
-    document.title = PAGE_TITLE;
-    document.documentElement.lang = "pt-BR";
-
-    const upsertMeta = (attr: "name" | "property", key: string, content: string) => {
-      let el = document.head.querySelector<HTMLMetaElement>(`meta[${attr}="${key}"]`);
-      if (!el) {
-        el = document.createElement("meta");
-        el.setAttribute(attr, key);
-        document.head.appendChild(el);
-      }
-      el.setAttribute("content", content);
-    };
-
-    upsertMeta("name", "description", PAGE_DESC);
-    upsertMeta("name", "keywords", "laudo médico online fralda, como obter laudo médico fralda, laudo fralda geriátrica telemedicina, laudo médico para Farmácia Popular, renovar laudo fralda");
-    upsertMeta("name", "theme-color", "#070B12");
-    upsertMeta("property", "og:title", PAGE_TITLE);
-    upsertMeta("property", "og:description", PAGE_DESC);
-    upsertMeta("property", "og:type", "website");
-    upsertMeta("property", "og:url", CANONICAL);
-    upsertMeta("property", "og:image", OG_IMAGE);
-    upsertMeta("property", "og:locale", "pt_BR");
-    upsertMeta("name", "twitter:card", "summary_large_image");
-    upsertMeta("name", "twitter:title", PAGE_TITLE);
-    upsertMeta("name", "twitter:description", PAGE_DESC);
-    upsertMeta("name", "twitter:image", OG_IMAGE);
-
-    let canon = document.head.querySelector<HTMLLinkElement>('link[rel="canonical"]');
-    if (!canon) {
-      canon = document.createElement("link");
-      canon.rel = "canonical";
-      document.head.appendChild(canon);
-    }
-    canon.href = CANONICAL;
-
-    const ldId = "ld-laudo";
-    document.getElementById(ldId)?.remove();
-    const ld = document.createElement("script");
-    ld.type = "application/ld+json";
-    ld.id = ldId;
-    ld.text = JSON.stringify([
-      {
-        "@context": "https://schema.org",
-        "@type": "MedicalWebPage",
-        name: PAGE_TITLE,
-        description: PAGE_DESC,
-        url: CANONICAL,
-        about: { "@type": "MedicalProcedure", name: "Teleconsulta para emissão de laudo médico" },
-        author: {
-          "@type": "Person",
-          name: "Dr. Roberto Arcanjo",
-          honorificPrefix: "Dr.",
-          hasCredential: "CRM 26.155-CE",
-          medicalSpecialty: "Geriatrics",
-        },
-        lastReviewed: "2025-05-10",
-        breadcrumb: {
-          "@type": "BreadcrumbList",
-          itemListElement: [
-            { "@type": "ListItem", position: 1, name: "Home", item: "https://fraldageriatrica.com/" },
-            { "@type": "ListItem", position: 2, name: "Laudo Médico Online", item: CANONICAL },
-          ],
-        },
-      },
-      {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        mainEntity: faqItems.map((q) => ({
-          "@type": "Question",
-          name: q.q,
-          acceptedAnswer: { "@type": "Answer", text: q.a },
-        })),
-      },
-    ]);
-    document.head.appendChild(ld);
-  }, []);
-};
 
 const faqItems = [
   {
@@ -448,9 +368,48 @@ const Footer = () => (
 );
 
 export default function PillarLaudo() {
-  useSeo();
   return (
     <main className={`${BG} min-h-screen text-white`}>
+      <SEO 
+        title={PAGE_TITLE}
+        description={PAGE_DESC}
+        canonicalPath="/laudo-medico-online"
+        keywords="laudo médico online fralda, como obter laudo médico fralda, laudo fralda geriátrica telemedicina, laudo médico para Farmácia Popular, renovar laudo fralda"
+        jsonLd={[
+          {
+            "@context": "https://schema.org",
+            "@type": "MedicalWebPage",
+            name: PAGE_TITLE,
+            description: PAGE_DESC,
+            url: CANONICAL,
+            about: { "@type": "MedicalProcedure", name: "Teleconsulta para emissão de laudo médico" },
+            author: {
+              "@type": "Person",
+              name: "Dr. Roberto Arcanjo",
+              honorificPrefix: "Dr.",
+              hasCredential: "CRM 26.155-CE",
+              medicalSpecialty: "Geriatrics",
+            },
+            lastReviewed: "2025-05-10",
+            breadcrumb: {
+              "@type": "BreadcrumbList",
+              itemListElement: [
+                { "@type": "ListItem", position: 1, name: "Home", item: "https://fraldageriatrica.com/" },
+                { "@type": "ListItem", position: 2, name: "Laudo Médico Online", item: CANONICAL },
+              ],
+            },
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: faqItems.map((q) => ({
+              "@type": "Question",
+              name: q.q,
+              acceptedAnswer: { "@type": "Answer", text: q.a },
+            })),
+          },
+        ]}
+      />
       <Header />
       <Breadcrumb />
       <Hero />

@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import { SEO } from "@/components/SEO";
 
 import {
   Shield,
@@ -85,41 +86,6 @@ const PAGE_TITLE =
 const PAGE_DESC =
   "Em 10 passos rápidos descubra se sua família tem direito à fralda geriátrica gratuita pelo SUS e receba o laudo médico em até 24h.";
 const CANONICAL = "https://fraldageriatrica.com/funil";
-
-const useSeo = () => {
-  useEffect(() => {
-    document.title = PAGE_TITLE;
-    document.documentElement.lang = "pt-BR";
-    const upsert = (
-      attr: "name" | "property",
-      key: string,
-      content: string,
-    ) => {
-      let el = document.head.querySelector<HTMLMetaElement>(
-        `meta[${attr}="${key}"]`,
-      );
-      if (!el) {
-        el = document.createElement("meta");
-        el.setAttribute(attr, key);
-        document.head.appendChild(el);
-      }
-      el.setAttribute("content", content);
-    };
-    upsert("name", "description", PAGE_DESC);
-    upsert("property", "og:title", PAGE_TITLE);
-    upsert("property", "og:description", PAGE_DESC);
-    upsert("property", "og:type", "website");
-    upsert("property", "og:url", CANONICAL);
-    let canonical =
-      document.head.querySelector<HTMLLinkElement>('link[rel="canonical"]');
-    if (!canonical) {
-      canonical = document.createElement("link");
-      canonical.rel = "canonical";
-      document.head.appendChild(canonical);
-    }
-    canonical.href = CANONICAL;
-  }, []);
-};
 
 // ───────────── Tokens locais (mesma estética do /fralda)
 const BG = "bg-[#070B12]";
@@ -377,7 +343,6 @@ const BackBtn = ({ onClick }: { onClick: () => void }) => (
 
 // ───────────── Página
 const Funil = () => {
-  useSeo();
   const [s, setS] = useState<State>(initial);
 
   // Persistência leve em sessionStorage
@@ -419,6 +384,7 @@ const Funil = () => {
 
   return (
     <div className={`${BG} min-h-screen text-white relative overflow-hidden`}>
+      <SEO title={PAGE_TITLE} description={PAGE_DESC} canonicalPath="/funil" />
       {/* Glow de topo */}
       <div
         className={`pointer-events-none absolute inset-x-0 top-0 h-[520px] ${SOFT_GRADIENT}`}

@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { SEO } from "@/components/SEO";
 import {
   ShieldCheck,
   Shield,
@@ -52,91 +53,6 @@ const EMERALD = "text-sky-400";
 const RING_EMERALD = "border-sky-400/25";
 const SOFT_GRADIENT =
   "bg-[radial-gradient(ellipse_at_top,hsl(210_92%_55%/0.18)_0%,transparent_55%)]";
-
-// ───────────────── SEO
-const useSeo = () => {
-  useEffect(() => {
-    document.title = PAGE_TITLE;
-    document.documentElement.lang = "pt-BR";
-
-    const upsertMeta = (
-      attr: "name" | "property",
-      key: string,
-      content: string,
-    ) => {
-      let el = document.head.querySelector<HTMLMetaElement>(
-        `meta[${attr}="${key}"]`,
-      );
-      if (!el) {
-        el = document.createElement("meta");
-        el.setAttribute(attr, key);
-        document.head.appendChild(el);
-      }
-      el.setAttribute("content", content);
-    };
-
-    upsertMeta("name", "description", PAGE_DESC);
-    upsertMeta(
-      "name",
-      "keywords",
-      "fralda geriátrica gratuita SUS, laudo médico fralda, Farmácia Popular fralda idoso, fralda geriátrica grátis, laudo fralda online",
-    );
-    upsertMeta("name", "theme-color", "#070B12");
-    upsertMeta("property", "og:title", PAGE_TITLE);
-    upsertMeta("property", "og:description", PAGE_DESC);
-    upsertMeta("property", "og:type", "website");
-    upsertMeta("property", "og:url", CANONICAL);
-    upsertMeta("property", "og:image", OG_IMAGE);
-    upsertMeta("property", "og:locale", "pt_BR");
-    upsertMeta("name", "twitter:card", "summary_large_image");
-    upsertMeta("name", "twitter:title", PAGE_TITLE);
-    upsertMeta("name", "twitter:description", PAGE_DESC);
-    upsertMeta("name", "twitter:image", OG_IMAGE);
-
-    let canon = document.head.querySelector<HTMLLinkElement>(
-      'link[rel="canonical"]',
-    );
-    if (!canon) {
-      canon = document.createElement("link");
-      canon.rel = "canonical";
-      document.head.appendChild(canon);
-    }
-    canon.href = CANONICAL;
-
-    const ldId = "ld-fralda";
-    document.getElementById(ldId)?.remove();
-    const ld = document.createElement("script");
-    ld.type = "application/ld+json";
-    ld.id = ldId;
-    ld.text = JSON.stringify([
-      {
-        "@context": "https://schema.org",
-        "@type": "MedicalBusiness",
-        name: "fraldageriatrica.com",
-        url: CANONICAL,
-        image: OG_IMAGE,
-        description: PAGE_DESC,
-        medicalSpecialty: "Geriatrics",
-        priceRange: "R$49",
-        areaServed: "BR",
-      },
-      {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        mainEntity: faqItems.map((q) => ({
-          "@type": "Question",
-          name: q.q,
-          acceptedAnswer: { "@type": "Answer", text: q.a },
-        })),
-      },
-    ]);
-    document.head.appendChild(ld);
-
-    return () => {
-      document.documentElement.lang = "pt-BR";
-    };
-  }, []);
-};
 
 // ───────────────── FAQ
 const faqItems = [
@@ -948,9 +864,35 @@ const Footer = () => (
 
 // ───────────────── Page
 const Fralda = () => {
-  useSeo();
   return (
     <div className={`min-h-screen ${BG} ${TEXT} antialiased selection:bg-sky-500/30`}>
+      <SEO 
+        title={PAGE_TITLE} 
+        description={PAGE_DESC} 
+        canonicalPath="/" 
+        jsonLd={[
+          {
+            "@context": "https://schema.org",
+            "@type": "MedicalBusiness",
+            name: "fraldageriatrica.com",
+            url: CANONICAL,
+            image: OG_IMAGE,
+            description: PAGE_DESC,
+            medicalSpecialty: "Geriatrics",
+            priceRange: "R$49",
+            areaServed: "BR",
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: faqItems.map((q) => ({
+              "@type": "Question",
+              name: q.q,
+              acceptedAnswer: { "@type": "Answer", text: q.a },
+            })),
+          },
+        ]}
+      />
       <Header />
       <main>
         <Hero />

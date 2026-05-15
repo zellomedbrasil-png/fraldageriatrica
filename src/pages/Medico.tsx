@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { SEO } from "@/components/SEO";
 import {
   Shield,
   Plus,
@@ -34,123 +34,6 @@ const SURFACE = "bg-white/[0.03] border border-white/[0.07]";
 const SURFACE_HOVER = "hover:border-sky-400/30 hover:bg-white/[0.05]";
 const SOFT_GRADIENT =
   "bg-[radial-gradient(ellipse_at_top,hsl(210_92%_55%/0.18)_0%,transparent_55%)]";
-
-const useSeo = () => {
-  useEffect(() => {
-    document.title = PAGE_TITLE;
-    document.documentElement.lang = "pt-BR";
-
-    const upsertMeta = (attr: "name" | "property", key: string, content: string) => {
-      let el = document.head.querySelector<HTMLMetaElement>(`meta[${attr}="${key}"]`);
-      if (!el) {
-        el = document.createElement("meta");
-        el.setAttribute(attr, key);
-        document.head.appendChild(el);
-      }
-      el.setAttribute("content", content);
-    };
-
-    upsertMeta("name", "description", PAGE_DESC);
-    upsertMeta("name", "author", "Dr. Roberto Arcanjo");
-    upsertMeta("name", "keywords", "Dr. Roberto Arcanjo geriatra, CRM/CE 26.155, médico laudo fralda online, geriatra Albert Einstein");
-    upsertMeta("name", "robots", "index, follow");
-    upsertMeta("name", "theme-color", "#070B12");
-    upsertMeta("property", "og:title", PAGE_TITLE);
-    upsertMeta("property", "og:description", PAGE_DESC);
-    upsertMeta("property", "og:type", "profile");
-    upsertMeta("property", "og:url", CANONICAL);
-    upsertMeta("property", "og:image", OG_IMAGE);
-    upsertMeta("property", "og:locale", "pt_BR");
-    upsertMeta("property", "profile:first_name", "Roberto");
-    upsertMeta("property", "profile:last_name", "Arcanjo");
-    upsertMeta("name", "twitter:card", "summary_large_image");
-    upsertMeta("name", "twitter:title", PAGE_TITLE);
-    upsertMeta("name", "twitter:description", PAGE_DESC);
-    upsertMeta("name", "twitter:image", OG_IMAGE);
-
-    let canon = document.head.querySelector<HTMLLinkElement>('link[rel="canonical"]');
-    if (!canon) {
-      canon = document.createElement("link");
-      canon.rel = "canonical";
-      document.head.appendChild(canon);
-    }
-    canon.href = CANONICAL;
-
-    const ldId = "ld-medico";
-    document.getElementById(ldId)?.remove();
-    const ld = document.createElement("script");
-    ld.type = "application/ld+json";
-    ld.id = ldId;
-    ld.text = JSON.stringify([
-      {
-        "@context": "https://schema.org",
-        "@type": "Physician",
-        "@id": `${CANONICAL}#physician`,
-        name: "Dr. Roberto Arcanjo",
-        givenName: "Roberto",
-        familyName: "Arcanjo",
-        honorificPrefix: "Dr.",
-        image: OG_IMAGE,
-        url: CANONICAL,
-        jobTitle: "Médico",
-        description:
-          "Médico inscrito no CRM/CE sob o número 26.155, com pós-graduação em Geriatria pelo Hospital Israelita Albert Einstein. Atuação voltada ao cuidado integral da pessoa idosa, com foco em prevenção, autonomia e qualidade de vida.",
-        telephone: "+55-85-99909-9750",
-        email: "contato@robertoarcanjo.com",
-        identifier: [{ "@type": "PropertyValue", propertyID: "CRM", value: "CRM/CE 26.155" }],
-        alumniOf: [
-          {
-            "@type": "CollegeOrUniversity",
-            name: "Universidade Estácio de Sá (UNESA)",
-            address: { "@type": "PostalAddress", addressLocality: "Rio de Janeiro", addressRegion: "RJ", addressCountry: "BR" },
-          },
-          {
-            "@type": "EducationalOrganization",
-            name: "Hospital Israelita Albert Einstein",
-            url: "https://www.einstein.br",
-          },
-        ],
-        knowsAbout: [
-          "Cuidado da pessoa idosa", "Avaliação Geriátrica Ampla", "Medicina do envelhecimento",
-          "Manejo de doenças crônicas no idoso", "Polifarmácia e desprescrição", "Prevenção de quedas e fragilidade",
-          "Cuidados paliativos", "Incontinência urinária no idoso", "Telemedicina",
-          "Atendimento em pronto socorro", "Farmácia Popular do Brasil",
-        ],
-        knowsLanguage: ["pt-BR", "en"],
-        areaServed: { "@type": "Country", name: "Brasil" },
-        availableService: [
-          { "@type": "MedicalTherapy", name: "Teleconsulta para pessoa idosa" },
-          { "@type": "MedicalProcedure", name: "Emissão de laudo médico para fralda geriátrica via Farmácia Popular" },
-          { "@type": "MedicalTherapy", name: "Avaliação Geriátrica Ampla (AGA)" },
-        ],
-        worksFor: [
-          { "@type": "MedicalBusiness", "@id": "https://fraldageriatrica.com#organization", name: "Fralda Geriátrica", url: "https://fraldageriatrica.com" },
-          { "@type": "MedicalClinic", name: "Clínica AllMed", address: { "@type": "PostalAddress", streetAddress: "Rua João Lobo Filho, 250", addressLocality: "Fortaleza", addressRegion: "CE", addressCountry: "BR" } },
-        ],
-        memberOf: { "@type": "Organization", name: "Conselho Regional de Medicina do Estado do Ceará", url: "https://www.cremec.org.br" },
-        sameAs: ["https://www.robertoarcanjo.com", "https://portal.cfm.org.br/busca-medicos"],
-      },
-      {
-        "@context": "https://schema.org",
-        "@type": "AboutPage",
-        url: CANONICAL,
-        name: "Sobre o Dr. Roberto Arcanjo",
-        description: "Página oficial do médico responsável pelo fraldageriatrica.com.",
-        mainEntity: { "@id": `${CANONICAL}#physician` },
-        isPartOf: { "@type": "WebSite", name: "Fralda Geriátrica", url: "https://fraldageriatrica.com" },
-      },
-      {
-        "@context": "https://schema.org",
-        "@type": "BreadcrumbList",
-        itemListElement: [
-          { "@type": "ListItem", position: 1, name: "Início", item: "https://fraldageriatrica.com/" },
-          { "@type": "ListItem", position: 2, name: "Dr. Roberto Arcanjo", item: CANONICAL },
-        ],
-      },
-    ]);
-    document.head.appendChild(ld);
-  }, []);
-};
 
 const Logo = ({ size = 32 }: { size?: number }) => (
   <div
@@ -594,9 +477,82 @@ const Footer = () => (
 );
 
 export default function Medico() {
-  useSeo();
   return (
     <main className={`${BG} min-h-screen text-white`}>
+      <SEO 
+        title={PAGE_TITLE}
+        description={PAGE_DESC}
+        canonicalPath="/dr-roberto-arcanjo"
+        keywords="Dr. Roberto Arcanjo geriatra, CRM/CE 26.155, médico laudo fralda online, geriatra Albert Einstein"
+        robots="index, follow"
+        jsonLd={[
+          {
+            "@context": "https://schema.org",
+            "@type": "Physician",
+            "@id": `${CANONICAL}#physician`,
+            name: "Dr. Roberto Arcanjo",
+            givenName: "Roberto",
+            familyName: "Arcanjo",
+            honorificPrefix: "Dr.",
+            image: OG_IMAGE,
+            url: CANONICAL,
+            jobTitle: "Médico",
+            description:
+              "Médico inscrito no CRM/CE sob o número 26.155, com pós-graduação em Geriatria pelo Hospital Israelita Albert Einstein. Atuação voltada ao cuidado integral da pessoa idosa, com foco em prevenção, autonomia e qualidade de vida.",
+            telephone: "+55-85-99909-9750",
+            email: "contato@robertoarcanjo.com",
+            identifier: [{ "@type": "PropertyValue", propertyID: "CRM", value: "CRM/CE 26.155" }],
+            alumniOf: [
+              {
+                "@type": "CollegeOrUniversity",
+                name: "Universidade Estácio de Sá (UNESA)",
+                address: { "@type": "PostalAddress", addressLocality: "Rio de Janeiro", addressRegion: "RJ", addressCountry: "BR" },
+              },
+              {
+                "@type": "EducationalOrganization",
+                name: "Hospital Israelita Albert Einstein",
+                url: "https://www.einstein.br",
+              },
+            ],
+            knowsAbout: [
+              "Cuidado da pessoa idosa", "Avaliação Geriátrica Ampla", "Medicina do envelhecimento",
+              "Manejo de doenças crônicas no idoso", "Polifarmácia e desprescrição", "Prevenção de quedas e fragilidade",
+              "Cuidados paliativos", "Incontinência urinária no idoso", "Telemedicina",
+              "Atendimento em pronto socorro", "Farmácia Popular do Brasil",
+            ],
+            knowsLanguage: ["pt-BR", "en"],
+            areaServed: { "@type": "Country", name: "Brasil" },
+            availableService: [
+              { "@type": "MedicalTherapy", name: "Teleconsulta para pessoa idosa" },
+              { "@type": "MedicalProcedure", name: "Emissão de laudo médico para fralda geriátrica via Farmácia Popular" },
+              { "@type": "MedicalTherapy", name: "Avaliação Geriátrica Ampla (AGA)" },
+            ],
+            worksFor: [
+              { "@type": "MedicalBusiness", "@id": "https://fraldageriatrica.com#organization", name: "Fralda Geriátrica", url: "https://fraldageriatrica.com" },
+              { "@type": "MedicalClinic", name: "Clínica AllMed", address: { "@type": "PostalAddress", streetAddress: "Rua João Lobo Filho, 250", addressLocality: "Fortaleza", addressRegion: "CE", addressCountry: "BR" } },
+            ],
+            memberOf: { "@type": "Organization", name: "Conselho Regional de Medicina do Estado do Ceará", url: "https://www.cremec.org.br" },
+            sameAs: ["https://www.robertoarcanjo.com", "https://portal.cfm.org.br/busca-medicos"],
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "AboutPage",
+            url: CANONICAL,
+            name: "Sobre o Dr. Roberto Arcanjo",
+            description: "Página oficial do médico responsável pelo fraldageriatrica.com.",
+            mainEntity: { "@id": `${CANONICAL}#physician` },
+            isPartOf: { "@type": "WebSite", name: "Fralda Geriátrica", url: "https://fraldageriatrica.com" },
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              { "@type": "ListItem", position: 1, name: "Início", item: "https://fraldageriatrica.com/" },
+              { "@type": "ListItem", position: 2, name: "Dr. Roberto Arcanjo", item: CANONICAL },
+            ],
+          },
+        ]}
+      />
       <Header />
       <Breadcrumb />
       <Hero />

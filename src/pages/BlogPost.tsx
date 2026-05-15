@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { SEO } from "@/components/SEO";
 import { useParams, Navigate } from "react-router-dom";
 import {
   Shield,
@@ -48,124 +49,6 @@ const SURFACE_HOVER = "hover:border-sky-400/30 hover:bg-white/[0.05]";
 const TEXT = "text-white";
 const SOFT_GRADIENT =
   "bg-[radial-gradient(ellipse_at_top,hsl(210_92%_55%/0.18)_0%,transparent_55%)]";
-
-// ───────────────── SEO Hook
-const useSeo = (post: BlogPostData) => {
-  useEffect(() => {
-    if (!post) return;
-
-    const title = `${post.title} | fraldageriatrica.com`;
-    const canonical = `${SITE}/blog/${post.slug}`;
-    const ogImage = `${SITE}/og-fralda.jpg`;
-
-    document.title = title;
-    document.documentElement.lang = "pt-BR";
-
-    const upsertMeta = (attr: "name" | "property", key: string, content: string) => {
-      let el = document.head.querySelector<HTMLMetaElement>(`meta[${attr}="${key}"]`);
-      if (!el) {
-        el = document.createElement("meta");
-        el.setAttribute(attr, key);
-        document.head.appendChild(el);
-      }
-      el.setAttribute("content", content);
-    };
-
-    upsertMeta("name", "description", post.description);
-    upsertMeta("name", "keywords", post.keywords || "");
-    upsertMeta("name", "theme-color", "#070B12");
-    upsertMeta("property", "og:title", title);
-    upsertMeta("property", "og:description", post.description);
-    upsertMeta("property", "og:type", "article");
-    upsertMeta("property", "og:url", canonical);
-    upsertMeta("property", "og:image", ogImage);
-    upsertMeta("property", "og:locale", "pt_BR");
-    upsertMeta("property", "article:published_time", post.dateIso);
-    if (post.lastReviewedDate) upsertMeta("property", "article:modified_time", post.lastReviewedDate);
-    upsertMeta("name", "twitter:card", "summary_large_image");
-    upsertMeta("name", "twitter:title", title);
-    upsertMeta("name", "twitter:description", post.description);
-    upsertMeta("name", "twitter:image", ogImage);
-
-    let canon = document.head.querySelector<HTMLLinkElement>('link[rel="canonical"]');
-    if (!canon) {
-      canon = document.createElement("link");
-      canon.rel = "canonical";
-      document.head.appendChild(canon);
-    }
-    canon.href = canonical;
-
-    // JSON-LD Article + MedicalWebPage
-    const ldId = "ld-blog-post";
-    document.getElementById(ldId)?.remove();
-    const ld = document.createElement("script");
-    ld.type = "application/ld+json";
-    ld.id = ldId;
-    
-    const schemas: any[] = [
-      {
-        "@context": "https://schema.org",
-        "@type": ["Article", "MedicalWebPage"],
-        headline: post.title,
-        description: post.description,
-        datePublished: post.dateIso,
-        dateModified: post.lastReviewedDate || post.dateIso,
-        lastReviewed: post.lastReviewedDate || post.dateIso,
-        url: canonical,
-        image: ogImage,
-        inLanguage: "pt-BR",
-        publisher: {
-          "@type": "MedicalBusiness",
-          name: "fraldageriatrica.com",
-          url: SITE,
-          logo: { "@type": "ImageObject", url: `${SITE}/og-fralda.jpg` },
-          telephone: "",
-          areaServed: "BR",
-          medicalSpecialty: "Geriatrics"
-        },
-        author: {
-          "@type": "Person",
-          name: post.authorName || "Equipe Médica fraldageriatrica.com",
-          jobTitle: post.authorSpecialty,
-          medicalSpecialty: "Geriatrics",
-          url: SITE
-        },
-        mainEntityOfPage: { "@type": "WebPage", "@id": canonical },
-      },
-      {
-        "@context": "https://schema.org",
-        "@type": "BreadcrumbList",
-        itemListElement: [
-          { "@type": "ListItem", position: 1, name: "Início", item: `${SITE}/fralda` },
-          { "@type": "ListItem", position: 2, name: "Blog", item: `${SITE}/blog` },
-          { "@type": "ListItem", position: 3, name: post.title, item: canonical },
-        ],
-      }
-    ];
-
-    if (post.faqs && post.faqs.length > 0) {
-      schemas.push({
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        mainEntity: post.faqs.map(faq => ({
-          "@type": "Question",
-          name: faq.question,
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: faq.answer
-          }
-        }))
-      });
-    }
-
-    ld.text = JSON.stringify(schemas);
-    document.head.appendChild(ld);
-    
-    return () => {
-      document.getElementById(ldId)?.remove();
-    }
-  }, [post]);
-};
 
 // ───────────────── Logo
 const Logo = ({ size = 32 }: { size?: number }) => (
@@ -649,12 +532,75 @@ const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
   const post = slug ? getPostBySlug(slug) : undefined;
 
-  useSeo(post as BlogPostData);
-
   if (!post) return <Navigate to="/blog" replace />;
+
+  const canonical = `${SITE}/blog/${post.slug}`;
+  const ogImage = `${SITE}/og-fralda.jpg`;
+  
+  const schemas: any[] = [
+    {
+      "@context": "https://schema.org",
+      "@type": ["Article", "MedicalWebPage"],
+      headline: post.title,
+      description: post.description,
+      datePublished: post.dateIso,
+      dateModified: post.lastReviewedDate || post.dateIso,
+      lastReviewed: post.lastReviewedDate || post.dateIso,
+      url: canonical,
+      image: ogImage,
+      inLanguage: "pt-BR",
+      publisher: {
+        "@type": "MedicalBusiness",
+        name: "fraldageriatrica.com",
+        url: SITE,
+        logo: { "@type": "ImageObject", url: `${SITE}/og-fralda.jpg` },
+        telephone: "",
+        areaServed: "BR",
+        medicalSpecialty: "Geriatrics"
+      },
+      author: {
+        "@type": "Person",
+        name: post.authorName || "Equipe Médica fraldageriatrica.com",
+        jobTitle: post.authorSpecialty,
+        medicalSpecialty: "Geriatrics",
+        url: SITE
+      },
+      mainEntityOfPage: { "@type": "WebPage", "@id": canonical },
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Início", item: `${SITE}/fralda` },
+        { "@type": "ListItem", position: 2, name: "Blog", item: `${SITE}/blog` },
+        { "@type": "ListItem", position: 3, name: post.title, item: canonical },
+      ],
+    }
+  ];
+
+  if (post.faqs && post.faqs.length > 0) {
+    schemas.push({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: post.faqs.map(faq => ({
+        "@type": "Question",
+        name: faq.question,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: faq.answer
+        }
+      }))
+    });
+  }
 
   return (
     <div className={`min-h-screen ${BG} ${TEXT} antialiased selection:bg-sky-500/30`}>
+      <SEO 
+        title={`${post.title} | fraldageriatrica.com`}
+        description={post.description}
+        canonicalPath={`/blog/${post.slug}`}
+        jsonLd={schemas}
+      />
       <Header />
       <main>
         <ArticleHero post={post} />

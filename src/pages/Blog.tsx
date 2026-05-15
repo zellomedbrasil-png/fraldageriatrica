@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { SEO } from "@/components/SEO";
 import {
   Shield,
   Plus,
@@ -27,73 +27,6 @@ const SURFACE_HOVER = "hover:border-sky-400/30 hover:bg-white/[0.05]";
 const TEXT = "text-white";
 const SOFT_GRADIENT =
   "bg-[radial-gradient(ellipse_at_top,hsl(210_92%_55%/0.18)_0%,transparent_55%)]";
-
-// ───────────────── SEO
-const useSeo = () => {
-  useEffect(() => {
-    document.title = PAGE_TITLE;
-    document.documentElement.lang = "pt-BR";
-
-    const upsertMeta = (
-      attr: "name" | "property",
-      key: string,
-      content: string,
-    ) => {
-      let el = document.head.querySelector<HTMLMetaElement>(
-        `meta[${attr}="${key}"]`,
-      );
-      if (!el) {
-        el = document.createElement("meta");
-        el.setAttribute(attr, key);
-        document.head.appendChild(el);
-      }
-      el.setAttribute("content", content);
-    };
-
-    upsertMeta("name", "description", PAGE_DESC);
-    upsertMeta("name", "theme-color", "#070B12");
-    upsertMeta("property", "og:title", PAGE_TITLE);
-    upsertMeta("property", "og:description", PAGE_DESC);
-    upsertMeta("property", "og:type", "website");
-    upsertMeta("property", "og:url", CANONICAL);
-    upsertMeta("property", "og:locale", "pt_BR");
-    
-    upsertMeta("name", "twitter:card", "summary_large_image");
-    upsertMeta("name", "twitter:title", PAGE_TITLE);
-    upsertMeta("name", "twitter:description", PAGE_DESC);
-    upsertMeta("name", "twitter:image", "https://fraldageriatrica.com/og-fralda.jpg");
-
-    let canon = document.head.querySelector<HTMLLinkElement>(
-      'link[rel="canonical"]',
-    );
-    if (!canon) {
-      canon = document.createElement("link");
-      canon.rel = "canonical";
-      document.head.appendChild(canon);
-    }
-    canon.href = CANONICAL;
-
-    // BreadcrumbList Schema JSON-LD
-    const ldId = "ld-blog-index";
-    document.getElementById(ldId)?.remove();
-    const ld = document.createElement("script");
-    ld.type = "application/ld+json";
-    ld.id = ldId;
-    ld.text = JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Início", item: "https://fraldageriatrica.com/fralda" },
-        { "@type": "ListItem", position: 2, name: "Blog", item: "https://fraldageriatrica.com/blog" }
-      ]
-    });
-    document.head.appendChild(ld);
-    
-    return () => {
-      document.getElementById(ldId)?.remove();
-    };
-  }, []);
-};
 
 // ───────────────── Logo
 const Logo = ({ size = 32 }: { size?: number }) => (
@@ -403,9 +336,21 @@ const Footer = () => (
 
 // ───────────────── Page
 const Blog = () => {
-  useSeo();
   return (
     <div className={`min-h-screen ${BG} ${TEXT} antialiased selection:bg-sky-500/30`}>
+      <SEO 
+        title={PAGE_TITLE} 
+        description={PAGE_DESC} 
+        canonicalPath="/blog" 
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Início", item: "https://fraldageriatrica.com/fralda" },
+            { "@type": "ListItem", position: 2, name: "Blog", item: "https://fraldageriatrica.com/blog" }
+          ]
+        }}
+      />
       <Header />
       <main>
         <BlogHero />

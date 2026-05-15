@@ -1,31 +1,20 @@
-import React, { useEffect } from 'react';
+import React from 'react';
+import { SEO } from "@/components/SEO";
 import { useNavigate } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
 
-// ─── SEO
-const useSeo = () => {
-  useEffect(() => {
-    document.title = "Idosos têm direito a fralda geriátrica grátis pelo SUS | Portal dos Direitos";
-    const setMeta = (name: string, content: string) => {
-      let el = document.head.querySelector<HTMLMetaElement>(`meta[name="${name}"]`);
-      if (!el) { el = document.createElement("meta"); el.setAttribute("name", name); document.head.appendChild(el); }
-      el.setAttribute("content", content);
-    };
-    setMeta("description", "78% dos idosos e PCDs não sabem que têm direito a fraldas geriátricas gratuitas pela Farmácia Popular. Saiba como conseguir o laudo médico online em até 24h.");
-    setMeta("robots", "noindex, nofollow");
-    let canon = document.head.querySelector<HTMLLinkElement>('link[rel="canonical"]');
-    if (!canon) { canon = document.createElement("link"); canon.rel = "canonical"; document.head.appendChild(canon); }
-    canon.href = "https://fraldageriatrica.com/adv";
-  }, []);
-};
-
 const Adv = () => {
-  useSeo();
   const navigate = useNavigate();
   const date = new Date().toLocaleDateString('pt-BR');
 
   return (
     <div className="min-h-screen bg-gray-50 text-gray-900 font-sans">
+      <SEO 
+        title="Idosos têm direito a fralda geriátrica grátis pelo SUS | Portal dos Direitos"
+        description="78% dos idosos e PCDs não sabem que têm direito a fraldas geriátricas gratuitas pela Farmácia Popular. Saiba como conseguir o laudo médico online em até 24h."
+        canonicalPath="/adv"
+        robots="noindex, nofollow"
+      />
       {/* Header */}
       <header className="bg-blue-800 text-white p-4 sticky top-0 z-50 shadow-md">
         <div className="max-w-4xl mx-auto flex justify-between items-center">
