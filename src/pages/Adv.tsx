@@ -106,8 +106,8 @@ const Adv = () => {
               <p className="text-blue-700 mb-6 font-medium">
                 Clique no botão abaixo para ser direcionado ao WhatsApp da central de triagem médica. O atendimento é imediato e seguro.
               </p>
-              <Button 
-                onClick={() => window.location.href = '/funil'}
+              <Button
+                onClick={() => window.location.href = 'https://pay.kiwify.com.br/ETL97G1'}
                 className="bg-green-600 hover:bg-green-700 text-white font-bold text-xl py-6 px-10 rounded-full w-full md:w-auto shadow-lg transform transition hover:scale-105 animate-pulse"
               >
                 SOLICITAR LAUDO NO WHATSAPP

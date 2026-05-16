@@ -384,7 +384,7 @@ const Funil = () => {
 
   return (
     <div className={`${BG} min-h-screen text-white relative overflow-hidden`}>
-      <SEO title={PAGE_TITLE} description={PAGE_DESC} canonicalPath="/funil" />
+      <SEO title={PAGE_TITLE} description={PAGE_DESC} canonicalPath="/funil" robots="noindex" />
       {/* Glow de topo */}
       <div
         className={`pointer-events-none absolute inset-x-0 top-0 h-[520px] ${SOFT_GRADIENT}`}

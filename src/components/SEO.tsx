@@ -7,11 +7,13 @@ interface SEOProps {
   jsonLd?: any;
   keywords?: string;
   robots?: string;
+  ogImage?: string;
 }
 
-export function SEO({ title, description, canonicalPath, jsonLd, keywords, robots }: SEOProps) {
+export function SEO({ title, description, canonicalPath, jsonLd, keywords, robots, ogImage }: SEOProps) {
   const siteUrl = "https://fraldageriatrica.com";
   const canonicalUrl = canonicalPath ? `${siteUrl}${canonicalPath}` : siteUrl;
+  const image = ogImage ? `${siteUrl}${ogImage}` : `${siteUrl}/og/default.png`;
 
   return (
     <Helmet>
@@ -20,17 +22,18 @@ export function SEO({ title, description, canonicalPath, jsonLd, keywords, robot
       {keywords && <meta name="keywords" content={keywords} />}
       {robots && <meta name="robots" content={robots} />}
       <link rel="canonical" href={canonicalUrl} />
-      
+
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
-
+      <meta property="og:image" content={image} />
       <meta property="og:url" content={canonicalUrl} />
       <meta property="og:type" content="website" />
       <meta property="og:locale" content="pt_BR" />
-      
+
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
+      <meta name="twitter:image" content={image} />
 
       {jsonLd && (
         <script type="application/ld+json">
