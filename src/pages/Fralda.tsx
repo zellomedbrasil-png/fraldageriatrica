@@ -32,7 +32,7 @@ import {
 } from "@/components/ui/collapsible";
 
 // ───────────────── Constantes
-const WHATSAPP = "/funil";
+const WHATSAPP = "https://pay.kiwify.com.br/ETL97G1";
 const PRECO = "R$ 49";
 
 const PAGE_TITLE = "Fralda Geriátrica Gratuita pelo SUS | Laudo Médico Online por R$ 49";

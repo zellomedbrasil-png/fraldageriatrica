@@ -5,6 +5,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
+import { FloatingWhatsApp } from "@/components/FloatingWhatsApp";
 
 // Code splitting
 const Fralda = lazy(() => import("./pages/Fralda"));
@@ -50,6 +51,7 @@ const App = () => (
             {/* CATCH-ALL ROUTE REDIRECTS TO FRALDA */}
             <Route path="*" element={<Navigate to="/fralda" replace />} />
           </Routes>
+          <FloatingWhatsApp />
         </Suspense>
       </BrowserRouter>
     </TooltipProvider>
