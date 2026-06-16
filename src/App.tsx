@@ -18,6 +18,7 @@ const PillarLaudo = lazy(() => import("./pages/PillarLaudo"));
 const PillarIncontinencia = lazy(() => import("./pages/PillarIncontinencia"));
 const PillarCuidados = lazy(() => import("./pages/PillarCuidados"));
 const Medico = lazy(() => import("./pages/Medico"));
+const FraldaV2 = lazy(() => import("./pages/FraldaV2"));
 
 const queryClient = new QueryClient();
 
@@ -37,8 +38,9 @@ const App = () => (
       <BrowserRouter>
         <Suspense fallback={<PageLoader />}>
           <Routes>
-            <Route path="/" element={<Fralda />} />
-            <Route path="/fralda" element={<Fralda />} />
+            <Route path="/" element={<FraldaV2 />} />
+            <Route path="/fralda" element={<FraldaV2 />} />
+            <Route path="/v1" element={<Fralda />} />
             <Route path="/funil" element={<Funil />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:slug" element={<BlogPost />} />
@@ -48,7 +50,7 @@ const App = () => (
             <Route path="/incontinencia-urinaria-idosos" element={<PillarIncontinencia />} />
             <Route path="/cuidar-de-idoso-em-casa" element={<PillarCuidados />} />
             <Route path="/dr-roberto-arcanjo" element={<Medico />} />
-            {/* CATCH-ALL ROUTE REDIRECTS TO FRALDA */}
+            {/* CATCH-ALL ROUTE REDIRECTS TO HOME */}
             <Route path="*" element={<Navigate to="/fralda" replace />} />
           </Routes>
           <FloatingWhatsApp />
